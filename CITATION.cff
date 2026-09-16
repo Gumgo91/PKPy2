@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use PKPy2, please cite the software and the associated manuscript."
+title: "PKPy2"
+type: software
+version: 0.1.0a2
+authors:
+  - family-names: "Kong"
+    given-names: "Hyunseung"
+repository-code: "https://github.com/Gumgo91/PKPy2"
+license: MIT
+keywords:
+  - population pharmacokinetics
+  - nonlinear mixed effects
+  - pharmacokinetic modeling
+  - Python
