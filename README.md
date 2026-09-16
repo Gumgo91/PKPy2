@@ -10,12 +10,11 @@ It is the successor to [PKPy](https://doi.org/10.7717/peerj.20258), replacing
 summaries of separately fitted individual parameters with joint population
 inference under a declared model.
 
-```text
-log p_ik = log theta_k + X_ik * beta_k + eta_ik,   eta_i ~ N(0, Omega)
-y_ij | eta_i ~ N(f_ij, sigma_prop^2 f_ij^2 + sigma_add^2)
-L = prod_i integral [ prod_j p(y_ij | eta_i) ] p(eta_i) d eta_i
-OFV = -2 log L
-```
+$$\log p_{ik} = \log \theta_k + X_{ik}\,\beta_k + \eta_{ik}, \qquad \eta_i \sim \mathcal{N}(0, \Omega)$$
+
+$$y_{ij} \mid \eta_i \sim \mathcal{N}\left(f_{ij},\; \sigma_{\mathrm{prop}}^{2}\, f_{ij}^{2} + \sigma_{\mathrm{add}}^{2}\right)$$
+
+$$L = \prod_i \int \left[\, \prod_j p\!\left(y_{ij} \mid \eta_i\right) \right] p(\eta_i)\; d\eta_i, \qquad \mathrm{OFV} = -2 \log L$$
 
 ## Features
 
