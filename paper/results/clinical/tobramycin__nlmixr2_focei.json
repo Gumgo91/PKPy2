@@ -1,0 +1,52 @@
+{
+  "dataset": "tobramycin",
+  "estimator": "nlmixr2_focei",
+  "status": "returned",
+  "seconds": 30.37,
+  "objective": 140.931754825995,
+  "theta": {
+    "CL": 3.30406808312485,
+    "V1": 16.1921135653477,
+    "Q": 5.17565310981249,
+    "V2": 7.03004575791477
+  },
+  "se_log_theta": {
+    "CL": 0.0500217999737693,
+    "V1": 0.0877611705854911,
+    "Q": 0.254667317546937,
+    "V2": 0.240211160726046
+  },
+  "omega": {
+    "CL": 0.0186113516821154
+  },
+  "sigma": {
+    "prop": 0.219887425497897,
+    "add": 0.00136014705087354
+  },
+  "se_sigma": {
+    "prop": 0.0238525476736986,
+    "add": null
+  },
+  "coefficients": {
+    "b.clcr": 0.336065836854861,
+    "b.wt": -7.37012556119394
+  },
+  "se_coefficients": {
+    "b.clcr": 0.0694882312178998,
+    "b.wt": 0.646592379875066
+  },
+  "covariance_method": "r,s (full)",
+  "covariance_available": true,
+  "message": "Normal exit from bobyqa",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

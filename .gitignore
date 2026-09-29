@@ -16,5 +16,6 @@ output/
 *.nbi
 *.pkl
 *.log
+!paper/logs/*.log
 *.tmp
 *.staged

@@ -1,0 +1,132 @@
+[
+ {
+  "dataset": "theophylline",
+  "method": "pkpy2",
+  "ofv": 352.7850302094867,
+  "node_refinement_gap": 0.008594670992579267,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.1576890629669822,
+  "pkpy2_reported_ofv": 352.78255288978806,
+  "delta_ofv_vs_pkpy2": 0.0
+ },
+ {
+  "dataset": "theophylline",
+  "method": "nlmixr2_focei",
+  "ofv": 352.873193356116,
+  "node_refinement_gap": 0.007914690842255823,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.157904475522228,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.0881631466293129
+ },
+ {
+  "dataset": "theophylline",
+  "method": "nlmixr2_saem",
+  "ofv": 352.84771790085955,
+  "node_refinement_gap": 0.008126483295654907,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.157425681453588,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.0626876913728438
+ },
+ {
+  "dataset": "theophylline",
+  "method": "saemix",
+  "ofv": 352.8020622235211,
+  "node_refinement_gap": 0.008313984812616582,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.15626717058482,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.0170320140343847
+ },
+ {
+  "dataset": "theophylline",
+  "method": "nonmem",
+  "ofv": 352.85509766883587,
+  "node_refinement_gap": 0.008039604946418422,
+  "sigma_prop_profiled": true,
+  "sigma_prop": 0.1578248322736669,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.07006745934916125
+ },
+ {
+  "dataset": "warfarin",
+  "method": "pkpy2",
+  "ofv": 755.4706643198901,
+  "node_refinement_gap": 0.010173308915454982,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.13659624490840935,
+  "pkpy2_reported_ofv": 755.4706458588319,
+  "delta_ofv_vs_pkpy2": 0.0
+ },
+ {
+  "dataset": "warfarin",
+  "method": "nlmixr2_focei",
+  "ofv": 755.6318453537585,
+  "node_refinement_gap": 0.0019050500394541814,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.136663948997429,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.1611810338683881
+ },
+ {
+  "dataset": "warfarin",
+  "method": "nlmixr2_saem",
+  "ofv": 771.9009393150827,
+  "node_refinement_gap": 0.007952906679406624,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.140067547906652,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 16.430274995192576
+ },
+ {
+  "dataset": "warfarin",
+  "method": "nonmem",
+  "ofv": 755.5380035886951,
+  "node_refinement_gap": 0.006211928895481833,
+  "sigma_prop_profiled": true,
+  "sigma_prop": 0.1368925131925381,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.06733926880497165
+ },
+ {
+  "dataset": "tobramycin",
+  "method": "pkpy2",
+  "ofv": 604.4439999877003,
+  "node_refinement_gap": 1.2118675840611104e-08,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.2187283154571093,
+  "pkpy2_reported_ofv": 604.444009260701,
+  "delta_ofv_vs_pkpy2": 0.0
+ },
+ {
+  "dataset": "tobramycin",
+  "method": "nlmixr2_focei",
+  "ofv": 605.1682888044485,
+  "node_refinement_gap": 1.3606722859549336e-08,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.218904176666667,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.7242888167481851
+ },
+ {
+  "dataset": "tobramycin",
+  "method": "nlmixr2_saem",
+  "ofv": 673.0740852141945,
+  "node_refinement_gap": 7.704738891334273e-07,
+  "sigma_prop_profiled": false,
+  "sigma_prop": 0.232184984358083,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 68.6300852264942
+ },
+ {
+  "dataset": "tobramycin",
+  "method": "nonmem",
+  "ofv": 605.0618843199903,
+  "node_refinement_gap": 1.1557517609617207e-08,
+  "sigma_prop_profiled": true,
+  "sigma_prop": 0.21962790078955755,
+  "pkpy2_reported_ofv": null,
+  "delta_ofv_vs_pkpy2": 0.617884332290032
+ }
+]

@@ -1,0 +1,42 @@
+{
+  "dataset": "1cmt_iv__rich__092",
+  "estimator": "nlmixr2_saem",
+  "sampling": "rich",
+  "replicate": 92,
+  "seed": 260925092,
+  "status": "returned",
+  "seconds": 9.42000000000002,
+  "objective": -622.253837843639,
+  "theta": {
+    "CL": 4.60696546444196,
+    "V": 37.6461270479256
+  },
+  "se_log_theta": {
+    "CL": 0.050590486743126,
+    "V": 0.0340920265853405
+  },
+  "omega": {
+    "CL": 0.0751980160736328,
+    "V": 0.0319857671613514
+  },
+  "sigma": {
+    "prop": 0.158444647048918
+  },
+  "se_sigma": {
+    "prop": 0.00723021151510843
+  },
+  "covariance_method": "sa",
+  "covariance_available": true,
+  "message": "",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

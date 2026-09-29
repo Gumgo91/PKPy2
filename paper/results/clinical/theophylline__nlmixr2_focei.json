@@ -1,0 +1,42 @@
+{
+  "dataset": "theophylline",
+  "estimator": "nlmixr2_focei",
+  "status": "returned",
+  "seconds": 36.87,
+  "objective": 133.113141493789,
+  "theta": {
+    "CL": 2.834095416225,
+    "V": 32.5420757262194,
+    "Ka": 1.45983600054426
+  },
+  "se_log_theta": {
+    "CL": 0.0817767095910407,
+    "V": 0.0432232858927947,
+    "Ka": 0.0128294442499165
+  },
+  "omega": {
+    "CL": 0.0647879392226266,
+    "V": 0.0149762882405842,
+    "Ka": 0.435857948218353
+  },
+  "sigma": {
+    "prop": 0.157904475522228
+  },
+  "se_sigma": {
+    "prop": 0.0182417928613826
+  },
+  "covariance_method": "r,s (full)",
+  "covariance_available": true,
+  "message": "Normal exit from bobyqa",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

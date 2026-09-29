@@ -1,0 +1,42 @@
+{
+  "dataset": "1cmt_iv__rich__044",
+  "estimator": "nlmixr2_focei",
+  "sampling": "rich",
+  "replicate": 44,
+  "seed": 260925044,
+  "status": "returned",
+  "seconds": 4.43000000000001,
+  "objective": -576.568952258289,
+  "theta": {
+    "CL": 4.06059042551918,
+    "V": 37.0449945988486
+  },
+  "se_log_theta": {
+    "CL": 0.062283780582021,
+    "V": 0.0465034545504558
+  },
+  "omega": {
+    "CL": 0.105812847269052,
+    "V": 0.0610836339694877
+  },
+  "sigma": {
+    "prop": 0.14885999059303
+  },
+  "se_sigma": {
+    "prop": 0.00649255568149446
+  },
+  "covariance_method": "r,s (full)",
+  "covariance_available": true,
+  "message": "Normal exit from bobyqa",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

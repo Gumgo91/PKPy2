@@ -1,0 +1,45 @@
+{
+  "dataset": "warfarin",
+  "estimator": "nlmixr2_focei",
+  "status": "returned",
+  "seconds": 36.01,
+  "objective": 294.428025893075,
+  "theta": {
+    "CL": 0.134763413130906,
+    "V": 7.85066806049551,
+    "Ka": 1.10203149892622,
+    "ALAG": 0.82083326917589
+  },
+  "se_log_theta": {
+    "CL": 0.047629447867524,
+    "V": 0.0305416108451215,
+    "Ka": 0.0135107830714367,
+    "ALAG": 0.0317271712005854
+  },
+  "omega": {
+    "CL": 0.0627105593829841,
+    "Ka": 0.5
+  },
+  "sigma": {
+    "prop": 0.136663948997429,
+    "add": 0.342052627529741
+  },
+  "se_sigma": {
+    "prop": 0.0161154802570478,
+    "add": null
+  },
+  "covariance_method": "r,s (full)",
+  "covariance_available": true,
+  "message": "Normal exit from bobyqa",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

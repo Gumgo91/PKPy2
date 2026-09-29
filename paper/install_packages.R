@@ -1,0 +1,7 @@
+lib <- Sys.getenv("R_LIBS_USER")
+dir.create(lib, recursive = TRUE, showWarnings = FALSE)
+.libPaths(c(lib, .libPaths()))
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+pk <- c("nlmixr2", "nlmixr2est", "rxode2", "saemix", "jsonlite", "data.table")
+install.packages(pk, lib = lib, type = "binary", dependencies = TRUE, Ncpus = 4)
+for (p in pk) cat(p, as.character(packageVersion(p, lib.loc = lib)), "\n")

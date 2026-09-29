@@ -1,0 +1,42 @@
+{
+  "dataset": "theophylline",
+  "estimator": "nlmixr2_saem",
+  "status": "returned",
+  "seconds": 24.01,
+  "objective": 138.550180130526,
+  "theta": {
+    "CL": 2.7801436871235,
+    "V": 32.2651298493505,
+    "Ka": 1.48335641026582
+  },
+  "se_log_theta": {
+    "CL": 0.0751185634562833,
+    "V": 0.0389276373774484,
+    "Ka": 0.200784552603757
+  },
+  "omega": {
+    "CL": 0.0643997078204477,
+    "V": 0.0135639063099831,
+    "Ka": 0.453432451072166
+  },
+  "sigma": {
+    "prop": 0.157425681453588
+  },
+  "se_sigma": {
+    "prop": 0.0121022861153475
+  },
+  "covariance_method": "sa",
+  "covariance_available": true,
+  "message": "",
+  "warnings": [],
+  "environment": {
+    "R": "R version 4.5.3 (2026-03-11 ucrt)",
+    "nlmixr2": "7.0.1",
+    "nlmixr2est": "7.1.0",
+    "rxode2": "5.1.7",
+    "saemix": "3.5",
+    "platform": "x86_64-w64-mingw32",
+    "seed": 260923,
+    "rx_threads": 1
+  }
+}

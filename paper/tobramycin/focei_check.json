@@ -1,0 +1,25 @@
+{
+  "points": [
+    {
+      "pkpy2_fit": "bounded_start_1",
+      "pkpy2_exact_ofv": 586.214090709811,
+      "focei_objective": 155.613736004452
+    },
+    {
+      "pkpy2_fit": "bounded_start_2",
+      "pkpy2_exact_ofv": 604.442431316181,
+      "focei_objective": 173.839855008424
+    }
+  ],
+  "focei_fit_from_documented_start": {
+    "objective": 172.926062772239,
+    "CL": 3.45755238394494,
+    "V1": 10.3477338701305,
+    "Q": 9.62763032449916,
+    "V2": 10.7284817780744,
+    "b_clcr": 0.238764254415664,
+    "b_wt": 5.96046447642884e-07
+  },
+  "published_expert_nonmem_ofv": 173.11,
+  "nlmixr2": "7.0.1"
+}

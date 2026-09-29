@@ -1,0 +1,74 @@
+{
+ "model": "published expert model with expert $THETA bounds",
+ "bounds": {
+  "CL": [
+   0.0,
+   20.0
+  ],
+  "V1": [
+   0.0,
+   100.0
+  ],
+  "Q": [
+   0.0,
+   50.0
+  ],
+  "V2": [
+   0.0,
+   100.0
+  ],
+  "b_clcr": [
+   0.0,
+   2.0
+  ],
+  "b_wt": [
+   0.0,
+   2.0
+  ]
+ },
+ "starts": {
+  "bounded_start_1": {
+   "CL": 3.4,
+   "V1": 20.3,
+   "Q": 5.0,
+   "V2": 20.0,
+   "b_clcr": 1.0,
+   "b_wt": 1.0,
+   "omega_CL": 0.1,
+   "sigma_prop": 0.2
+  },
+  "bounded_start_2": {
+   "CL": 2.95,
+   "V1": 4.59,
+   "Q": 6.85,
+   "V2": 13.2,
+   "b_clcr": 0.236,
+   "b_wt": 1.07,
+   "omega_CL": 0.028,
+   "sigma_prop": 0.2
+  }
+ },
+ "seeds": {
+  "bounded_start_1": 260930121,
+  "bounded_start_2": 260930122,
+  "uncertainty": 260930221
+ },
+ "fit_options": {
+  "workers": 2,
+  "saem_options": {
+   "cpu_budget_seconds": 60.0
+  },
+  "refinement_options": {
+   "cpu_budget_seconds": 300.0,
+   "max_stages": 90,
+   "analytic_non_eta": true
+  }
+ },
+ "uncertainty_options": {
+  "power": 16,
+  "step": 0.002,
+  "workers": 2,
+  "confidence": 0.95
+ },
+ "primary": "bounded_start_1"
+}
