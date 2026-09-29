@@ -1,4 +1,4 @@
-"""Audited initial refinement, optional SAEM, and marginal correction.
+"""Laplace exploration, audited initial refinement, optional SAEM, and marginal correction.
 
 engine.run_fit and clinical_auto use this path by default.
 Decode and penalty callbacks carry model/covariate/hint constraints consistently
@@ -9,6 +9,7 @@ import time
 import numpy as np
 from .saem import fit_saem,SAEMResult
 from .importance_refinement import refine_importance,RefinementResult
+from .laplace_exploration import explore_laplace
 
 
 @dataclass
@@ -19,12 +20,17 @@ class MarginalFitResult:
     saem: SAEMResult
     refinement: RefinementResult
     cpu_seconds: float
+    exploration: dict | None = None
 
 
 def fit_marginal(study,eta_indices,x0,decode,*,penalty=None,bounds=None,seed=0,
-                 saem_options=None,refinement_options=None,callback=None,workers=1,reuse_workspace=None,
-                 estimation_schedule='refine_saem_refine'):
-    """Use a short audited probe before SAEM; experimental schedules are opt-in.
+                 saem_options=None,refinement_options=None,laplace_options=None,callback=None,workers=1,reuse_workspace=None,
+                 estimation_schedule='laplace_refine_saem_refine'):
+    """Explore with the Laplace objective, then use a short audited probe before SAEM.
+
+    The default schedule first minimizes the deterministic Laplace objective
+    (60 CPU seconds by default) only to relocate the starting point; the final
+    estimate and status still come from importance refinement and its audit.
 
     Defaults allow 60 CPU seconds for SAEM and 300 for marginal refinement.
     Initial JIT compilation and orchestration are included in returned total CPU
@@ -35,7 +41,7 @@ def fit_marginal(study,eta_indices,x0,decode,*,penalty=None,bounds=None,seed=0,
     Its cost is charged to that budget; accepted progress is retained for SAEM.
     """
     start=time.process_time()
-    if estimation_schedule not in ('saem_then_audit','refine_saem_refine'):
+    if estimation_schedule not in ('saem_then_audit','refine_saem_refine','laplace_refine_saem_refine'):
         raise ValueError('unknown estimation schedule')
     if reuse_workspace is not None:
         import hashlib
@@ -53,6 +59,19 @@ def fit_marginal(study,eta_indices,x0,decode,*,penalty=None,bounds=None,seed=0,
         raise ValueError('set shared policy arguments at the fit_marginal level')
     def emit(phase,row):
         if callback is not None:callback(dict(fit_phase=phase,**row))
+    exploration=None
+    if estimation_schedule=='laplace_refine_saem_refine':
+        exploration_options=dict(cpu_budget_seconds=120.,max_iterations=200,starts=8)
+        exploration_options.update(laplace_options or {})
+        if len(eta_indices):
+            explored=explore_laplace(study,eta_indices,x0,decode,penalty=penalty,bounds=bounds,workers=workers,
+                                     seed=seed+30000049,callback=lambda row:emit('laplace_exploration',row),
+                                     **exploration_options)
+            exploration=explored.record()
+            x0=explored.x.copy()
+        else:
+            exploration=dict(status='not_applicable',message='no random effects')
+        estimation_schedule='refine_saem_refine'
     # Legacy scheduling or explicit sample reuse permits a preliminary probe.
     # This is model-independent: neither a drug label nor a claimed warm start
     # is trusted. Only the normal independent stationarity gate can skip SAEM.
@@ -74,7 +93,7 @@ def fit_marginal(study,eta_indices,x0,decode,*,penalty=None,bounds=None,seed=0,
             first=SAEMResult(probe.x.copy(),'not_needed',
                 'supplied estimate refined to independent marginal stationarity',[],
                 {'iterations':0,'initial_refinement':probe_record,'estimation_schedule':estimation_schedule}, {})
-            return MarginalFitResult(probe.x,probe.ofv,probe.status,first,probe,time.process_time()-start)
+            return MarginalFitResult(probe.x,probe.ofv,probe.status,first,probe,time.process_time()-start,exploration)
         # Charge the probe to the existing refinement budget, not a hidden extra.
         final['cpu_budget_seconds']=max(.001,float(final['cpu_budget_seconds'])-probe.cpu_seconds)
     if len(eta_indices):
@@ -93,4 +112,4 @@ def fit_marginal(study,eta_indices,x0,decode,*,penalty=None,bounds=None,seed=0,
                    seed=seed+10000019,callback=lambda row:emit('marginal_refinement',row),
                    reuse_workspace=(reuse_workspace if probe is None or not (getattr(probe,'sample_reuse',None) or {}).get('refresh_reason') else None),
                    posterior_pilot=first.posterior_pilot if final.get('transport_posterior',False) else None,**final)
-    return MarginalFitResult(second.x,second.ofv,second.status,first,second,time.process_time()-start)
+    return MarginalFitResult(second.x,second.ofv,second.status,first,second,time.process_time()-start,exploration)

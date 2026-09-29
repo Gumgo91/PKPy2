@@ -2,7 +2,9 @@
 
 Omega entries are log-normal random-effect variances, residual entries are
 standard deviations. Fixed quantities are absent from optimization and Hessians.
-No data-dependent model selection occurs in this interface.
+Optional lower/upper bounds on any estimated quantity restrict the optimization
+on the reporting scale (as NONMEM $THETA bounds do). No data-dependent model
+selection occurs in this interface.
 """
 from dataclasses import dataclass, field, asdict
 import copy
@@ -22,6 +24,8 @@ CODES = {"1cmt_iv": 0, "1cmt_oral": 1, "2cmt_iv": 2, "2cmt_oral": 3}
 class Parameter:
     value: float
     fixed: bool = False
+    lower: float | None = None
+    upper: float | None = None
 
 
 @dataclass(frozen=True)
@@ -56,11 +60,34 @@ class ModelSpec:
         return CompiledModel(subjects, self)
 
 
+def _check_bounds(p, name, *, positive):
+    lo, hi = p.lower, p.upper
+    for v in (lo, hi):
+        if v is not None and (isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v)):
+            raise ValueError(f"{name} bounds must be finite numbers or None")
+    if positive and lo is not None and lo < 0:
+        raise ValueError(f"{name} lower bound must be nonnegative")
+    if positive and hi is not None and hi <= 0:
+        raise ValueError(f"{name} upper bound must be positive")
+    if lo is not None and hi is not None and not lo < hi:
+        raise ValueError(f"{name} lower bound must be below the upper bound")
+    if (lo is not None and p.value < lo) or (hi is not None and p.value > hi):
+        raise ValueError(f"{name} value must lie within its bounds")
+
+
 def _value(p, name, *, zero=False):
     if not isinstance(p, Parameter) or type(p.fixed) is not bool:
         raise ValueError(f"{name} requires a Parameter with a boolean fixed flag")
     if not np.isfinite(p.value) or p.value < 0 or (p.value == 0 and not (zero and p.fixed)):
         raise ValueError(f"{name} must be positive; only explicitly fixed permitted terms may be zero")
+    _check_bounds(p, name, positive=True)
+
+
+def _log_bounds(p, scale=1.):
+    """Reporting-scale bounds of a positive quantity in log coordinates (times scale)."""
+    lo = scale*math.log(p.lower) if p.lower is not None and p.lower > 0 else None
+    hi = scale*math.log(p.upper) if p.upper is not None else None
+    return lo, hi
 
 
 class CompiledModel:
@@ -95,17 +122,23 @@ class CompiledModel:
                     or not isinstance(e.coefficient, Parameter) or type(e.coefficient.fixed) is not bool
                     or not np.isfinite(e.coefficient.value) or not np.isfinite(e.center) or e.center <= 0):
                 raise ValueError('invalid power covariate effect')
+            _check_bounds(e.coefficient, 'covariate coefficient', positive=False)
             key = e.parameter, e.covariate
             if key in seen: raise ValueError('duplicate covariate effect')
             seen.add(key)
             effects.append(dict(parameter=e.parameter,covariate=e.covariate,center=e.center,
-                                beta=e.coefficient.value,fixed=e.coefficient.fixed))
+                                beta=e.coefficient.value,fixed=e.coefficient.fixed,
+                                lower=e.coefficient.lower,upper=e.coefficient.upper))
         self.spec = dict(fixed_theta={n:p.value for n,p in m.theta.items() if p.fixed},
                          omega={n:p.value for n,p in m.omega.items()},
                          fixed_omega={n:p.value for n,p in m.omega.items() if p.fixed},
                          sigma={n:getattr(m,n).value for n in ('sigma_prop','sigma_add')},
                          fixed_sigma={n:getattr(m,n).value for n in ('sigma_prop','sigma_add') if getattr(m,n).fixed},
-                         effects=effects,omega_floor=m.omega_floor)
+                         effects=effects,omega_floor=m.omega_floor,
+                         bounds=dict(theta={n:[p.lower,p.upper] for n,p in m.theta.items() if (p.lower,p.upper)!=(None,None)},
+                                     omega={n:[p.lower,p.upper] for n,p in m.omega.items() if (p.lower,p.upper)!=(None,None)},
+                                     sigma={n:[getattr(m,n).lower,getattr(m,n).upper] for n in ('sigma_prop','sigma_add')
+                                            if (getattr(m,n).lower,getattr(m,n).upper)!=(None,None)}))
         self.eta_names = [n for n in self.order if n in m.omega]
         self.indices = [self.order.index(n) for n in self.eta_names]
         self.free_theta = [n for n in self.order if not m.theta[n].fixed]
@@ -121,9 +154,14 @@ class CompiledModel:
                            + [math.log(getattr(m,n).value) for n in self.free_sigma]
                            + [effects[i]['beta'] for i in self.free_effects])
         if not len(self.x0): raise ValueError('at least one free parameter is required for fitting')
-        self.bounds = ([(None,None)]*len(self.free_theta)
-                       + [(.5*math.log(m.omega_floor),None)]*len(self.free_omega)
-                       + [(None,None)]*(len(self.free_sigma)+len(self.free_effects)))
+        floor = .5*math.log(m.omega_floor)
+        def omega_bounds(p):
+            lo, hi = _log_bounds(p, .5)
+            return (floor if lo is None else max(floor, lo), hi)
+        self.bounds = ([_log_bounds(m.theta[n]) for n in self.free_theta]
+                       + [omega_bounds(m.omega[n]) for n in self.free_omega]
+                       + [_log_bounds(getattr(m,n)) for n in self.free_sigma]
+                       + [(effects[i]['lower'],effects[i]['upper']) for i in self.free_effects])
         self.log_design = []
         for e in effects:
             values = np.array([s.covariates[e['covariate']] for s in self.subjects],dtype=float)
@@ -228,15 +266,21 @@ class FitResult:
 
 
 def fit(subjects, specification, *, seed=0, workers=1, saem_options=None,
-        refinement_options=None, callback=None):
+        refinement_options=None, laplace_options=None, callback=None):
     from ._numerics.marginal_fit import fit_marginal
     problem=specification.compile(subjects)
     start=time.perf_counter()
+    # Multi-start Laplace exploration perturbs typical values and covariate
+    # coefficients only; variances and residual terms keep their starting values.
+    laplace=dict(structural=[i for i,label in enumerate(problem.labels)
+                             if label.startswith(('log_theta:','covariate_coefficient:'))])
+    laplace.update(laplace_options or {})
     result=fit_marginal(problem.study,problem.indices,problem.x0,problem.decode,
         bounds=problem.bounds,seed=seed,workers=workers,saem_options=saem_options,
-        refinement_options=refinement_options,callback=callback)
+        refinement_options=refinement_options,laplace_options=laplace,callback=callback)
     th,om,sig,beta=problem.unpack(result.x)
-    trace=dict(refinement_status=result.refinement.status,refinement_message=result.refinement.message,
+    trace=dict(laplace_exploration=result.exploration,
+               refinement_status=result.refinement.status,refinement_message=result.refinement.message,
                refinement_stages=result.refinement.stages,saem_status=result.saem.status,
                saem_message=result.saem.message,saem_diagnostics=result.saem.diagnostics,
                total_cpu_seconds=result.cpu_seconds,seed=seed)
@@ -260,11 +304,15 @@ def load_fit(path, subjects):
     row=json.loads(Path(path).read_text(encoding='utf-8'))
     if row.get('format')!='pkpy2-fit-v1':raise ValueError('unsupported saved fit format')
     meta=row['specification']
-    spec=ModelSpec(row['model'],{n:Parameter(v,n in meta['fixed_theta']) for n,v in row['theta'].items()},
-        {n:Parameter(v,n in meta['fixed_omega']) for n,v in row['omega'].items()},
-        Parameter(row['sigma']['sigma_prop'],'sigma_prop' in meta['fixed_sigma']),
-        Parameter(row['sigma']['sigma_add'],'sigma_add' in meta['fixed_sigma']),
-        tuple(Covariate(e['parameter'],e['covariate'],e['center'],Parameter(b,e['fixed']))
+    saved=meta.get('bounds',{})
+    def bounded(group,name,value,fixed):
+        lo,hi=saved.get(group,{}).get(name,(None,None))
+        return Parameter(value,fixed,lo,hi)
+    spec=ModelSpec(row['model'],{n:bounded('theta',n,v,n in meta['fixed_theta']) for n,v in row['theta'].items()},
+        {n:bounded('omega',n,v,n in meta['fixed_omega']) for n,v in row['omega'].items()},
+        bounded('sigma','sigma_prop',row['sigma']['sigma_prop'],'sigma_prop' in meta['fixed_sigma']),
+        bounded('sigma','sigma_add',row['sigma']['sigma_add'],'sigma_add' in meta['fixed_sigma']),
+        tuple(Covariate(e['parameter'],e['covariate'],e['center'],Parameter(b,e['fixed'],e.get('lower'),e.get('upper')))
               for e,b in zip(meta['effects'],row['coefficients'],strict=True)),meta['omega_floor'])
     problem=spec.compile(subjects)
     if problem.data_sha256!=row['data_sha256'] or problem.labels!=row['coordinates']:

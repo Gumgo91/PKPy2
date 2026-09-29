@@ -78,6 +78,18 @@ def estimate_uncertainty(problem, fit, *, confidence=.95, power=16, step=.002,
         raise ValueError('invalid confidence or finite-difference step')
     start = time.perf_counter()
     study, indices, x, decode, bounds, labels = problem.study, problem.indices, fit.x, problem.decode, problem.bounds, problem.labels
+    # A Wald interval is undefined when the estimate lies on (or within one
+    # finite-difference step of) a declared bound; report this instead.
+    boundary = [labels[j] for j, (lower, upper) in enumerate(bounds)
+                if (lower is not None and x[j]-step*max(1., abs(x[j])) <= lower)
+                or (upper is not None and x[j]+step*max(1., abs(x[j])) >= upper)]
+    if boundary:
+        return dict(method='independent_QMC_full_marginal_information', confidence=float(confidence),
+                    status='boundary_estimate', boundary_coordinates=boundary, coordinates=labels, point=x.tolist(),
+                    model=problem.model, source_data_objective=fit.ofv, data_fingerprint=problem.data_sha256,
+                    information=dict(data=dict(intervals=[], numerically_stable=False)),
+                    interpretation='Estimate lies on a declared bound; local Wald intervals are not reported',
+                    seconds=time.perf_counter()-start)
     penalty = lambda point: 0.
     hp = np.zeros((len(x), len(x)))
     work = SubjectWork(workers, len(study.subject_ids)); records = []; matrices = []

@@ -5,6 +5,8 @@ mixed-effects pharmacokinetic (PopPK) models. It estimates structural
 parameters, interindividual variability, residual error, and covariate effects
 jointly by marginal likelihood, and adds analytical repeated-dose prediction,
 independent numerical convergence checks, and local confidence intervals.
+Fixed values and parameter bounds let the analyst encode pharmacological
+judgment directly in the model declaration.
 
 It is the successor to [PKPy](https://doi.org/10.7717/peerj.20258), replacing
 summaries of separately fitted individual parameters with joint population
@@ -20,11 +22,12 @@ $$L = \prod_i \int \left[\, \prod_j p\!\left(y_{ij} \mid \eta_i\right) \right] p
 
 - **Joint marginal-likelihood estimation** of population parameters,
   interindividual variances, residual error, and covariate effects. Staged
-  procedure: marginal-likelihood refinement, SAEM when required, then
-  importance-sampling refinement.
+  procedure: multi-start Laplace exploration (distinct optima are recorded as
+  a multimodality diagnostic), marginal-likelihood refinement, SAEM when
+  required, then importance-sampling refinement.
 - **Explicit model interface** — structural model, fixed vs. estimated
-  parameters, random effects, residual error, and power covariates are
-  declared through a common API. No data-dependent model selection occurs
+  parameters with optional lower and upper bounds, random effects, residual
+  error, and power covariates are declared through a common API. No data-dependent model selection occurs
   inside `fit`.
 - **Analytical predictions and sensitivities** for one- and two-compartment
   models with IV bolus or first-order oral input, deterministic absorption
@@ -79,6 +82,26 @@ if result.converged:
     report = result.uncertainty(workers=2)
 ```
 
+Pharmacological judgment is declared with fixed values and bounds on the
+reporting scale, as with NONMEM `$THETA` bounds. For example, the tobramycin
+analysis of the manuscript fixes V1 proportional to body weight and restricts
+the central and peripheral volumes:
+
+```python
+from pkpy2 import ModelSpec, Parameter as P, Covariate
+
+spec = ModelSpec(
+    "2cmt_iv",
+    theta={"CL": P(3.4, lower=0., upper=20.), "V1": P(8., lower=0., upper=10.),
+           "Q": P(5., lower=0., upper=50.), "V2": P(20., lower=0., upper=30.)},
+    omega={"CL": P(.1)},
+    sigma_prop=P(.2),
+    sigma_add=P(1.85e-6 ** .5, fixed=True),
+    covariates=(Covariate("CL", "CLCR", 58., P(1., lower=0., upper=2.)),
+                Covariate("V1", "WT", 62., P(1., fixed=True))),
+)
+```
+
 Runnable scripts are in [`examples/`](examples/):
 
 - `examples/quickstart.py` — simulated one-compartment IV fit with intervals.
@@ -95,6 +118,11 @@ Runnable scripts are in [`examples/`](examples/):
   `(sigma_prop * prediction)**2 + sigma_add**2`.
 - `Parameter(value, fixed=True)` fixes a quantity exactly and excludes it from
   optimization, parameter counts, and information matrices.
+- `Parameter(value, lower=..., upper=...)` restricts an estimated quantity
+  (typical value, variance, residual SD, or covariate coefficient) to the
+  given interval on the reporting scale. The starting value must lie within
+  the bounds. Local Wald intervals are not reported for an estimate on a
+  bound; the uncertainty report then has `status == "boundary_estimate"`.
 - `Covariate("CL", "WT", 70., P(.75))` estimates the exponent in
   `CL_i = CL * (WT_i / 70)**beta`; a fixed coefficient is also supported.
   Power covariates must be positive and observed for every subject.
@@ -137,23 +165,30 @@ The accompanying manuscript evaluated this implementation as follows:
   DOP853 calculations under 48 conditions (maximum scaled discrepancy
   4.10e-10 for concentrations, 3.41e-8 for sensitivities). Marginal-likelihood
   calculations agreed with an independent Gaussian-quadrature implementation
-  (maximum same-point OFV difference 1.93e-6; maximum relative difference in
-  coordinate standard errors 0.0008%).
+  (maximum same-point OFV difference 4.34e-6; maximum relative difference in
+  coordinate standard errors 0.0009%).
 - All 200 primary simulation fits converged (100 rich- and 100
   sparse-sampling one-compartment IV datasets). Under sparse sampling, the
-  relative RMSE of the interindividual variance in volume was 32.46% with
-  PKPy2 vs. 51.66% with the original PKPy fitting components.
+  relative RMSE of the interindividual variance in volume was 32.49% with
+  PKPy2 vs. 51.66% with the original PKPy fitting components. On the same
+  datasets, parameter recovery was similar to that of nlmixr2 (FOCEi, SAEM)
+  and saemix.
 - Empirical coverage of nominal 95% local intervals ranged from 90% to 100%.
-- Theophylline estimates differed by at most 3.39% from archived expert
-  NONMEM results under an equivalent statistical model; five freely estimated
-  warfarin parameters differed by at most 4.58% from published values.
+- Theophylline and warfarin estimates differed by at most 3.37% and 4.56%
+  from the published expert NONMEM estimates.
+- For tobramycin, the published model has a different maximum-likelihood
+  solution. With the expert's pharmacological judgment declared as a fixed
+  weight exponent and volume bounds, PKPy2 reproduced the expert estimates
+  within 6.0% from both starting points.
 - With 1,000 dose events, recurrence-based prediction calls were 440-906x
   faster than direct summation.
 
 `validation/numerical_validation.py` reproduces the independent prediction,
 sensitivity, and gradient checks (requires only the installed package, NumPy,
-and SciPy). The full simulation, NONMEM-comparison, and benchmark code used
-for the manuscript is described in the article and its supplement.
+and SciPy). [`paper/`](paper/) contains the analysis data, scripts, and fit
+records of the comparison with nlmixr2 and saemix and of the tobramycin
+analyses, and the raw data underlying the manuscript's tables and figures
+(see [paper/README.md](paper/README.md)).
 
 ## Repository layout
 
@@ -162,6 +197,7 @@ src/pkpy2/            package source (public API in api.py, numerics in _numeric
 examples/             runnable example scripts
 data/                 public benchmark CSVs used in the manuscript (see data/README.md)
 validation/           independent numerical-check script
+paper/                manuscript materials: comparison with nlmixr2/saemix, tobramycin analyses, raw data
 ```
 
 ## Citation
