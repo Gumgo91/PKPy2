@@ -1,0 +1,41 @@
+2026-09-30 11:49:45 start classic_unchanged
+2026-09-30 11:50:25 end classic_unchanged (exit 0)
+2026-09-30 11:50:37 start general_vs_classic
+2026-09-30 11:59:29 end general_vs_classic (exit 0)
+2026-09-30 11:59:43 start likelihood
+2026-09-30 12:00:56 end likelihood (exit 0)
+2026-09-30 12:00:56 start vs_nlmixr2
+2026-09-30 12:05:39 end vs_nlmixr2 (exit 0)
+2026-09-30 12:05:39 start warfarin_pkpd
+2026-09-30 12:14:58 end warfarin_pkpd (exit 0)
+2026-09-30 12:53:39 start predictions
+2026-09-30 12:53:39 start recovery_complex
+2026-09-30 12:53:39 start recovery_pkpd
+2026-09-30 12:57:06 end predictions (exit 0)
+2026-09-30 12:57:06 start diagnostics
+2026-09-30 12:57:12 end diagnostics (exit 0)
+2026-09-30 12:57:12 start likelihood
+2026-09-30 12:58:13 end likelihood (exit 0)
+2026-09-30 12:58:13 start general_vs_classic
+2026-09-30 13:05:55 end general_vs_classic (exit 0)
+2026-09-30 13:05:55 start vs_nlmixr2
+2026-09-30 13:17:03 start likelihood
+2026-09-30 13:17:03 start recovery_complex
+2026-09-30 13:17:03 start recovery_pkpd
+2026-09-30 13:18:21 end likelihood (exit 0)
+2026-09-30 13:18:21 start vs_nlmixr2
+2026-09-30 13:30:30 end vs_nlmixr2 (exit 0)
+2026-09-30 13:30:30 start warfarin_pkpd
+2026-09-30 13:54:08 end warfarin_pkpd (exit 0)
+2026-09-30 13:54:08 start tools_theophylline
+2026-09-30 14:26:18 end recovery_pkpd (exit 0)
+2026-09-30 14:26:18 start calibration_pkpd
+2026-09-30 14:33:50 end tools_theophylline (exit 0)
+2026-09-30 14:33:50 start tools_scm
+2026-09-30 15:10:47 end calibration_pkpd (exit 0)
+2026-09-30 15:59:15 end recovery_complex (exit 0)
+2026-09-30 15:59:15 start calibration_complex
+2026-09-30 16:00:18 end calibration_complex (exit 0)
+2026-09-30 16:47:28 end tools_scm (exit 0)
+2026-09-30 16:47:28 start tools_summary
+2026-09-30 16:47:30 end tools_summary (exit 0)

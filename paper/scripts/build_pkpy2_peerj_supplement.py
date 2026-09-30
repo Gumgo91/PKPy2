@@ -7,12 +7,15 @@ Usage: python build_pkpy2_peerj_supplement.py <output.pdf>
 from collections import Counter
 from pathlib import Path
 import html
+import io
 import json
 import math
 import re
 import sys
 
 import pymupdf
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / 'docs/pkpy2_paper'
@@ -298,7 +301,9 @@ def markdown():
     theo_chk = next(r for r in check if r['dataset'] == 'theophylline' and r['method'] == 'pkpy2')
     warf_chk = next(r for r in check if r['dataset'] == 'warfarin' and r['method'] == 'pkpy2')
     tob_text = ' Tobramycin estimates in Table S8 are those obtained with the expert-judgment constraints (S10).' if INCLUDE_TOBRAMYCIN else ''
-    s10 = tobramycin_section(check) if INCLUDE_TOBRAMYCIN else ''
+    tob_section = tobramycin_section(check) if INCLUDE_TOBRAMYCIN else ''
+    from pkpy2_extended_supplement import markdown as extended_markdown
+    extended = extended_markdown()
 
     return f'''# Online Resource 1
 
@@ -310,7 +315,7 @@ def markdown():
 
 **Corresponding author:** {ARTICLE['corresponding']}
 
-Numerical settings, complete simulation summaries, clinical reference details, the comparison with nlmixr2 and saemix, and the tobramycin analyses. Notation follows the main article, and reference numbers refer to its reference list.
+Numerical settings, complete simulation summaries, clinical reference details, the comparison with nlmixr2 and saemix, the tobramycin analyses, and the numerical methods and evaluation of the event-record interface. Notation follows the main article, and reference numbers refer to its reference list.
 
 ## S1. Protocols and numerical thresholds
 
@@ -475,19 +480,34 @@ Lower OFV indicates higher marginal likelihood.
 
 ## S9. Raw data files and codebook
 
-The raw-data workbook (Online Resource 2) contains a README sheet and nine data sheets, also provided as CSV files (Online Resource 3). S1 and S3 hold the simulated concentration-time records of the 200 primary and 30 additional-structure datasets with the true individual random effects. S2 and S4 hold per-dataset estimates, 95% intervals, coverage indicators, and fit times for every program. S5 and S6 hold the clinical analysis datasets and the clinical estimates of all programs. S7 to S9 hold the prediction checks, quadrature comparisons, and per-batch prediction timings. The codebook (Online Resource 4) defines every variable, unit, and categorical code, including the numerically coded EVID, MDV, CMT, and 0/1 indicators.
-{s10}'''
+The raw-data workbook (Online Resource 2) contains a README sheet and 18 data sheets, also provided as CSV files (Online Resource 3). S1 and S3 hold the simulated concentration-time records of the 200 primary and 30 additional-structure datasets with the true individual random effects. S2 and S4 hold per-dataset estimates, 95% intervals, coverage indicators, and fit times for every program. S5 and S6 hold the clinical analysis datasets and the clinical estimates of all programs. S7 to S9 hold the prediction checks, quadrature comparisons, and per-batch prediction timings. S10 to S18 hold the evaluation of the event-record interface (S12), including the simulated comparison datasets and the warfarin PK/PD dataset in NONMEM event format. The codebook (Online Resource 4) defines every variable, unit, and categorical code, including the numerically coded EVID, MDV, CMT, and 0/1 indicators.
+{tob_section}{extended}'''
 
 
-def md_to_html(md):
+def caption_key(text, parent):
+    """(key, parent): the key of a table caption ('Table S21') or sub-table caption ('Table S21(b)', following
+    'Table S21'), otherwise None; `parent` is the last table caption seen, updated for the next call."""
+    m = re.match(r'(Table S\d+|Listing \d+)\.|\(([a-z])\) ', text)
+    if not m:
+        return None, parent
+    if m.group(1):
+        return m.group(1), m.group(1)
+    return f'{parent}({m.group(2)})', parent
+
+
+def md_to_html(md, breaks=()):
+    """`breaks`: captions (keys of caption_key) that start a new page."""
     def inline(t):
         t = html.escape(t)
         t = re.sub(r'\*\*(.+?)\*\*', lambda m: '<b>' + m.group(1) + '</b>', t)
-        for token, sub in [('σ_prop', 'σ<sub>prop</sub>'), ('σ_add', 'σ<sub>add</sub>'), ('H_joint', 'H<sub>joint</sub>'),
+        for token, sub in [('σ_prop', 'σ<sub>prop</sub>'), ('σ_add', 'σ<sub>add</sub>'), ('σ_log', 'σ<sub>log</sub>'),
+                           ('H_joint', 'H<sub>joint</sub>'),
                            ('H_OFV', 'H<sub>OFV</sub>')]:
             t = t.replace(token, sub)
+        t = re.sub(r'\^\(([^()]*)\)', lambda m: '<sup>' + m.group(1).replace('-', '−') + '</sup>', t)
+        t = re.sub(r'\^(θ[₀-₉]+)', r'<sup>\1</sup>', t)
         return t
-    out, lines, i = [], md.splitlines(), 0
+    out, lines, i, parent = [], md.splitlines(), 0, None
     while i < len(lines):
         line = lines[i].rstrip()
         if not line.strip():
@@ -519,6 +539,9 @@ def md_to_html(md):
             continue
         else:
             cls = ' class="cap"' if line.startswith(('**Table', '**Listing')) else ''
+            key, parent = caption_key(line.strip().removeprefix('**'), parent)
+            if key in breaks:
+                cls += ' style="page-break-before: always"'
             out.append(f'<p{cls}>{inline(line.strip())}</p>')
         i += 1
     css = ('* {font-family: serif;} body {font-size: 10.2pt; line-height: 1.4;} '
@@ -533,31 +556,55 @@ def md_to_html(md):
 
 
 def render(md, path):
-    css, body = md_to_html(md)
-    story = pymupdf.Story(html=body, user_css=css)
-    writer = pymupdf.DocumentWriter(str(path))
+    """A caption in the last 80 pt of a page's text area moves to the next page with its table.
+
+    Breaks are added one at a time in document order: a break moves only the content after it,
+    so earlier decisions stay valid while later captions are re-examined in the new layout."""
     mediabox = pymupdf.paper_rect('a4')
     where = mediabox + (54, 48, -54, -59)
-    more = True
-    while more:
-        dev = writer.begin_page(mediabox)
-        more, _ = story.place(where)
-        story.draw(dev)
-        writer.end_page()
-    writer.close()
-    doc = pymupdf.open(path)
+    breaks = set()
+    while True:
+        css, body = md_to_html(md, breaks)
+        story = pymupdf.Story(html=body, user_css=css)
+        buffer = io.BytesIO()
+        writer = pymupdf.DocumentWriter(buffer)
+        more = True
+        while more:
+            dev = writer.begin_page(mediabox)
+            more, _ = story.place(where)
+            story.draw(dev)
+            writer.end_page()
+        writer.close()
+        doc = pymupdf.open('pdf', buffer.getvalue())
+        late, parent = [], None
+        for page in doc:
+            for b in page.get_text('blocks', sort=True):
+                key, parent = caption_key(b[4], parent)
+                if key is not None and b[1] > where.y1 - 80 and key not in breaks:
+                    late.append(key)
+        if not late:
+            break
+        doc.close()
+        breaks.add(late[0])
     gray = (0x56 / 255, 0x60 / 255, 0x6A / 255)
     for n, page in enumerate(doc, start=1):
         h, w = page.rect.height, page.rect.width
         page.insert_text((54, h - 33), 'PKPy2 | Online Resource 1', fontname='tiro', fontsize=8, color=gray)
         page.insert_text((w - 54 - pymupdf.get_text_length(str(n), fontname='tiro', fontsize=8), h - 33), str(n),
                          fontname='tiro', fontsize=8, color=gray)
-    doc.saveIncr()
+    doc.save(str(path), garbage=3, deflate=True)
     doc.close()
 
 
 def main():
     md = markdown()
+    manuscript = ROOT / 'output/pkpy2_peerj_build/PKPy2_PeerJ_manuscript_revised.docx'
+    if '--springer-references' in sys.argv:
+        # reference numbers of the journal version (order of first citation in the revised manuscript)
+        from pkpy2_references import manuscript_mapping, renumber, CITATION
+        mapping = manuscript_mapping(manuscript)
+        print('citations renumbered:', sorted({m.group(0) for m in CITATION.finditer(md)}))
+        md = renumber(md, mapping)
     (PAPER / 'PKPy2_supplement_peerj_revision.md').write_text(md, encoding='utf-8')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     render(md, OUT)

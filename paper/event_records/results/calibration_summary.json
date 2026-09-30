@@ -1,0 +1,52 @@
+{
+ "complex_linear": {
+  "replicates": 50,
+  "audit_passed": 43,
+  "npde_mean": -0.007989295912912047,
+  "npde_variance": 1.0246291404485321,
+  "npde_ks_rejections_5pct": 0.06,
+  "cwres_mean": -0.0031055357612093408,
+  "cwres_variance": 0.996146786953071,
+  "vpc_coverage": {
+   "CP": {
+    "overall": 0.9522222222222222,
+    "by_quantile": [
+     0.95,
+     0.9766666666666667,
+     0.93
+    ]
+   }
+  },
+  "median_censored": 11.0,
+  "median_seconds": 9.474600553512573
+ },
+ "pkpd_idr": {
+  "replicates": 30,
+  "audit_passed": 25,
+  "npde_mean": 0.003518738888470119,
+  "npde_variance": 1.0079826861749683,
+  "npde_ks_rejections_5pct": 0.1,
+  "cwres_mean": -0.01772149447609729,
+  "cwres_variance": 0.9857344123631971,
+  "vpc_coverage": {
+   "CP": {
+    "overall": 0.9511111111111111,
+    "by_quantile": [
+     0.9333333333333333,
+     0.96,
+     0.96
+    ]
+   },
+   "R": {
+    "overall": 0.9380952380952381,
+    "by_quantile": [
+     0.9571428571428572,
+     0.9476190476190476,
+     0.9095238095238095
+    ]
+   }
+  },
+  "median_censored": 0.0,
+  "median_seconds": 88.463543176651
+ }
+}

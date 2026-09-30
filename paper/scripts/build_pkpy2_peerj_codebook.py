@@ -4,6 +4,9 @@ import sys
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pkpy2_extended_raw_data import CODEBOOK as EXTENDED_CODEBOOK   # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'output/pkpy2_peerj_raw_data'
 
@@ -120,7 +123,7 @@ def main():
         ('S7_prediction_checks', NUM),
         ('S8_quadrature_checks', QUAD),
         ('S9_timing', TIMING),
-    ]:
+    ] + list(EXTENDED_CODEBOOK.items()):
         for name, desc, kind, unit, codes in variables:
             rows.append(dict(sheet=sheet, variable=name, description=desc, type=kind, units=unit,
                              codes_or_allowed_values=codes))

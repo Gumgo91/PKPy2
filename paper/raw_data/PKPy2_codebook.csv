@@ -97,3 +97,83 @@ S9_timing,repetitions_per_batch,Prediction calls averaged within a batch,integer
 S9_timing,method,Prediction method,categorical (text),,direct = direct summation over all preceding doses; dispatch = recurrence-based dose-state propagation
 S9_timing,batch,Batch number (method order alternated between batches),integer,,1-7
 S9_timing,seconds_per_call,Mean wall-clock time per prediction call after compilation,numeric,s,
+S10_event_prediction_checks,scenario,Prediction scenario,categorical (text),,"See Online Resource 1, Table S18"
+S10_event_prediction_checks,model_type,System type,categorical (text),,linear; ODE
+S10_event_prediction_checks,ID,Subject,integer,,
+S10_event_prediction_checks,TIME,Time,numeric,h,
+S10_event_prediction_checks,output,Model output,categorical (numeric code),,1 = first output (concentration); 2 = second output (response or metabolite)
+S10_event_prediction_checks,pkpy2,PKPy2 prediction,numeric,output units,
+S10_event_prediction_checks,rxode2,rxode2 prediction,numeric,output units,
+S10_event_prediction_checks,scaled_difference,"|PKPy2 - rxode2| divided by max(|rxode2|, 1e-6 × largest value of the subject)",numeric,unitless,
+S11_event_likelihood_checks,check,Comparison,categorical (text),,quadrature = independent Gauss-Hermite quadrature at fixed parameters; compact_interface = refit through the event-record interface vs compact-interface fit
+S11_event_likelihood_checks,item,Model or dataset,text,,
+S11_event_likelihood_checks,subjects,Subjects,integer,,
+S11_event_likelihood_checks,observations,Observations,integer,,
+S11_event_likelihood_checks,censored,Censored observations,integer,,
+S11_event_likelihood_checks,status,PKPy2 convergence status,categorical (text),,converged; partial
+S11_event_likelihood_checks,pkpy2_ofv_bank1,PKPy2 OFV (bank 1 or refit),numeric,-2 log L,
+S11_event_likelihood_checks,pkpy2_ofv_bank2,PKPy2 OFV (bank 2),numeric,-2 log L,
+S11_event_likelihood_checks,reference_ofv,Reference OFV (quadrature or compact interface),numeric,-2 log L,
+S11_event_likelihood_checks,ofv_difference,PKPy2 minus reference,numeric,-2 log L,
+S11_event_likelihood_checks,max_relative_estimate_difference_pct,Maximum relative difference of the estimates,numeric,%,
+S12_diagnostic_checks,quantity,Diagnostic,categorical (text),,PRED; IPRED; IWRES; CWRES (standardized by its own variance); NPDE (upper Cholesky factor)
+S12_diagnostic_checks,pkpy2,PKPy2 value,numeric,,
+S12_diagnostic_checks,nlmixr2,nlmixr2 value,numeric,,
+S13_event_comparisons,analysis,Dataset,categorical (text),,infusion_block_covariates; oral_blq_m3; lognormal_residual; michaelis_menten; warfarin_pkpd
+S13_event_comparisons,parameter,Parameter (group:name) or exact OFV,text,,theta = typical value; coefficients = covariate coefficient; omega = variance; omega_covariance = covariance; iov = interoccasion variance; sigma = residual SD
+S13_event_comparisons,true_value,Simulation value,numeric,as parameter,
+S13_event_comparisons,pkpy2,PKPy2 estimate or OFV,numeric,as parameter,
+S13_event_comparisons,nlmixr2_focei,nlmixr2 FOCEi estimate or exact OFV at its estimates,numeric,as parameter,
+S13_event_comparisons,nlmixr2_saem,nlmixr2 SAEM estimate or exact OFV at its estimates,numeric,as parameter,warfarin_pkpd only
+S14_event_recovery,design,Simulation design,categorical (text),,complex_linear = two-compartment steady-state infusion model; pkpd_idr = indirect-response PK/PD model
+S14_event_recovery,replicate,Replicate,integer,,
+S14_event_recovery,status,PKPy2 status,categorical (text),,converged; partial; error
+S14_event_recovery,converged,Convergence,categorical (numeric code),,1 = converged; 0 = not converged
+S14_event_recovery,ofv,OFV,numeric,-2 log L,
+S14_event_recovery,seconds,Fit time,numeric,s,
+S14_event_recovery,parameter,Parameter (group:name),text,,as in S13
+S14_event_recovery,estimate,Estimate,numeric,as parameter,
+S15_event_calibration,design,Simulation design,categorical (text),,as in S14
+S15_event_calibration,replicate,Replicate,integer,,
+S15_event_calibration,censored,Censored observations,integer,,
+S15_event_calibration,n_npde,NPDE values,integer,,
+S15_event_calibration,npde_mean,Mean NPDE,numeric,,
+S15_event_calibration,npde_variance,NPDE variance,numeric,,
+S15_event_calibration,npde_ks_p,"Kolmogorov-Smirnov p value of NPDE vs N(0, 1)",numeric,,
+S15_event_calibration,cwres_mean,Mean CWRES,numeric,,
+S15_event_calibration,cwres_variance,CWRES variance,numeric,,
+S15_event_calibration,vpc_within_CP,"Fraction of observed VPC percentiles within the 95% intervals, concentration",numeric,fraction,
+S15_event_calibration,vpc_within_R,Same for the PD response,numeric,fraction,pkpd_idr only
+S16_interval_and_scm,analysis,Analysis,categorical (text),,theophylline_intervals; stepwise_covariates
+S16_interval_and_scm,parameter,Reporting quantity,text,,"theta:CL, theta:V, theta:Ka, omega:<P> (variance), sigma:CP:proportional"
+S16_interval_and_scm,method,Interval method,categorical (text),,wald; sandwich; profile; bootstrap; sir
+S16_interval_and_scm,estimate,Estimate,numeric,as parameter,
+S16_interval_and_scm,lower,95% lower limit,numeric,as parameter,
+S16_interval_and_scm,upper,95% upper limit,numeric,as parameter,
+S16_interval_and_scm,replicate,SCM replicate,integer,,
+S16_interval_and_scm,selected,Selected covariate effects,text,,semicolon-separated labels parameter~covariate[form]
+S16_interval_and_scm,seconds,SCM run time,numeric,s,
+S17_warfarin_pkpd_vpc,output,Output,categorical (text),,CP = warfarin concentration (mg/L); R = prothrombin complex activity (%)
+S17_warfarin_pkpd_vpc,record,Row type,categorical (text),,percentile; observation
+S17_warfarin_pkpd_vpc,bin,Time bin,integer,,
+S17_warfarin_pkpd_vpc,bin_time,"Median time of the bin, or observation time",numeric,h,
+S17_warfarin_pkpd_vpc,quantile,Percentile,numeric,fraction,0.05; 0.5; 0.95
+S17_warfarin_pkpd_vpc,observed,Observed percentile or observation,numeric,output units,
+S17_warfarin_pkpd_vpc,simulated_lower,2.5th percentile of the simulated percentile,numeric,output units,
+S17_warfarin_pkpd_vpc,simulated_median,Median of the simulated percentile,numeric,output units,
+S17_warfarin_pkpd_vpc,simulated_upper,97.5th percentile of the simulated percentile,numeric,output units,
+S18_event_datasets,dataset,Dataset,categorical (text),,as in S13
+S18_event_datasets,ID,Subject,integer,,
+S18_event_datasets,TIME,Time,numeric,h,
+S18_event_datasets,EVID,Event identifier (NONMEM convention),categorical (numeric code),,0 = observation record; 1 = dose record
+S18_event_datasets,AMT,Dose amount,numeric,mg,0 on observation records
+S18_event_datasets,CMT,Compartment receiving the dose or observed,categorical (numeric code),,"1 = central compartment; in oral_blq_m3, 1 = depot (doses) and 2 = central (observations)"
+S18_event_datasets,RATE,Infusion rate,numeric,mg/h,0 = bolus or first-order input
+S18_event_datasets,II,Dosing interval of a steady-state dose,numeric,h,0 = no steady-state dose
+S18_event_datasets,SS,Steady-state flag,categorical (numeric code),,1 = dose given at steady state; 0 = other records
+S18_event_datasets,DV,Observation,numeric,mg/L; % for DVID 2,empty on dose records; the quantification limit when CENS = 1
+S18_event_datasets,CENS,Censoring flag,categorical (numeric code),,1 = below the quantification limit; 0 = quantified observation
+S18_event_datasets,WT,Body weight,numeric,kg,
+S18_event_datasets,SEX,Sex,categorical (numeric code),,"warfarin_pkpd: 1 = male, 0 = female; infusion_block_covariates: simulated binary covariate with reference category 0"
+S18_event_datasets,DVID,Observed output,categorical (numeric code),,1 = warfarin concentration (mg/L); 2 = prothrombin complex activity (%)
+S18_event_datasets,AGE,Age,numeric,years,

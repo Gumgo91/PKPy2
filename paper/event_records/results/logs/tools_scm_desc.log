@@ -1,0 +1,7 @@
+scm 19 ['CL~CRCL[power]', 'V~WT[power]'] 1243.4
+scm 18 ['V~WT[power]', 'CL~CRCL[power]'] 1211.2
+scm 17 ['V~WT[power]', 'CL~CRCL[power]'] 904.7
+scm 16 ['V~WT[power]', 'CL~CRCL[power]'] 879.2
+scm 15 ['V~WT[power]', 'CL~CRCL[power]', 'CL~AGE[power]'] 1143.8
+scm 14 ['CL~CRCL[power]', 'V~WT[power]'] 849.2
+scm 13 ['CL~CRCL[power]', 'V~WT[power]'] 873.8

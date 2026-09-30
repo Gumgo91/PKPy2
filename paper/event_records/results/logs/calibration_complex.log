@@ -1,0 +1,7 @@
+complex_linear 0 -0.018 1.018 {'CP': 1.0} 9.1
+complex_linear 1 0.041 1.003 {'CP': 0.944} 7.8
+complex_linear 2 0.038 0.951 {'CP': 0.944} 8.3
+complex_linear 3 0.011 1.063 {'CP': 1.0} 8.4
+complex_linear 4 -0.007 1.113 {'CP': 0.889} 9.0
+complex_linear 5 0.077 0.936 {'CP': 0.889} 7.6
+complex_linear 6 -0.052 0.922 {'CP': 1.0} 8.7

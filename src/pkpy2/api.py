@@ -28,12 +28,51 @@ class Parameter:
     upper: float | None = None
 
 
+COVARIATE_FORMS = ('power', 'exponential', 'linear', 'categorical')
+
+
 @dataclass(frozen=True)
 class Covariate:
+    """Covariate effect on a structural parameter P with coefficient b.
+
+    power:        P * (x/center)**b          (x > 0; the default)
+    exponential:  P * exp(b*(x - center))
+    linear:       P * (1 + b*(x - center))
+    categorical:  P * exp(b) when x == level, P otherwise (use one effect per non-reference level)
+    Power, exponential and categorical effects are log-linear in b.
+    """
     parameter: str
     covariate: str
     center: float
     coefficient: Parameter
+    form: str = 'power'
+    level: float | None = None
+
+    def __post_init__(self):
+        if self.form not in COVARIATE_FORMS:
+            raise ValueError(f'covariate form must be one of {COVARIATE_FORMS}')
+        if self.form == 'categorical' and self.level is None:
+            raise ValueError('a categorical covariate effect needs the level it applies to')
+
+    def design(self, values):
+        """Log-linear design z with log(P_i/P) = b*z (not defined for the linear form)."""
+        values = np.asarray(values, dtype=float)
+        if self.form == 'power':
+            if np.any(values <= 0) or self.center <= 0:
+                raise ValueError('power covariates must be positive and observed for every subject')
+            return np.log(values / self.center)
+        if self.form == 'exponential':
+            return values - self.center
+        if self.form == 'categorical':
+            return (values == self.level).astype(float)
+        raise ValueError('the linear covariate form is not log-linear')
+
+    @staticmethod
+    def categorical(parameter, covariate, levels, reference, coefficient=None):
+        """One exp(b) effect per non-reference level of a categorical covariate."""
+        coefficient = coefficient or Parameter(0.)
+        return tuple(Covariate(parameter, covariate, reference, coefficient, 'categorical', level)
+                     for level in levels if level != reference)
 
 
 @dataclass
@@ -120,15 +159,19 @@ class CompiledModel:
         for e in m.covariates:
             if (not isinstance(e, Covariate) or e.parameter not in self.order or e.parameter == 'ALAG'
                     or not isinstance(e.coefficient, Parameter) or type(e.coefficient.fixed) is not bool
-                    or not np.isfinite(e.coefficient.value) or not np.isfinite(e.center) or e.center <= 0):
+                    or not np.isfinite(e.coefficient.value) or not np.isfinite(e.center)
+                    or (e.form == 'power' and e.center <= 0)):
                 raise ValueError('invalid power covariate effect')
+            if e.form == 'linear':
+                raise ValueError('linear covariate effects require the general engine (pkpy2.Model)')
             _check_bounds(e.coefficient, 'covariate coefficient', positive=False)
-            key = e.parameter, e.covariate
+            key = e.parameter, e.covariate, e.level
             if key in seen: raise ValueError('duplicate covariate effect')
             seen.add(key)
             effects.append(dict(parameter=e.parameter,covariate=e.covariate,center=e.center,
                                 beta=e.coefficient.value,fixed=e.coefficient.fixed,
-                                lower=e.coefficient.lower,upper=e.coefficient.upper))
+                                lower=e.coefficient.lower,upper=e.coefficient.upper,
+                                form=e.form,level=e.level))
         self.spec = dict(fixed_theta={n:p.value for n,p in m.theta.items() if p.fixed},
                          omega={n:p.value for n,p in m.omega.items()},
                          fixed_omega={n:p.value for n,p in m.omega.items() if p.fixed},
@@ -163,11 +206,11 @@ class CompiledModel:
                        + [_log_bounds(getattr(m,n)) for n in self.free_sigma]
                        + [(effects[i]['lower'],effects[i]['upper']) for i in self.free_effects])
         self.log_design = []
-        for e in effects:
+        for e, spec in zip(effects, m.covariates):
             values = np.array([s.covariates[e['covariate']] for s in self.subjects],dtype=float)
-            if values.shape != (len(self.subjects),) or not np.isfinite(values).all() or np.any(values<=0):
-                raise ValueError('power covariates must be positive and observed for every subject')
-            self.log_design.append(np.log(values/e['center']))
+            if values.shape != (len(self.subjects),) or not np.isfinite(values).all():
+                raise ValueError('covariates must be observed for every subject')
+            self.log_design.append(spec.design(values))
         data = dict(ids=[(type(s.sid).__name__,str(s.sid)) for s in self.subjects],model=m.model,
                     arrays={n:getattr(self.study,n).tolist() for n in ('observation_offsets','time','observation',
                             'dose_offsets','dose_time','dose_amount')},design=[x.tolist() for x in self.log_design])
@@ -312,7 +355,8 @@ def load_fit(path, subjects):
         {n:bounded('omega',n,v,n in meta['fixed_omega']) for n,v in row['omega'].items()},
         bounded('sigma','sigma_prop',row['sigma']['sigma_prop'],'sigma_prop' in meta['fixed_sigma']),
         bounded('sigma','sigma_add',row['sigma']['sigma_add'],'sigma_add' in meta['fixed_sigma']),
-        tuple(Covariate(e['parameter'],e['covariate'],e['center'],Parameter(b,e['fixed'],e.get('lower'),e.get('upper')))
+        tuple(Covariate(e['parameter'],e['covariate'],e['center'],Parameter(b,e['fixed'],e.get('lower'),e.get('upper')),
+                        e.get('form','power'),e.get('level'))
               for e,b in zip(meta['effects'],row['coefficients'],strict=True)),meta['omega_floor'])
     problem=spec.compile(subjects)
     if problem.data_sha256!=row['data_sha256'] or problem.labels!=row['coordinates']:

@@ -4,9 +4,9 @@ All figures are drawn at their final printed width (6.9 in) so that the point si
 here are the printed sizes. Every text element is checked to be at least MIN_PT.
 
 Figure order follows first citation in the revised manuscript:
- 1 workflow, 2 recovery vs PKPy/Gaussian control, 3 PKPy2 interval coverage,
- 4 clinical datasets across software, 5 simulation comparison with established software,
- 6 prediction-call speedup.
+ 2 recovery vs PKPy/Gaussian control, 3 PKPy2 interval coverage,
+ 4 clinical datasets across software, 5 simulation comparison with established software.
+Figures 1, 6 and 7 are drawn by build_pkpy2_extended_figures.py.
 """
 from pathlib import Path
 import csv
@@ -291,12 +291,12 @@ def main():
     cmp = read(CMP / 'comparison_summary.json')
     speed = read(DEV / 'recurrence_benchmark.json')
     report = []
-    figure_workflow(report)
+    # Figures 1, 6 and 7 are drawn by build_pkpy2_extended_figures.py; the prediction-call
+    # speedup (formerly Figure 6) is reported in Online Resource 1, Table S10.
     figure_recovery(summary, report)
     figure_coverage(summary, report)
     figure_clinical(cmp, report)
     figure_software(report)
-    figure_speed(speed, report)
     (OUT / 'figure_checks.json').write_text(json.dumps(report, indent=1), encoding='utf-8')
     for r in report:
         print(r)

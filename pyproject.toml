@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkpy2"
-version = "0.1.0a3"
-description = "Explicit-model nonlinear mixed-effects pharmacokinetic estimation"
+version = "0.2.0"
+description = "Explicit-model nonlinear mixed-effects pharmacokinetic and pharmacodynamic estimation"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 license = "MIT"
@@ -17,6 +17,8 @@ keywords = [
   "nonlinear mixed effects",
   "NLME",
   "pharmacokinetic modeling",
+  "PK/PD",
+  "NONMEM data format",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -32,6 +34,9 @@ dependencies = [
   "numba>=0.65,<0.66",
   "threadpoolctl>=3.6,<4",
 ]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.8"]
 
 [project.urls]
 Repository = "https://github.com/Gumgo91/PKPy2"

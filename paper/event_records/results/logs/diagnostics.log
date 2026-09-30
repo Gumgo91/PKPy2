@@ -1,0 +1,69 @@
+{
+ "PRED": {
+  "n": 120,
+  "max_abs_difference": 6.039613253960852e-14,
+  "correlation": 1.0,
+  "mean_pkpy2": 5.5005089718732485,
+  "mean_nlmixr2": 5.500508971873217,
+  "var_pkpy2": 5.301021202718559,
+  "var_nlmixr2": 5.301021202718503
+ },
+ "IPRED": {
+  "n": 120,
+  "max_abs_difference": 0.0014460402590810162,
+  "correlation": 0.9999999970441875,
+  "mean_pkpy2": 5.345941456355387,
+  "mean_nlmixr2": 5.345960425976774,
+  "var_pkpy2": 5.2268757283990235,
+  "var_nlmixr2": 5.226788067225344
+ },
+ "IWRES": {
+  "n": 120,
+  "max_abs_difference": 0.0016511829914939158,
+  "correlation": 0.9999999634212811,
+  "mean_pkpy2": 0.03865489966830383,
+  "mean_nlmixr2": 0.03861368520063995,
+  "var_pkpy2": 0.7696447297903493,
+  "var_nlmixr2": 0.7695981156626559
+ },
+ "CWRES": {
+  "n": 120,
+  "max_abs_difference": 0.0009111954840714809,
+  "correlation": 0.9999999952536224,
+  "mean_pkpy2": -0.07002487540010717,
+  "mean_nlmixr2": -0.07003063010481844,
+  "var_pkpy2": 0.840385708654894,
+  "var_nlmixr2": 0.8403241409024709
+ },
+ "NPDE": {
+  "n": 120,
+  "max_abs_difference": 0.31566811743959455,
+  "correlation": 0.9960186465467399,
+  "mean_pkpy2": 0.01425230187180994,
+  "mean_nlmixr2": 0.016946799563452606,
+  "var_pkpy2": 0.6673719280195731,
+  "var_nlmixr2": 0.6945240537628458
+ },
+ "EBE": {
+  "n": 12,
+  "max_abs_difference": 0.0007663829590711657
+ },
+ "conventions": "nlmixr2 conventions: CWRES standardized by its own variance; NPDE with U^-1",
+ "NPDE_vs_npde_package_same_replicates": {
+  "n": 120,
+  "max_abs_difference": 4.884981308350689e-15,
+  "correlation": 1.0
+ },
+ "summary": {
+  "eta_shrinkage": {
+   "CL": -0.0016051581355343014,
+   "V": 0.16269325163022252,
+   "Ka": 0.031667888527303956
+  },
+  "epsilon_shrinkage": 0.12270601860587849,
+  "npde_mean": 0.10000281455136248,
+  "npde_variance": 0.818433221614944,
+  "cwres_mean": 0.14332476376394504,
+  "cwres_variance": 0.9463988006677184
+ }
+}

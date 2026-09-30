@@ -1,0 +1,73 @@
+{'phase': 'laplace_exploration', 'start': 0, 'ofv': 2214.258}
+{'phase': 'laplace_exploration', 'start': 1, 'ofv': 2214.791}
+{'phase': 'laplace_exploration', 'start': 2, 'ofv': 2215.024}
+{'phase': 'laplace_exploration', 'start': 3, 'ofv': 2214.141}
+{'phase': 'importance_refinement', 'stage': 0, 'power': 10, 'accepted': False, 'independent_ofv': 2222.933, 'minimum_ess': 2.122, 'projected_score_max': None}
+{'phase': 'importance_refinement', 'stage': 1, 'power': 11, 'accepted': False, 'independent_ofv': 2223.654, 'minimum_ess': 270.161, 'projected_score_max': None}
+{'phase': 'importance_refinement', 'stage': 2, 'power': 12, 'accepted': False, 'independent_ofv': 2223.208, 'minimum_ess': 394.568, 'projected_score_max': None}
+{'phase': 'importance_refinement', 'stage': 3, 'power': 13, 'accepted': True, 'independent_ofv': 2223.146, 'minimum_ess': 627.968, 'projected_score_max': 4.652}
+{'phase': 'importance_refinement', 'stage': 4, 'power': 14, 'accepted': True, 'independent_ofv': 2223.176, 'minimum_ess': 2510.005, 'projected_score_max': 8.234}
+{'phase': 'importance_refinement', 'stage': 5, 'power': 14, 'accepted': False, 'independent_ofv': 2223.18, 'minimum_ess': 332.321, 'projected_score_max': None}
+{'phase': 'importance_refinement', 'stage': 6, 'power': 15, 'accepted': True, 'independent_ofv': 2223.21, 'minimum_ess': 2473.546, 'projected_score_max': 1.762}
+{'phase': 'importance_refinement', 'stage': 7, 'power': 15, 'accepted': True, 'independent_ofv': 2223.156, 'minimum_ess': 3930.337, 'projected_score_max': 4.745}
+{'phase': 'importance_refinement', 'stage': 8, 'power': 15, 'accepted': True, 'independent_ofv': 2223.154, 'minimum_ess': 4957.241, 'projected_score_max': 3.128}
+{'phase': 'importance_refinement', 'stage': 9, 'power': 15, 'accepted': True, 'independent_ofv': 2223.134, 'minimum_ess': 3324.776, 'projected_score_max': 1.374}
+{'phase': 'importance_refinement', 'stage': 10, 'power': 15, 'accepted': True, 'independent_ofv': 2223.14, 'minimum_ess': 5786.054, 'projected_score_max': 1.349}
+status converged 2223.1442320370734 1139.2 s
+{
+ "theta": {
+  "KTR": 1.1538953065166868,
+  "Ka": 1.1528561453288801,
+  "CL": 0.13425411173683227,
+  "V": 7.729225799577271,
+  "R0": 96.53381791575441,
+  "KOUT": 0.05206956884818902,
+  "IMAX": 0.99987479087795,
+  "IC50": 1.1516563273442912
+ },
+ "omega": {
+  "KTR": 0.39900490387440224,
+  "Ka": 0.4084503234201146,
+  "CL": 0.07864910557220085,
+  "V": 0.051145060714673216,
+  "R0": 0.0027615928217875423,
+  "KOUT": 0.007887706331979742,
+  "IMAX": 0.30929750216789237,
+  "IC50": 0.1837543162350436
+ },
+ "sigma": {
+  "CP:proportional": 0.09881005785250142,
+  "CP:additive": 0.526461433981484,
+  "R:proportional": 0.0,
+  "R:additive": 3.7042003954357297
+ }
+}
+[
+ {
+  "source": "PKPy2",
+  "ofv": 2223.1442320370734,
+  "status": "converged"
+ },
+ {
+  "source": "nlmixr2 focei",
+  "ofv": 2557.483068091407,
+  "bank_range": 0.029800520217577287,
+  "nlmixr2_objective": 1800.55330375641,
+  "seconds": 1052.14
+ },
+ {
+  "source": "nlmixr2 saem",
+  "ofv": 2241.0821291177585,
+  "bank_range": 0.03302544197958923,
+  "nlmixr2_objective": 1457.96034846948,
+  "seconds": 607.66
+ }
+]
+Traceback (most recent call last):
+  File "scripts\validate_pkpy2_warfarin_pkpd.py", line 111, in <module>
+    main()
+    ~~~~^^
+  File "scripts\validate_pkpy2_warfarin_pkpd.py", line 104, in main
+    robust_intervals=unc['robust_intervals']),
+                     ~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'robust_intervals'

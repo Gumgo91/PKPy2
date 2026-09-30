@@ -1,0 +1,146 @@
+[
+ {
+  "scenario": "iv1_infusion",
+  "structure": "1cmt_iv",
+  "values": 20,
+  "max_relative_difference": 3.150366291232614e-12
+ },
+ {
+  "scenario": "iv2_infusion_ss",
+  "structure": "2cmt_iv",
+  "values": 11,
+  "max_relative_difference": 8.53263503790462e-13
+ },
+ {
+  "scenario": "oral1_ss_lag_f",
+  "structure": "1cmt_first_order",
+  "values": 14,
+  "max_relative_difference": 3.329082501351999e-12
+ },
+ {
+  "scenario": "oral2_addl_lag",
+  "structure": "2cmt_first_order",
+  "values": 22,
+  "max_relative_difference": 1.0647767751570427e-12
+ },
+ {
+  "scenario": "iv3_bolus_infusion",
+  "structure": "3cmt_iv",
+  "values": 22,
+  "max_relative_difference": 5.135025569009279e-12
+ },
+ {
+  "scenario": "zero_order_d1",
+  "structure": "1cmt_zero_order",
+  "values": 20,
+  "max_relative_difference": 3.4663749759663416e-12
+ },
+ {
+  "scenario": "modeled_rate_r1",
+  "structure": "1cmt_iv",
+  "values": 20,
+  "max_relative_difference": 3.4367160780159628e-12
+ },
+ {
+  "scenario": "transit3",
+  "structure": "1cmt_transit",
+  "values": 20,
+  "max_relative_difference": 2.2938991764194922e-11
+ },
+ {
+  "scenario": "reset_evid3_evid4",
+  "structure": "1cmt_first_order",
+  "values": 9,
+  "max_relative_difference": 2.2004446388709186e-13
+ },
+ {
+  "scenario": "timevarying_wt",
+  "structure": "1cmt_iv",
+  "values": 12,
+  "max_relative_difference": 3.315617997242482e-12
+ },
+ {
+  "scenario": "effect_sigmoid_emax",
+  "structure": "1cmt_first_order_sigmoid_emax",
+  "values": 40,
+  "max_relative_difference": 7.583996171882783e-12
+ },
+ {
+  "scenario": "parent_metabolite",
+  "structure": "1cmt_iv_metabolite",
+  "values": 40,
+  "max_relative_difference": 2.241027748250768e-11
+ },
+ {
+  "scenario": "ss2_superposition",
+  "structure": "2cmt_iv",
+  "values": 8,
+  "max_relative_difference": 1.125652400133267e-12
+ },
+ {
+  "scenario": "continuous_infusion_ss",
+  "structure": "2cmt_iv",
+  "values": 4,
+  "max_relative_difference": 2.622275371686494e-12
+ },
+ {
+  "scenario": "infusion_bioavailability",
+  "structure": "1cmt_iv",
+  "values": 8,
+  "max_relative_difference": 3.5890883169424682e-12
+ },
+ {
+  "scenario": "ss_infusion_lag_tail",
+  "structure": "1cmt_iv",
+  "values": 9,
+  "max_relative_difference": 4.22250979480711e-12
+ },
+ {
+  "scenario": "mm_iv_multiple",
+  "structure": "1cmt_mm",
+  "values": 20,
+  "max_relative_difference": 3.788060171749607e-08
+ },
+ {
+  "scenario": "mm_oral_ss",
+  "structure": "1cmt_mm_first_order",
+  "values": 9,
+  "max_relative_difference": 6.054119410213766e-08
+ },
+ {
+  "scenario": "idr1",
+  "structure": "1cmt_first_order_idr1",
+  "values": 42,
+  "max_relative_difference": 1.2185047054308533e-08
+ },
+ {
+  "scenario": "idr2",
+  "structure": "1cmt_first_order_idr2",
+  "values": 42,
+  "max_relative_difference": 1.4537840074015634e-08
+ },
+ {
+  "scenario": "idr3",
+  "structure": "1cmt_first_order_idr3",
+  "values": 42,
+  "max_relative_difference": 1.166531508704495e-08
+ },
+ {
+  "scenario": "idr4",
+  "structure": "1cmt_first_order_idr4",
+  "values": 42,
+  "max_relative_difference": 7.63269669654008e-09
+ },
+ {
+  "scenario": "tmdd_full",
+  "structure": "1cmt_iv_tmdd_full",
+  "values": 46,
+  "max_relative_difference": 1.0717238925887354e-06
+ },
+ {
+  "scenario": "tmdd_qss",
+  "structure": "1cmt_iv_tmdd_qss",
+  "values": 46,
+  "max_relative_difference": 2.1283808641722906e-07
+ }
+]

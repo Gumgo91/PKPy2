@@ -1,0 +1,17 @@
+{
+  "scenario": "lognormal_residual",
+  "objective": 11.3763549301845,
+  "seconds": 10.61,
+  "theta": {
+    "tcl": 1.32966748047501,
+    "tv": 3.65375154432448,
+    "lnorm.sd": 0.194654237351517
+  },
+  "omega": {
+    "eta.cl": 0.098596540886712,
+    "eta.v": 0.0314926567339709
+  },
+  "omega_cov": {
+    "eta.cl,eta.v": 0
+  }
+}

@@ -1,0 +1,54 @@
+{
+ "replicate": 8,
+ "ofv": 1879.6076647241812,
+ "audit_passed": true,
+ "censored": 13,
+ "n_npde": 587,
+ "npde_mean": -0.0037477824777754293,
+ "npde_variance": 1.042876996076389,
+ "npde_ks_p": 0.8459449487779414,
+ "cwres_mean": -0.020622287198371565,
+ "cwres_variance": 0.9666573136478105,
+ "vpc_within": {
+  "CP": 0.9444444444444444
+ },
+ "vpc_inside": {
+  "CP": [
+   [
+    true,
+    true,
+    true
+   ],
+   [
+    true,
+    true,
+    true
+   ],
+   [
+    true,
+    true,
+    true
+   ],
+   [
+    true,
+    true,
+    false
+   ],
+   [
+    true,
+    true,
+    true
+   ],
+   [
+    true,
+    true,
+    true
+   ]
+  ]
+ },
+ "eta_shrinkage": {
+  "CL": -0.059928359314507684,
+  "V1": 0.007514445282953641
+ },
+ "seconds": 9.47890830039978
+}

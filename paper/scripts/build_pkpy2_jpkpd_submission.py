@@ -28,8 +28,8 @@ BUILD = Path(sys.argv[1])
 OUT = Path(sys.argv[2])
 FIGS = ROOT / 'docs/pkpy2_paper/figures_peerj_revision'
 TITLE = 'PKPy2: A Python framework for joint population pharmacokinetic estimation and uncertainty assessment'
-KEYWORDS = ['Population pharmacokinetics', 'Nonlinear mixed-effects models', 'Marginal likelihood', 'Parameter bounds',
-            'Software validation', 'Python']
+KEYWORDS = ['Population pharmacokinetics', 'Pharmacokinetic-pharmacodynamic modeling', 'Nonlinear mixed-effects models',
+            'Marginal likelihood', 'Software validation', 'Python']
 ORCID = [('Hyunseung Kong', '0000-0001-7681-7429'), ('Inyoung Kim', '0000-0003-3062-6576')]
 
 REFERENCES = [
@@ -74,6 +74,42 @@ REFERENCES = [
     'https://doi.org/10.1002/psp4.12471',
     'R Core Team (2026) R: a language and environment for statistical computing, version 4.5.3. R Foundation for Statistical Computing, '
     'Vienna. https://www.R-project.org/',
+    'Moler C, Van Loan C (2003) Nineteen dubious ways to compute the exponential of a matrix, twenty-five years later. SIAM Rev 45:3–49. '
+    'https://doi.org/10.1137/S00361445024180',
+    'Dormand JR, Prince PJ (1980) A family of embedded Runge-Kutta formulae. J Comput Appl Math 6:19–26. '
+    'https://doi.org/10.1016/0771-050X(80)90013-3',
+    'Shampine LF, Reichelt MW (1997) The MATLAB ODE suite. SIAM J Sci Comput 18:1–22. https://doi.org/10.1137/S1064827594276424',
+    'Savic RM, Jonker DM, Kerbusch T, Karlsson MO (2007) Implementation of a transit compartment model for describing drug absorption in '
+    'pharmacokinetic studies. J Pharmacokinet Pharmacodyn 34:711–726. https://doi.org/10.1007/s10928-007-9066-0',
+    'Dayneka NL, Garg V, Jusko WJ (1993) Comparison of four basic models of indirect pharmacodynamic responses. J Pharmacokinet Biopharm '
+    '21:457–478. https://doi.org/10.1007/BF01061691',
+    'Mager DE, Jusko WJ (2001) General pharmacokinetic model for drugs exhibiting target-mediated drug disposition. J Pharmacokinet '
+    'Pharmacodyn 28:507–532. https://doi.org/10.1023/A:1014414520282',
+    'Gibiansky L, Gibiansky E, Kakkar T, Ma P (2008) Approximations of the target-mediated drug disposition model and identifiability of '
+    'model parameters. J Pharmacokinet Pharmacodyn 35:573–591. https://doi.org/10.1007/s10928-008-9102-8',
+    'Karlsson MO, Sheiner LB (1993) The importance of modeling interoccasion variability in population pharmacokinetic analyses. '
+    'J Pharmacokinet Biopharm 21:735–750. https://doi.org/10.1007/BF01113502',
+    'Beal SL (2001) Ways to fit a PK model with some data below the quantification limit. J Pharmacokinet Pharmacodyn 28:481–504. '
+    'https://doi.org/10.1023/A:1012299115260',
+    'Hooker AC, Staatz CE, Karlsson MO (2007) Conditional weighted residuals (CWRES): a model diagnostic for the FOCE method. Pharm Res '
+    '24:2187–2197. https://doi.org/10.1007/s11095-007-9361-x',
+    'Brendel K, Comets E, Laffont C, Laveille C, Mentré F (2006) Metrics for external model evaluation with an application to the '
+    'population pharmacokinetics of gliclazide. Pharm Res 23:2036–2049. https://doi.org/10.1007/s11095-006-9067-5',
+    'Comets E, Brendel K, Mentré F (2008) Computing normalised prediction distribution errors to evaluate nonlinear mixed-effect models: '
+    'the npde add-on package for R. Comput Methods Programs Biomed 90:154–166. https://doi.org/10.1016/j.cmpb.2007.12.002',
+    'Savic RM, Karlsson MO (2009) Importance of shrinkage in empirical Bayes estimates for diagnostics: problems and solutions. AAPS J '
+    '11:558–569. https://doi.org/10.1208/s12248-009-9133-0',
+    'Bergstrand M, Hooker AC, Wallin JE, Karlsson MO (2011) Prediction-corrected visual predictive checks for diagnosing nonlinear '
+    'mixed-effects models. AAPS J 13:143–151. https://doi.org/10.1208/s12248-011-9255-z',
+    'Dosne AG, Bergstrand M, Harling K, Karlsson MO (2016) Improving the estimation of parameter uncertainty distributions in nonlinear '
+    'mixed effects models using sampling importance resampling. J Pharmacokinet Pharmacodyn 43:583–596. '
+    'https://doi.org/10.1007/s10928-016-9487-8',
+    'Dosne AG, Bergstrand M, Karlsson MO (2017) An automated sampling importance resampling procedure for estimating parameter '
+    'uncertainty. J Pharmacokinet Pharmacodyn 44:509–520. https://doi.org/10.1007/s10928-017-9542-0',
+    'Jonsson EN, Karlsson MO (1998) Automated covariate model building within NONMEM. Pharm Res 15:1463–1468. '
+    'https://doi.org/10.1023/A:1011970125687',
+    "O'Reilly RA, Aggeler PM (1968) Studies on coumarin anticoagulant drugs: initiation of warfarin therapy without a loading dose. "
+    'Circulation 38:169–177. https://doi.org/10.1161/01.CIR.38.1.169',
 ]
 
 DECLARATIONS = [
@@ -82,8 +118,9 @@ DECLARATIONS = [
     ('Ethics approval', 'Not applicable. The study used simulated data and publicly available, de-identified pharmacokinetic datasets.'),
     ('Consent to participate', 'Not applicable.'),
     ('Consent for publication', 'Not applicable.'),
-    ('Data availability', 'The theophylline data are available in the R datasets package [10], and the warfarin and tobramycin data in the '
-     'dataset directory of the PKGPT repository (https://github.com/Gumgo91/PKGPT) [11]. The analysis datasets, per-dataset estimates of all '
+    ('Data availability', 'The theophylline data are available in the R datasets package [10], the warfarin and tobramycin data in the '
+     'dataset directory of the PKGPT repository (https://github.com/Gumgo91/PKGPT) [11], and the warfarin PK/PD data in the nlmixr2data R '
+     'package [15,40]. The analysis datasets, per-dataset estimates of all '
      'programs, numerical checks, and timings underlying all tables and figures are provided in Online Resources 2 and 3, with variable '
      'definitions in Online Resource 4. The nlmixr2 and saemix comparison scripts, the tobramycin analyses, and the saved fit records are '
      'available in the PKPy2 repository (https://github.com/Gumgo91/PKPy2).'),
@@ -96,7 +133,8 @@ DECLARATIONS = [
 
 CAPTIONS = {
     1: 'Population inference in PKPy and PKPy2. (a) PKPy fits each subject separately and summarizes the individual log parameters. '
-       '(b) PKPy2 fits the declared population model jointly by marginal likelihood and reports independent numerical checks and local intervals',
+       '(b) PKPy2 reads event records, fits the declared population model jointly by marginal likelihood with an independent numerical '
+       'audit, and provides diagnostics and interval estimates',
     2: 'Parameter recovery in the primary simulation by PKPy, the Gaussian two-stage control, and PKPy2. Left, relative bias with ±1.96 Monte '
        'Carlo standard errors; right, relative root mean squared error (RMSE). Each point summarizes 100 datasets (98 for the rich-sampling '
        'Gaussian control)',
@@ -107,16 +145,49 @@ CAPTIONS = {
        'and labeled with their values',
     5: 'Relative errors of PKPy2, nlmixr2 FOCEi, nlmixr2 SAEM, and saemix estimates in the 200 primary simulation datasets. Boxes show medians '
        'and interquartile ranges, whiskers extend to 1.5 times the interquartile range, and diamonds mark means',
-    6: 'Prediction-call speedup of dose-state recurrence over direct summation',
+    6: 'Verification of the event-record interface. (a) Maximum relative differences of PKPy2 predictions from rxode2 in linear and '
+       'nonlinear (ODE) scenarios. (b) Absolute OFV differences from an independent quadrature implementation and from the compact '
+       'interface; the dashed line marks the convergence tolerance of 0.05. (c) CWRES and IWRES of the theophylline model from PKPy2 and '
+       'nlmixr2 at identical parameters. (d) Exact OFV at the nlmixr2 FOCEi and SAEM estimates minus that at the PKPy2 estimates',
+    7: 'Warfarin PK/PD application and interval methods. (a, b) Visual predictive checks of plasma concentration and prothrombin complex '
+       'activity (PCA): observed 5th, 50th, and 95th percentiles (lines), 95% intervals of the simulated percentiles (bands), and '
+       'observations (points). (c) 95% intervals for the theophylline model from the Wald, sandwich, profile-likelihood, bootstrap, and SIR '
+       'methods, relative to the estimate',
 }
 
 ESM = [('ESM_1.pdf', 'PKPy2_supplement.pdf', 'Supplementary methods, complete simulation summaries, clinical reference details, the '
-        'comparison with nlmixr2 and saemix, and the tobramycin analyses (Sections S1-S10, Tables S1-S17)'),
+        'comparison with nlmixr2 and saemix, the tobramycin analyses, and the methods and evaluation of the event-record interface '
+        '(Sections S1-S12, Tables S1-S25)'),
        ('ESM_2.xlsx', 'Supplemental_Files/PKPy2_raw_data.xlsx', 'Raw data underlying all tables and figures: simulated and clinical analysis '
         'datasets, per-dataset estimates of all programs, numerical checks, and timings'),
        ('ESM_3.zip', 'Supplemental_Files/PKPy2_raw_data_csv.zip', 'The sheets of Online Resource 2 as CSV files'),
        ('ESM_4.xlsx', 'Supplemental_Files/PKPy2_codebook.xlsx', 'Codebook: variable definitions, units, and codes of categorical variables')]
 
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pkpy2_references import CITATION, expand, compress, citation_order, renumber   # noqa: E402
+RENUMBER = {}
+
+
+def renumber_text(text):
+    return renumber(text, RENUMBER)
+
+
+def renumber_paragraph(p, mapping):
+    """Renumber every citation of a paragraph exactly once (inside runs when no citation spans runs)."""
+    text = p.text
+    matches = list(CITATION.finditer(text))
+    if not matches:
+        return
+    spans, pos = [], 0
+    for r in p.runs:
+        spans.append((pos, pos + len(r.text)))
+        pos += len(r.text)
+    if pos == len(text) and all(any(a <= m.start() and m.end() <= b for a, b in spans) for m in matches):
+        for r in p.runs:
+            r.text = renumber(r.text, mapping)
+    else:
+        set_text(p, renumber(text, mapping))
 
 # ------------------------------------------------------------------ helpers
 def find(doc, prefix):
@@ -245,6 +316,7 @@ def manuscript():
     for p in d.paragraphs:
         # In-text citations end with ')'; a sentence-initial "Figure 1" is kept in full.
         n_fig += sub_in_paragraph(p, r'Figure (\d)([A-Z]?)(?=\))', lambda m: f'Fig. {m.group(1)}{m.group(2).lower()}')
+        sub_in_paragraph(p, r'Supplementary Tables (S\d+) and (S\d+)', r'Online Resource 1, Tables \1 and \2')
         sub_in_paragraph(p, r'Supplementary (Section|Table) (S\d+)', r'Online Resource 1, \1 \2')
         sub_in_paragraph(p, r'the Supplementary Material', 'Online Resource 1')
     assert n_fig >= 7, n_fig
@@ -260,7 +332,8 @@ def manuscript():
         body.remove(el)
     set_text(head, 'Declarations')
     anchor = head
-    for name, text in DECLARATIONS:
+    declarations = list(DECLARATIONS)
+    for name, text in declarations:
         anchor = insert_paragraph_after(anchor, like=normal)
         add_runs(anchor, [(name + ' ', True), (text, False)])
         if 'XXXXXXX' in text:
@@ -269,12 +342,19 @@ def manuscript():
     if before.tag == qn('w:p') and not ''.join(t.text or '' for t in before.iter(qn('w:t'))).strip():
         anchor._p.addnext(copy.deepcopy(before))
 
-    # References in Springer style
+    # References in Springer style, numbered in order of first citation
     refs = [p for p in d.paragraphs if re.match(r'\[\d+\] ', p.text)]
     assert len(refs) == len(REFERENCES)
-    for i, (p, text) in enumerate(zip(refs, REFERENCES), start=1):
+    for i, p in enumerate(refs, start=1):
         assert p.text.startswith(f'[{i}] ')
-        set_text(p, f'{i}. {text}')
+    body_paras = [p for p in d.paragraphs if p not in refs]
+    new_number = citation_order([p.text for p in body_paras], len(REFERENCES))
+    order = sorted(new_number, key=new_number.get)
+    for p in body_paras:
+        renumber_paragraph(p, new_number)
+    for i, (p, old_k) in enumerate(zip(refs, order), start=1):
+        set_text(p, f'{i}. {REFERENCES[old_k - 1]}')
+    RENUMBER.update(new_number)
 
     # Tables with legends (landscape section), then figures with legends (portrait section)
     first = d.sections[0]
@@ -303,6 +383,7 @@ def manuscript():
         compact(tbl)
         body_insert(d, tbl)
         for text in foot:
+            text = renumber_text(text)
             text = re.sub(r'Supplementary Tables? (S\d+)', r'Online Resource 1, Table \1', text)
             text = re.sub(r'Supplementary (S\d+)', r'Online Resource 1, Section \1', text)
             assert 'Supplementary' not in text, text
@@ -314,7 +395,7 @@ def manuscript():
     figs.top_margin = figs.bottom_margin = first_margin
     tmp = OUT / '_embed'
     tmp.mkdir(parents=True, exist_ok=True)
-    for n in range(1, 7):
+    for n in range(1, 8):
         img = Image.open(FIGS / f'Figure_{n}.png').convert('RGB')
         w_in, h_in = img.size[0] / 600, img.size[1] / 600
         img = img.resize((int(img.size[0] / 2), int(img.size[1] / 2)), Image.LANCZOS)
@@ -334,7 +415,7 @@ def manuscript():
 def files():
     fig_dir = OUT / 'Figures'
     fig_dir.mkdir(parents=True, exist_ok=True)
-    for n in range(1, 7):
+    for n in range(1, 8):
         shutil.copy2(FIGS / f'Figure_{n}.tif', fig_dir / f'Fig{n}.tif')
         shutil.copy2(FIGS / f'Figure_{n}.eps', fig_dir / f'Fig{n}.eps')
     esm_dir = OUT / 'ESM'
@@ -357,13 +438,16 @@ def cover_letter():
     paras = [
         'Dear Editor,',
         f'We submit the Original Paper "{TITLE}" for consideration in the Journal of Pharmacokinetics and Pharmacodynamics.',
-        'PKPy2 is a standalone Python package for population pharmacokinetic analysis that estimates structural parameters, interindividual '
-        'variability, residual error, and covariate effects jointly by marginal likelihood, with explicit fixed values and parameter bounds, '
-        'independent numerical convergence checks, and local confidence intervals. We verified its calculations against independent '
-        'implementations, evaluated parameter recovery and interval coverage in 230 simulated datasets, compared it with nlmixr2 (FOCEi and '
-        'SAEM) and saemix on identical data, and applied it to the theophylline, warfarin, and tobramycin datasets with published expert NONMEM '
-        'analyses. The tobramycin analysis shows how declared fixed values and bounds let a pharmacometrician steer an analysis whose data '
-        'support a different maximum-likelihood solution, which we expect to be of interest to the readers of the journal.',
+        'PKPy2 is a standalone Python package for population pharmacokinetic and pharmacodynamic analysis that estimates structural '
+        'parameters, interindividual variability, residual error, and covariate effects jointly by marginal likelihood, with explicit fixed '
+        'values and parameter bounds, independent numerical convergence checks, model diagnostics, and interval estimates. It reads '
+        'NONMEM-format event records and supports multi-compartment, nonlinear, and PK/PD models with correlated and interoccasion random '
+        'effects, time-varying covariates, and censored observations. We verified its predictions, likelihoods, and diagnostics against '
+        'rxode2, independent quadrature, nlmixr2, and the npde package, evaluated parameter recovery and interval coverage in simulated '
+        'datasets, compared it with nlmixr2 (FOCEi and SAEM) and saemix on identical data, and applied it to the theophylline, warfarin, '
+        'and tobramycin datasets with published expert NONMEM analyses and to a warfarin PK/PD model. The tobramycin analysis shows how '
+        'declared fixed values and bounds let a pharmacometrician steer an analysis whose data support a different maximum-likelihood '
+        'solution, which we expect to be of interest to the readers of the journal.',
         'PKPy2 extends our earlier PKPy framework (Kong et al., PeerJ 2025), whose estimation components serve as a comparator, and the expert '
         'NONMEM reference estimates are those published in the PKGPT study (Kwack et al., Pharmaceutics 2026), of which the first author is a '
         'co-author. No text or figures are reused from these articles. The manuscript has not been published and is not under consideration '

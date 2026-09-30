@@ -1,0 +1,285 @@
+[
+ {
+  "name": "iv1_infusion",
+  "r_model": "pk1iv",
+  "params": {
+   "CL": 3.1,
+   "V": 42.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "iv2_infusion_ss",
+  "r_model": "pk2iv",
+  "params": {
+   "CL": 4.2,
+   "V1": 18.0,
+   "Q": 6.3,
+   "V2": 37.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "oral1_ss_lag_f",
+  "r_model": "pk1oral",
+  "params": {
+   "CL": 2.4,
+   "V": 35.0,
+   "Ka": 1.3,
+   "ALAG": 0.6,
+   "F": 0.7
+  },
+  "outputs": 1
+ },
+ {
+  "name": "oral2_addl_lag",
+  "r_model": "pk2oral",
+  "params": {
+   "CL": 5.3,
+   "V1": 25.0,
+   "Q": 8.1,
+   "V2": 60.0,
+   "Ka": 0.8,
+   "ALAG": 0.4
+  },
+  "outputs": 1
+ },
+ {
+  "name": "iv3_bolus_infusion",
+  "r_model": "pk3iv",
+  "params": {
+   "CL": 6.2,
+   "V1": 12.0,
+   "Q2": 9.5,
+   "V2": 30.0,
+   "Q3": 1.2,
+   "V3": 85.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "zero_order_d1",
+  "r_model": "pk1iv",
+  "params": {
+   "CL": 3.1,
+   "V": 42.0,
+   "D1": 3.5
+  },
+  "outputs": 1
+ },
+ {
+  "name": "modeled_rate_r1",
+  "r_model": "pk1iv",
+  "params": {
+   "CL": 3.1,
+   "V": 42.0,
+   "R1": 120.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "transit3",
+  "r_model": "transit3",
+  "params": {
+   "CL": 2.9,
+   "V": 30.0,
+   "Ka": 1.1,
+   "MTT": 2.4
+  },
+  "outputs": 1
+ },
+ {
+  "name": "reset_evid3_evid4",
+  "r_model": "pk1oral",
+  "params": {
+   "CL": 2.4,
+   "V": 35.0,
+   "Ka": 1.3,
+   "ALAG": 0.0,
+   "F": 1.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "timevarying_wt",
+  "r_model": "pk1iv_tv",
+  "params": {
+   "TCL": 3.1,
+   "V": 42.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "effect_sigmoid_emax",
+  "r_model": "effect_sig",
+  "params": {
+   "CL": 2.2,
+   "V": 28.0,
+   "Ka": 1.5,
+   "E0": 5.0,
+   "EMAX": 40.0,
+   "EC50": 1.2,
+   "GAMMA": 2.3,
+   "KE0": 0.35
+  },
+  "outputs": 2
+ },
+ {
+  "name": "parent_metabolite",
+  "r_model": "parent_met",
+  "params": {
+   "CL": 5.0,
+   "V": 40.0,
+   "FM": 0.6,
+   "CLM": 2.5,
+   "VM": 25.0
+  },
+  "outputs": 2
+ },
+ {
+  "name": "ss2_superposition",
+  "r_model": "pk2iv",
+  "params": {
+   "CL": 4.2,
+   "V1": 18.0,
+   "Q": 6.3,
+   "V2": 37.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "continuous_infusion_ss",
+  "r_model": "pk2iv",
+  "params": {
+   "CL": 4.2,
+   "V1": 18.0,
+   "Q": 6.3,
+   "V2": 37.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "infusion_bioavailability",
+  "r_model": "pk1iv",
+  "params": {
+   "CL": 3.1,
+   "V": 42.0,
+   "F": 0.6
+  },
+  "outputs": 1
+ },
+ {
+  "name": "ss_infusion_lag_tail",
+  "r_model": "pk1iv",
+  "params": {
+   "CL": 3.1,
+   "V": 42.0,
+   "ALAG": 2.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "mm_iv_multiple",
+  "r_model": "mm1iv",
+  "params": {
+   "V": 20.0,
+   "VMAX": 40.0,
+   "KM": 3.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "mm_oral_ss",
+  "r_model": "mm1oral",
+  "params": {
+   "V": 20.0,
+   "Ka": 1.2,
+   "VMAX": 40.0,
+   "KM": 3.0
+  },
+  "outputs": 1
+ },
+ {
+  "name": "idr1",
+  "r_model": "idr1",
+  "params": {
+   "CL": 2.2,
+   "V": 28.0,
+   "Ka": 1.5,
+   "R0": 100.0,
+   "KOUT": 0.12,
+   "IMAX": 0.8,
+   "IC50": 1.5
+  },
+  "outputs": 2
+ },
+ {
+  "name": "idr2",
+  "r_model": "idr2",
+  "params": {
+   "CL": 2.2,
+   "V": 28.0,
+   "Ka": 1.5,
+   "R0": 100.0,
+   "KOUT": 0.12,
+   "IMAX": 0.8,
+   "IC50": 1.5
+  },
+  "outputs": 2
+ },
+ {
+  "name": "idr3",
+  "r_model": "idr3",
+  "params": {
+   "CL": 2.2,
+   "V": 28.0,
+   "Ka": 1.5,
+   "R0": 100.0,
+   "KOUT": 0.12,
+   "EMAX": 2.5,
+   "EC50": 1.5
+  },
+  "outputs": 2
+ },
+ {
+  "name": "idr4",
+  "r_model": "idr4",
+  "params": {
+   "CL": 2.2,
+   "V": 28.0,
+   "Ka": 1.5,
+   "R0": 100.0,
+   "KOUT": 0.12,
+   "EMAX": 2.5,
+   "EC50": 1.5
+  },
+  "outputs": 2
+ },
+ {
+  "name": "tmdd_full",
+  "r_model": "tmdd_full",
+  "params": {
+   "CL": 0.2,
+   "V": 3.0,
+   "KON": 0.8,
+   "KOFF": 0.05,
+   "KINT": 0.3,
+   "KDEG": 0.1,
+   "R0": 2.0
+  },
+  "outputs": 2
+ },
+ {
+  "name": "tmdd_qss",
+  "r_model": "tmdd_qss",
+  "params": {
+   "CL": 0.2,
+   "V": 3.0,
+   "KSS": 0.4375,
+   "KINT": 0.3,
+   "KDEG": 0.1,
+   "R0": 2.0
+  },
+  "outputs": 2
+ }
+]

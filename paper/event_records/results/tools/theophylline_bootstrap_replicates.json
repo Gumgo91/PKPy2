@@ -1,0 +1,3802 @@
+[
+ {
+  "replicate": 0,
+  "ofv": 373.04299315029454,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6809955326180264,
+   "theta:V": 30.175411793216366,
+   "theta:Ka": 1.5504256619807675,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04506361584628111,
+   "omega:V": 0.000950161356301755,
+   "omega:Ka": 0.36681005440001524,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17511242541365635,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 1,
+  "ofv": 373.8054107578439,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8745316262856186,
+   "theta:V": 32.203117436560454,
+   "theta:Ka": 1.421661021169027,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05845480943498094,
+   "omega:V": 0.014144291852979727,
+   "omega:Ka": 0.502311750953082,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18013831053569687,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 2,
+  "ofv": 332.26278206435535,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9041739330227583,
+   "theta:V": 31.62935236393749,
+   "theta:Ka": 1.8443614345090547,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.029784715197087176,
+   "omega:V": 0.016412713671260227,
+   "omega:Ka": 1.2253256661295837,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15052292222954974,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 3,
+  "ofv": 358.2552886186245,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.818482713145984,
+   "theta:V": 33.154971995614346,
+   "theta:Ka": 1.6720228690592949,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11420915192042749,
+   "omega:V": 0.01605959264399395,
+   "omega:Ka": 0.2664956592867087,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15980940437544944,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 4,
+  "ofv": 366.5341054953608,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.3477854482964857,
+   "theta:V": 29.703729630397568,
+   "theta:Ka": 1.6155126580653183,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11855805190695722,
+   "omega:V": 0.010801129985221205,
+   "omega:Ka": 0.6452398267065484,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15944075147337786,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 5,
+  "ofv": 354.1165807172889,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9372351923136266,
+   "theta:V": 31.410069439096375,
+   "theta:Ka": 1.5698121435945718,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0036091427436808344,
+   "omega:V": 0.00034930029953436886,
+   "omega:Ka": 0.29951275925974313,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1939833230209534,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 6,
+  "ofv": 343.3248451392186,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.877467184885507,
+   "theta:V": 31.62473403037304,
+   "theta:Ka": 0.9206609488043086,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.046076723615720266,
+   "omega:V": 0.012432604819281974,
+   "omega:Ka": 0.09914504724669353,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17431423370987204,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 7,
+  "ofv": 334.0049780018335,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.03480575885342,
+   "theta:V": 32.593366940526195,
+   "theta:Ka": 1.4377159898718515,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.008195080045264055,
+   "omega:V": 0.004424707277789623,
+   "omega:Ka": 0.4987094614463843,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17568240222960288,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 8,
+  "ofv": 360.6419010342971,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.3412100544097934,
+   "theta:V": 30.275591715858134,
+   "theta:Ka": 1.77146352581084,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.12941206492967106,
+   "omega:V": 0.018988505260560715,
+   "omega:Ka": 0.7008697350358202,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1421620445515841,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 9,
+  "ofv": 331.88170076641285,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.844694427825351,
+   "theta:V": 31.604541427282182,
+   "theta:Ka": 2.16648233636897,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.019321335717310196,
+   "omega:V": 0.011206579609264808,
+   "omega:Ka": 0.7956214666378112,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16420895251371978,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 10,
+  "ofv": 330.95887486487925,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.078953614827168,
+   "theta:V": 32.03790579779799,
+   "theta:Ka": 1.209027646202996,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0037768243629579127,
+   "omega:V": 1.987889010307059e-06,
+   "omega:Ka": 0.10405032917485976,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.19592927497270085,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 11,
+  "ofv": 354.6577534416971,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.819559554838801,
+   "theta:V": 33.05298011197926,
+   "theta:Ka": 1.4573817572420478,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05598368669146011,
+   "omega:V": 0.00760498605460316,
+   "omega:Ka": 0.15644245536732196,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16507683787512129,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 12,
+  "ofv": 354.3880146465634,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.920749184442965,
+   "theta:V": 31.456933311758313,
+   "theta:Ka": 1.4552426420456812,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.008598883645467719,
+   "omega:V": 0.002015364803005063,
+   "omega:Ka": 0.37247753684671564,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18514724311540245,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 13,
+  "ofv": 341.511488808429,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0955102992706363,
+   "theta:V": 32.95934034719155,
+   "theta:Ka": 1.5245125733181355,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01307658222673159,
+   "omega:V": 0.007970355171137714,
+   "omega:Ka": 0.4323381061325452,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18668669404285504,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 14,
+  "ofv": 353.3420176459336,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6734809308391485,
+   "theta:V": 31.404870082256743,
+   "theta:Ka": 1.1457160638471828,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05721720923088316,
+   "omega:V": 0.011946590919140953,
+   "omega:Ka": 0.4564392195068393,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15762565159814282,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 15,
+  "ofv": 322.45948730490915,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.740724081865348,
+   "theta:V": 31.637336377854428,
+   "theta:Ka": 1.0079025687897192,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.013435887696143695,
+   "omega:V": 3.0117396907171426e-06,
+   "omega:Ka": 0.12113710953446469,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14743449105678666,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 16,
+  "ofv": 362.299550140002,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7636028382932203,
+   "theta:V": 32.42848123240897,
+   "theta:Ka": 1.4546085820171812,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0515287915568005,
+   "omega:V": 0.005694296113951505,
+   "omega:Ka": 0.13876144687745198,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1687919639657245,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 17,
+  "ofv": 319.22721190756823,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8416466850712836,
+   "theta:V": 31.95382352730078,
+   "theta:Ka": 1.0875262107743124,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.025359284745215073,
+   "omega:V": 0.005869615706299999,
+   "omega:Ka": 0.5081643710008273,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14786874000666173,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 18,
+  "ofv": 350.66079356066257,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0342728970405717,
+   "theta:V": 34.473732107922515,
+   "theta:Ka": 1.235050502915884,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.056376280919615634,
+   "omega:V": 0.010452986994699463,
+   "omega:Ka": 0.2937989526956772,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17289515238031097,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 19,
+  "ofv": 347.68620398889743,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.715270978057072,
+   "theta:V": 30.330639455879165,
+   "theta:Ka": 1.2387138757417713,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05803142252640974,
+   "omega:V": 0.009917219401012454,
+   "omega:Ka": 0.754273017059132,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16427375616930495,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 20,
+  "ofv": 337.49476167504724,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0194346856482035,
+   "theta:V": 34.13482583517065,
+   "theta:Ka": 1.5805271420337617,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.040183274780371744,
+   "omega:V": 0.016335455156403868,
+   "omega:Ka": 0.6754274927993862,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14857305952625244,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 21,
+  "ofv": 368.6197172465062,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.761428048222979,
+   "theta:V": 31.04256825568584,
+   "theta:Ka": 1.858684335510815,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.053750842671082946,
+   "omega:V": 0.007632404233649018,
+   "omega:Ka": 0.5091431566193637,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1877560404157209,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 22,
+  "ofv": 318.9596869379171,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7668408609461834,
+   "theta:V": 32.117464997167836,
+   "theta:Ka": 2.2519327945864394,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.016356479065697746,
+   "omega:V": 0.013357675279598382,
+   "omega:Ka": 0.711787286760885,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1470723020331034,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 23,
+  "ofv": 362.0015831029171,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.930788525211756,
+   "theta:V": 31.619133791609855,
+   "theta:Ka": 1.313385451972355,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.008563905048071776,
+   "omega:V": 0.0024562717637194942,
+   "omega:Ka": 0.452854766631873,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18353138773227753,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 24,
+  "ofv": 374.4986283387086,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5939402671760075,
+   "theta:V": 31.26491088442573,
+   "theta:Ka": 1.407475024643671,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.08662061832371237,
+   "omega:V": 0.01411927749873915,
+   "omega:Ka": 0.30615837035748017,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1662984430706187,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 25,
+  "ofv": 344.2353206803841,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0353689572636684,
+   "theta:V": 34.42718924438589,
+   "theta:Ka": 1.3881221333496985,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.014866020856406823,
+   "omega:V": 0.0012448418458126693,
+   "omega:Ka": 0.18153270153021997,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17469968601568606,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 26,
+  "ofv": 334.0545367007607,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7320518593293697,
+   "theta:V": 31.891045623615735,
+   "theta:Ka": 3.1935663272229178,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.031614092628858746,
+   "omega:V": 0.016502891468613265,
+   "omega:Ka": 0.8896594374473668,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14648672647504432,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 27,
+  "ofv": 378.38836332981225,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.3527099811893692,
+   "theta:V": 30.33818154495073,
+   "theta:Ka": 1.7138952764813749,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.1162668378019723,
+   "omega:V": 0.014157707404079376,
+   "omega:Ka": 0.5653635398863217,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16274554272658423,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 28,
+  "ofv": 319.87420885652034,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9751047188143227,
+   "theta:V": 32.85558663399301,
+   "theta:Ka": 1.0850147838861324,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01662308003584301,
+   "omega:V": 0.002054000225060495,
+   "omega:Ka": 0.12620081527219232,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16361808465478028,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 29,
+  "ofv": 344.2938853251478,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7649557899310264,
+   "theta:V": 31.862843458808765,
+   "theta:Ka": 1.0158756719569124,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.054944116216952166,
+   "omega:V": 0.009618933035098523,
+   "omega:Ka": 0.2116516911550209,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1561281439016321,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 30,
+  "ofv": 313.0990568086189,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8389112352356145,
+   "theta:V": 33.04918644953759,
+   "theta:Ka": 1.8547367539730535,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.031902072617536546,
+   "omega:V": 0.014626737540139248,
+   "omega:Ka": 0.6637767760345408,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1377983578589557,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 31,
+  "ofv": 363.9403868211419,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.3835583501907642,
+   "theta:V": 30.953276675249423,
+   "theta:Ka": 1.2194728671839539,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.12967019671828717,
+   "omega:V": 0.015440706173775515,
+   "omega:Ka": 0.228316454307279,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15018493300334051,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 32,
+  "ofv": 344.1872784614495,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5297650792304447,
+   "theta:V": 32.377189746037594,
+   "theta:Ka": 1.1544915557950002,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10500331780003563,
+   "omega:V": 0.014584784735525474,
+   "omega:Ka": 0.16673582969775236,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1433270431646215,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 33,
+  "ofv": 337.146119045952,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8742200637016073,
+   "theta:V": 33.83419736494965,
+   "theta:Ka": 1.3923051035420815,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05533923324725545,
+   "omega:V": 0.007753044240359153,
+   "omega:Ka": 0.1828025982618319,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16410126409227666,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 34,
+  "ofv": 345.8790161776361,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.834790940869653,
+   "theta:V": 31.87302214393772,
+   "theta:Ka": 1.535561967812794,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.08070364063369669,
+   "omega:V": 0.026412304653550864,
+   "omega:Ka": 0.6176002960502559,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14093897468501335,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 35,
+  "ofv": 349.08479355368445,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8545763882825335,
+   "theta:V": 32.15272627440088,
+   "theta:Ka": 2.5239343499729254,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.042695745084385166,
+   "omega:V": 0.01564518381512783,
+   "omega:Ka": 0.9714324794717116,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1573171855023425,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 36,
+  "ofv": 377.0906086262766,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8109668971832993,
+   "theta:V": 31.168265060594845,
+   "theta:Ka": 1.522809141432849,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.038581836435311594,
+   "omega:V": 0.00011238119226979165,
+   "omega:Ka": 0.08403830926127982,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.197091711515058,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 37,
+  "ofv": 348.34178141985115,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1749153853139678,
+   "theta:V": 34.72749734179846,
+   "theta:Ka": 1.4232876468796787,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.005658965353532022,
+   "omega:V": 0.00027108470274242436,
+   "omega:Ka": 0.16172807665714162,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.19389604222164267,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 38,
+  "ofv": 342.9321616179207,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.971693029067931,
+   "theta:V": 33.177463277596445,
+   "theta:Ka": 1.4572367363870744,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.007920261926873666,
+   "omega:V": 0.007054397792475739,
+   "omega:Ka": 0.3172899068457802,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1883236172891395,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 39,
+  "ofv": 351.7089323832547,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7145192074116906,
+   "theta:V": 33.660112903556985,
+   "theta:Ka": 1.777150107649953,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10688871802069923,
+   "omega:V": 0.01434656707924544,
+   "omega:Ka": 0.08536400074380128,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16088783396267156,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 40,
+  "ofv": 347.8464369048105,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6799558735556808,
+   "theta:V": 30.968587424382342,
+   "theta:Ka": 1.879235007210864,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.050948600409813506,
+   "omega:V": 0.009075634219616307,
+   "omega:Ka": 0.6161093414716212,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15235299761754656,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 41,
+  "ofv": 323.7719670368558,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8326556659981867,
+   "theta:V": 32.45540890022701,
+   "theta:Ka": 1.8449875475233846,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07343676380810689,
+   "omega:V": 0.017594637073460023,
+   "omega:Ka": 0.7753994054070326,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14312266363480206,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 42,
+  "ofv": 355.89167593510206,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0507257914166668,
+   "theta:V": 33.687166856547826,
+   "theta:Ka": 1.3604168193107669,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05450020138808681,
+   "omega:V": 0.00949476884278804,
+   "omega:Ka": 0.2918256637692859,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1826922234419791,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 43,
+  "ofv": 342.3593668748732,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.918219004638914,
+   "theta:V": 32.8161882247094,
+   "theta:Ka": 1.1762493769013351,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01464624553096843,
+   "omega:V": 0.007292081677448882,
+   "omega:Ka": 0.45310766618502263,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1753952597329989,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 44,
+  "ofv": 340.3919811490597,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9482969995842763,
+   "theta:V": 32.15201358647893,
+   "theta:Ka": 1.561195125807256,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0058429137948289595,
+   "omega:V": 0.0037409766081315703,
+   "omega:Ka": 0.3806042990912856,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17798483303325222,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 45,
+  "ofv": 327.41532665752305,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.902738435329883,
+   "theta:V": 32.91557462973576,
+   "theta:Ka": 1.6739566796365468,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.020066534284503012,
+   "omega:V": 0.011346180650385219,
+   "omega:Ka": 0.6056379913191138,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1588186331110516,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 46,
+  "ofv": 359.128445373683,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9625626603610264,
+   "theta:V": 32.28747028622835,
+   "theta:Ka": 1.35934638315859,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.011814101369475563,
+   "omega:V": 0.002274751770267072,
+   "omega:Ka": 0.4233710970877921,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.194402666155365,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 47,
+  "ofv": 385.5999685807332,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.696951696944708,
+   "theta:V": 29.864892145421027,
+   "theta:Ka": 1.1021161555088865,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04570013422878759,
+   "omega:V": 0.002455021664804879,
+   "omega:Ka": 0.4214355169243536,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18203325977617482,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 48,
+  "ofv": 345.04955056145275,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1770724341374916,
+   "theta:V": 34.79087058462075,
+   "theta:Ka": 1.4112470781739737,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01942642064482278,
+   "omega:V": 0.0060693137305014,
+   "omega:Ka": 0.28206723273880474,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17461029796446978,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 49,
+  "ofv": 293.8444518115937,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.203896028691455,
+   "theta:V": 35.955810068766816,
+   "theta:Ka": 1.5799062005453863,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.014176287982334933,
+   "omega:V": 0.001796235167310004,
+   "omega:Ka": 0.2669462622739318,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1493207427991445,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 50,
+  "ofv": 369.97190283654515,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.651685032518246,
+   "theta:V": 32.2151589865314,
+   "theta:Ka": 1.1833478108025042,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10283235211751698,
+   "omega:V": 0.014521961042280408,
+   "omega:Ka": 0.23863037182671715,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1677386233922846,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 51,
+  "ofv": 360.73091483551474,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6555663223371466,
+   "theta:V": 32.0164806422207,
+   "theta:Ka": 1.9401513502802576,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11390142781534272,
+   "omega:V": 0.01816116771489496,
+   "omega:Ka": 0.6949909326754331,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15898229272096748,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 52,
+  "ofv": 314.8355934687953,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5669497963267673,
+   "theta:V": 29.98292368918673,
+   "theta:Ka": 1.8395237622909928,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.047983583726878117,
+   "omega:V": 0.008161053913391484,
+   "omega:Ka": 0.6598177063951147,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.12153107857820077,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 53,
+  "ofv": 378.245999601221,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6641131481496587,
+   "theta:V": 31.760340657477435,
+   "theta:Ka": 1.543445935263064,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.055220943675483,
+   "omega:V": 0.010205121304461396,
+   "omega:Ka": 0.6709772938324174,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1679988104386945,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 54,
+  "ofv": 269.3037889725632,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1197464524169094,
+   "theta:V": 34.63506476453681,
+   "theta:Ka": 1.9171048768803705,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0346501669747606,
+   "omega:V": 0.016179339964490023,
+   "omega:Ka": 0.6037813158133807,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.11135369059245155,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 55,
+  "ofv": 337.900357846821,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1180171240846253,
+   "theta:V": 34.029353791448955,
+   "theta:Ka": 1.5361879603809279,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.012750330652446082,
+   "omega:V": 0.009883779828731622,
+   "omega:Ka": 0.40512390338312165,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1813865136053032,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 56,
+  "ofv": 343.1218492724105,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.593698000480262,
+   "theta:V": 30.40482877297209,
+   "theta:Ka": 2.1343646501775697,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.020848430159127886,
+   "omega:V": 0.008450458464763246,
+   "omega:Ka": 1.6444306552885783,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14799729626928468,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 57,
+  "ofv": 354.977060129342,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9950703695366254,
+   "theta:V": 33.00809270065278,
+   "theta:Ka": 1.7694045305184634,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07577883581451374,
+   "omega:V": 0.023624771158167773,
+   "omega:Ka": 0.5806431895987173,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16178872516966836,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 58,
+  "ofv": 368.2249752496051,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9342086666357168,
+   "theta:V": 33.86294952806463,
+   "theta:Ka": 1.7179179761615535,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06429918182326173,
+   "omega:V": 0.008629902118126179,
+   "omega:Ka": 0.14926787329688168,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18603084026758243,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 59,
+  "ofv": 326.60587117093746,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.977881604970288,
+   "theta:V": 33.78644937410881,
+   "theta:Ka": 1.5362533879157931,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07813258698987534,
+   "omega:V": 0.018700346985973195,
+   "omega:Ka": 0.4505582831181989,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13521086693693082,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 60,
+  "ofv": 332.36873728464775,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.029925676685397,
+   "theta:V": 34.130643838878676,
+   "theta:Ka": 1.6728860900434646,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.030302129658899488,
+   "omega:V": 0.012839034610733614,
+   "omega:Ka": 0.7463933049688928,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1644088643022144,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 61,
+  "ofv": 340.0472147952577,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7597082489597216,
+   "theta:V": 34.34704445826996,
+   "theta:Ka": 1.4545332681542757,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11816168315516169,
+   "omega:V": 0.021175697691025307,
+   "omega:Ka": 0.4960968430454659,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15084156585848937,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 62,
+  "ofv": 353.4832648338851,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.870981032710957,
+   "theta:V": 32.433769805548046,
+   "theta:Ka": 1.7832300218512898,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.023028368695922855,
+   "omega:V": 0.011628329519321877,
+   "omega:Ka": 0.7233429588849595,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16281018925929847,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 63,
+  "ofv": 318.14138883740713,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8884566037807007,
+   "theta:V": 31.90368084083233,
+   "theta:Ka": 1.065961011256855,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.017591484248449335,
+   "omega:V": 0.003968659106839781,
+   "omega:Ka": 0.2527051016780554,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14958085557764011,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 64,
+  "ofv": 326.65656314119224,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0422164610551596,
+   "theta:V": 32.8225416961548,
+   "theta:Ka": 1.4631852316610827,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03300150579473166,
+   "omega:V": 0.02071219560725978,
+   "omega:Ka": 1.0537133772459295,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15214176768696822,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 65,
+  "ofv": 360.91080585981604,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.77039676332107,
+   "theta:V": 31.05983151772966,
+   "theta:Ka": 1.758788603740134,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04676115544318278,
+   "omega:V": 0.0036646454364375426,
+   "omega:Ka": 0.28412780872856386,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17457032355206423,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 66,
+  "ofv": 346.40135624942707,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7026893361615705,
+   "theta:V": 30.862049391697013,
+   "theta:Ka": 1.9584546193120556,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06575688128565113,
+   "omega:V": 0.012910228631146417,
+   "omega:Ka": 0.6707443385758975,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14696342575580568,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 67,
+  "ofv": 334.47842093009774,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7738127097829137,
+   "theta:V": 32.85708403928833,
+   "theta:Ka": 1.3452589634452115,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06645259910458114,
+   "omega:V": 0.008255128296550281,
+   "omega:Ka": 0.3274786373079147,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14125194629345206,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 68,
+  "ofv": 311.3217268347511,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0712938572969772,
+   "theta:V": 33.46819409565798,
+   "theta:Ka": 1.1158261928349735,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.007169026299156855,
+   "omega:V": 0.0004802305680442133,
+   "omega:Ka": 0.2267885322813224,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16753547989203688,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 69,
+  "ofv": 343.7554375674538,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5036744077598345,
+   "theta:V": 31.645253839992773,
+   "theta:Ka": 1.4310244560412997,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.14938809261100144,
+   "omega:V": 0.023273544168097522,
+   "omega:Ka": 0.2682224131917641,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13280574717955465,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 70,
+  "ofv": 341.99517587549826,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8262381530565945,
+   "theta:V": 31.976393226199807,
+   "theta:Ka": 1.1157913059949964,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.051307036996813556,
+   "omega:V": 0.009514916304083985,
+   "omega:Ka": 0.24764642730582473,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15662289070850274,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 71,
+  "ofv": 374.3539753499383,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.748253916252447,
+   "theta:V": 29.282470198128305,
+   "theta:Ka": 1.144948175014364,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04367697192163176,
+   "omega:V": 0.0001697391855575714,
+   "omega:Ka": 0.46581180504208786,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1785814368536031,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 72,
+  "ofv": 342.62205611767007,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.466936351690233,
+   "theta:V": 30.204570147997632,
+   "theta:Ka": 1.8707922907569239,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09372199528925244,
+   "omega:V": 0.01547898732975147,
+   "omega:Ka": 0.8983936246766733,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14866853251369075,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 73,
+  "ofv": 302.9202452843806,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.910420507285642,
+   "theta:V": 34.01340400139588,
+   "theta:Ka": 2.1781951369534944,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05781852369962536,
+   "omega:V": 0.026236897444560214,
+   "omega:Ka": 0.9102767975355422,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.10832061866391957,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 74,
+  "ofv": 347.85198686563757,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6578021254910866,
+   "theta:V": 33.113897685527064,
+   "theta:Ka": 1.1941922324748915,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11588540034050783,
+   "omega:V": 0.014396681665194313,
+   "omega:Ka": 0.19884134010181506,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1573166930734927,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 75,
+  "ofv": 343.2702882415664,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5223829226117704,
+   "theta:V": 31.067975393643014,
+   "theta:Ka": 1.3864359371809014,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05658387895057661,
+   "omega:V": 0.012141931180424429,
+   "omega:Ka": 0.6753722364634543,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14177201458465435,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 76,
+  "ofv": 343.1620258357393,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8550344745973883,
+   "theta:V": 31.577243208600738,
+   "theta:Ka": 1.595159199090225,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018732945917971332,
+   "omega:V": 0.004990722935191664,
+   "omega:Ka": 0.7289298082035954,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17152399707055158,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 77,
+  "ofv": 296.70068085363476,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.829511362290117,
+   "theta:V": 33.35346730730584,
+   "theta:Ka": 1.9607725784192938,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02842838993418989,
+   "omega:V": 0.016028319385334475,
+   "omega:Ka": 1.0855638519573807,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13114390472257037,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 78,
+  "ofv": 368.01062557626483,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.736191862980028,
+   "theta:V": 30.926347021655424,
+   "theta:Ka": 1.276267061080317,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04454717777737665,
+   "omega:V": 0.0003201048833103516,
+   "omega:Ka": 0.13427772330860835,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18812920912874373,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 79,
+  "ofv": 325.5628147166807,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.547585868250482,
+   "theta:V": 33.05855693626673,
+   "theta:Ka": 1.5540813285794588,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.145626846035938,
+   "omega:V": 0.02111409848154077,
+   "omega:Ka": 0.16895185063383109,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13419864548843882,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 80,
+  "ofv": 311.2932098481229,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.70155197901365,
+   "theta:V": 33.98411077699238,
+   "theta:Ka": 1.7876880333201064,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11752913273110507,
+   "omega:V": 0.01660124951849918,
+   "omega:Ka": 0.17607368509089028,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.12144360641102368,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 81,
+  "ofv": 361.65086441226646,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.663074776875831,
+   "theta:V": 31.003129059237406,
+   "theta:Ka": 1.4216864367128035,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05382056068418185,
+   "omega:V": 0.012025794970681451,
+   "omega:Ka": 0.38313505827739064,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15729086981252005,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 82,
+  "ofv": 305.10326679718014,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.060769103324571,
+   "theta:V": 34.06962170628324,
+   "theta:Ka": 1.4652589226595425,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018051090589615484,
+   "omega:V": 0.012300105403707634,
+   "omega:Ka": 0.40303771795282567,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15575366995325243,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 83,
+  "ofv": 334.78970897988813,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0572898197676315,
+   "theta:V": 33.849161148836174,
+   "theta:Ka": 1.3654881787583995,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018910342693959598,
+   "omega:V": 0.011788738878343861,
+   "omega:Ka": 0.455533943681734,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16693432368203906,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 84,
+  "ofv": 341.2253155636612,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9685136296431516,
+   "theta:V": 33.88751038228129,
+   "theta:Ka": 1.5262515628649385,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07281433661575491,
+   "omega:V": 0.021864052013509605,
+   "omega:Ka": 0.6297095329870565,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15562874306180652,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 85,
+  "ofv": 359.7759475904435,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.497157584078167,
+   "theta:V": 31.49802240499202,
+   "theta:Ka": 1.4079683632490962,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.14731629266863155,
+   "omega:V": 0.020315968893862568,
+   "omega:Ka": 0.25757344186074466,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1423270100738071,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 86,
+  "ofv": 329.5080305656645,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9467400449254195,
+   "theta:V": 34.00300458360027,
+   "theta:Ka": 1.4883923683654763,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.08088857263747794,
+   "omega:V": 0.020569097919347103,
+   "omega:Ka": 0.6277419077659885,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1466353281652416,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 87,
+  "ofv": 354.47649099839487,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.725790334573578,
+   "theta:V": 32.76292033217588,
+   "theta:Ka": 1.8281162757856129,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06773346236352372,
+   "omega:V": 0.020023420898866894,
+   "omega:Ka": 0.6650338807596217,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15347587561725742,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 88,
+  "ofv": 352.46463687176157,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6116199489710556,
+   "theta:V": 32.57193423401089,
+   "theta:Ka": 2.2285142200078414,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11558474579004435,
+   "omega:V": 0.024715651185608183,
+   "omega:Ka": 0.46370366135378915,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14380863318006615,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 89,
+  "ofv": 356.27435747997293,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8644659781363386,
+   "theta:V": 32.080562671465344,
+   "theta:Ka": 1.3781615018330138,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05956374001390108,
+   "omega:V": 0.018038012418368724,
+   "omega:Ka": 0.45284628964969176,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16727132813337267,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 90,
+  "ofv": 358.49929555524693,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7484930434937738,
+   "theta:V": 31.38823613999793,
+   "theta:Ka": 1.7677479541460397,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06370038031863708,
+   "omega:V": 0.01464053194669375,
+   "omega:Ka": 0.6841147354964353,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16212659185898085,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 91,
+  "ofv": 341.5837307400027,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5262502634797555,
+   "theta:V": 31.58141854904042,
+   "theta:Ka": 1.6166889908165156,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06472519593552761,
+   "omega:V": 0.016439928429679194,
+   "omega:Ka": 0.728983558058166,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13484859928812515,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 92,
+  "ofv": 358.1227608519324,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7660483933591227,
+   "theta:V": 32.23875479272566,
+   "theta:Ka": 1.642469263252604,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0631693550858597,
+   "omega:V": 0.011286009471060069,
+   "omega:Ka": 0.3470208548231108,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16789977308460682,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 93,
+  "ofv": 343.86558459258447,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7450757982861362,
+   "theta:V": 32.436634350275085,
+   "theta:Ka": 1.7828972323349732,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11819978131561451,
+   "omega:V": 0.02426980854667067,
+   "omega:Ka": 0.42881552453537136,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1454841109916482,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 94,
+  "ofv": 367.07461516714693,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.841378123159081,
+   "theta:V": 31.079262972114698,
+   "theta:Ka": 1.1254231472417722,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05193451972143507,
+   "omega:V": 0.006478079786762422,
+   "omega:Ka": 0.1946168052578021,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.172282993535941,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 95,
+  "ofv": 344.42465252750856,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6811962557188296,
+   "theta:V": 32.30753749138884,
+   "theta:Ka": 1.3029817887702142,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09967842590538009,
+   "omega:V": 0.01685407208816001,
+   "omega:Ka": 0.18611870246787446,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15531566426914645,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 96,
+  "ofv": 334.58298760496496,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8080363140782887,
+   "theta:V": 31.391583372735433,
+   "theta:Ka": 1.680932127500316,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05763168459612359,
+   "omega:V": 0.013555675391351399,
+   "omega:Ka": 0.4378040165753347,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13794090836350975,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 97,
+  "ofv": 330.4103392786459,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9384697073018478,
+   "theta:V": 33.103353268108386,
+   "theta:Ka": 1.1458295751655976,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.022553523977566627,
+   "omega:V": 0.0036195770084647663,
+   "omega:Ka": 0.3005871864004296,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15681943718241498,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 98,
+  "ofv": 350.59727448831137,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7790085557308086,
+   "theta:V": 33.19658667590141,
+   "theta:Ka": 1.2146081034634921,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07880134998847275,
+   "omega:V": 0.013154202913044265,
+   "omega:Ka": 0.3050475259025121,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15059629796421153,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 99,
+  "ofv": 367.18550037387956,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.579992871776379,
+   "theta:V": 30.39684881400867,
+   "theta:Ka": 1.2432968073328385,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09617002732744069,
+   "omega:V": 0.008216443406107386,
+   "omega:Ka": 0.4356599528887365,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17028891069798877,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 100,
+  "ofv": 333.16448393566895,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6774842898303306,
+   "theta:V": 32.35860428288825,
+   "theta:Ka": 1.864301063200964,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.12504115186069129,
+   "omega:V": 0.029050197548268986,
+   "omega:Ka": 0.7490251177345403,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1366662381959844,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 101,
+  "ofv": 334.0227277418469,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7048883444912835,
+   "theta:V": 32.3120963524499,
+   "theta:Ka": 1.510014671263391,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0662163188400464,
+   "omega:V": 0.014335165594744606,
+   "omega:Ka": 0.7951828370065974,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14734045219402572,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 102,
+  "ofv": 312.19061010295,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.907572229933874,
+   "theta:V": 33.25960928064221,
+   "theta:Ka": 1.7790265906284146,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03190175625085409,
+   "omega:V": 0.013532200883669677,
+   "omega:Ka": 0.4617260127715598,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13371038232755303,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 103,
+  "ofv": 340.69086204487684,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7944136001615467,
+   "theta:V": 33.66610857255458,
+   "theta:Ka": 1.6727934438413894,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0774484379147444,
+   "omega:V": 0.018685533502668376,
+   "omega:Ka": 0.6889401902135369,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15134225993949674,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 104,
+  "ofv": 392.9184710336322,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.4764928329430367,
+   "theta:V": 33.05869631923569,
+   "theta:Ka": 1.4059684381391733,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11068959480842021,
+   "omega:V": 0.016982675967492714,
+   "omega:Ka": 5.298369483586149e-05,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1873623550558595,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 105,
+  "ofv": 347.05581579902514,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.784794807090176,
+   "theta:V": 30.28088160813475,
+   "theta:Ka": 1.9924791872252405,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.019140683481741094,
+   "omega:V": 0.0041883498698402945,
+   "omega:Ka": 1.0738723820794387,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16574896996117647,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 106,
+  "ofv": 346.47192525067067,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6189844948405803,
+   "theta:V": 31.093610220118048,
+   "theta:Ka": 2.173448652633817,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06264293509142235,
+   "omega:V": 0.01752182643251337,
+   "omega:Ka": 0.8979271218089571,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1468789622203997,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 107,
+  "ofv": 342.94325815874066,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.896727777140773,
+   "theta:V": 31.549057297064827,
+   "theta:Ka": 1.4763941388941688,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.009046263017159238,
+   "omega:V": 0.0026751215928474577,
+   "omega:Ka": 0.38387183242456197,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17245015281163453,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 108,
+  "ofv": 324.5807513021625,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.439705477581727,
+   "theta:V": 30.08358283025655,
+   "theta:Ka": 2.3984690221785714,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05283578780359239,
+   "omega:V": 0.011960753659855624,
+   "omega:Ka": 1.38277134059515,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.12539497263446184,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 109,
+  "ofv": 308.2571826437594,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.23379104208102,
+   "theta:V": 33.66806481094673,
+   "theta:Ka": 1.4438452451492956,
+   "theta:ALAG": 0.0,
+   "omega:CL": 1.0766172932059011e-07,
+   "omega:V": 2.5339869576953154e-05,
+   "omega:Ka": 0.3971108317005737,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1741070584115898,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 110,
+  "ofv": 351.387108129528,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5134880158243615,
+   "theta:V": 31.239442757103262,
+   "theta:Ka": 2.07718451901782,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10294287237873924,
+   "omega:V": 0.01701404805187227,
+   "omega:Ka": 0.5085472240062057,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14727104707146638,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 111,
+  "ofv": 314.05743263015523,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6924273504612684,
+   "theta:V": 32.211989963775814,
+   "theta:Ka": 1.56458797346534,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07841630024146665,
+   "omega:V": 0.019776653797502465,
+   "omega:Ka": 0.917235587595237,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.12243551240225578,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 112,
+  "ofv": 298.3232250565978,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0226420016619757,
+   "theta:V": 33.69009679137025,
+   "theta:Ka": 2.3115608482855383,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.042357166662393086,
+   "omega:V": 0.0207940847775571,
+   "omega:Ka": 0.7755740775044458,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.12365368808774758,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 113,
+  "ofv": 344.6084377954527,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0864846067779905,
+   "theta:V": 33.671408143196324,
+   "theta:Ka": 1.435131550861378,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.020594120965720074,
+   "omega:V": 0.012818313096574533,
+   "omega:Ka": 0.45099073840742265,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17352006284605276,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 114,
+  "ofv": 312.57984303625204,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.087365188980321,
+   "theta:V": 31.72612118509657,
+   "theta:Ka": 1.086582043897509,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.004480368651630066,
+   "omega:V": 4.657800052806047e-06,
+   "omega:Ka": 0.1821139702637272,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17217924240287957,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 115,
+  "ofv": 355.8943304374965,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.68381332407081,
+   "theta:V": 31.621625988671376,
+   "theta:Ka": 1.79919037166986,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06509890093945692,
+   "omega:V": 0.015931282986386283,
+   "omega:Ka": 0.707854617284582,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15152761666698947,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 116,
+  "ofv": 349.96738921041015,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.938004180152814,
+   "theta:V": 33.67314773450522,
+   "theta:Ka": 1.2272166716931707,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06476990086597997,
+   "omega:V": 0.009364862689495686,
+   "omega:Ka": 0.3260906538380212,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16908380141637205,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 117,
+  "ofv": 339.16753073756286,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.508963930588397,
+   "theta:V": 31.79580455042942,
+   "theta:Ka": 1.193968249647753,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09031796064373811,
+   "omega:V": 0.010448113513490334,
+   "omega:Ka": 0.1649431962738731,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1430752886894843,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 118,
+  "ofv": 348.9491792628512,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.860076616448849,
+   "theta:V": 32.7559540058801,
+   "theta:Ka": 1.2214578683338029,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06084942068292173,
+   "omega:V": 0.009789248898308919,
+   "omega:Ka": 0.21142244537757873,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16709412502187934,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 119,
+  "ofv": 360.1337326140894,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7545412953457658,
+   "theta:V": 31.146853998459154,
+   "theta:Ka": 1.4973498244329433,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0459118256665338,
+   "omega:V": 0.008396623124984482,
+   "omega:Ka": 0.30367186178096656,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17631561689024516,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 120,
+  "ofv": 328.7384468386213,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.864450312456913,
+   "theta:V": 32.330176063403826,
+   "theta:Ka": 1.902056149947716,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02000708438086219,
+   "omega:V": 0.00595908120803769,
+   "omega:Ka": 0.3562982533618697,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15069140199002637,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 121,
+  "ofv": 368.26163162359774,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.4735638583672284,
+   "theta:V": 29.67721860741275,
+   "theta:Ka": 1.0157828360355294,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.08768955449813591,
+   "omega:V": 0.007120711507659616,
+   "omega:Ka": 0.4585529890104069,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1553939766458987,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 122,
+  "ofv": 336.0182692448975,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.883337489211065,
+   "theta:V": 33.26180633036562,
+   "theta:Ka": 1.8604083759497496,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03352631020237658,
+   "omega:V": 0.019223028719348435,
+   "omega:Ka": 0.7535949069015769,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14881565220977866,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 123,
+  "ofv": 332.8855721841195,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.623367360521314,
+   "theta:V": 30.14005468176375,
+   "theta:Ka": 1.5322556022290965,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0232752397955915,
+   "omega:V": 0.0066426395997928826,
+   "omega:Ka": 1.1947751512033318,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14283187922401316,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 124,
+  "ofv": 302.7615741654158,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8920558357283923,
+   "theta:V": 32.15772471621609,
+   "theta:Ka": 1.233952526113798,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01009080677627648,
+   "omega:V": 2.9698144314553247e-05,
+   "omega:Ka": 0.16848316508118638,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15182652801229252,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 125,
+  "ofv": 335.9310054895749,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.965436961313396,
+   "theta:V": 32.90306857551836,
+   "theta:Ka": 1.4635252216386936,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.011851473379780481,
+   "omega:V": 0.005756192437065459,
+   "omega:Ka": 0.5104093924616786,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16593977011173291,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 126,
+  "ofv": 333.6563306619694,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.2871659970333327,
+   "theta:V": 35.52912806247048,
+   "theta:Ka": 2.352599734979334,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03007431678397276,
+   "omega:V": 0.019456224021821653,
+   "omega:Ka": 0.4924785527866547,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15798080351515947,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 127,
+  "ofv": 357.3228040718077,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.3558060525699243,
+   "theta:V": 28.99301034047747,
+   "theta:Ka": 1.1358687307556596,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.1183980925571257,
+   "omega:V": 0.006066485715637788,
+   "omega:Ka": 0.5271163770023584,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14470692279533673,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 128,
+  "ofv": 354.3290966827813,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8898376940707236,
+   "theta:V": 33.494912590663326,
+   "theta:Ka": 1.9807478190548502,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07501082978748434,
+   "omega:V": 0.015239962927417356,
+   "omega:Ka": 0.3571671467695655,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16428213678832088,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 129,
+  "ofv": 351.5572755269585,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9017006019719704,
+   "theta:V": 32.11489919210936,
+   "theta:Ka": 1.9464239120608644,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018968788114740533,
+   "omega:V": 0.009684023285272684,
+   "omega:Ka": 0.6035743466634568,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17448572943040427,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 130,
+  "ofv": 330.41359306144943,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9368704048609366,
+   "theta:V": 33.86824252229783,
+   "theta:Ka": 1.5918622394428552,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02444273441049864,
+   "omega:V": 0.007648778671411817,
+   "omega:Ka": 0.48198923490637413,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15000938392562949,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 131,
+  "ofv": 347.92990424006257,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9789322280972725,
+   "theta:V": 33.44672531721264,
+   "theta:Ka": 2.12056825560094,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.026330885393842898,
+   "omega:V": 0.015740455485110313,
+   "omega:Ka": 0.6170290966228601,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16354394880662115,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 132,
+  "ofv": 329.58575484394635,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.676635202423968,
+   "theta:V": 32.420451728359446,
+   "theta:Ka": 1.8581950816612802,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.12779745664977282,
+   "omega:V": 0.02753586578156129,
+   "omega:Ka": 0.7473310842812438,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13867578203847405,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 133,
+  "ofv": 352.381716114768,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.909201789841123,
+   "theta:V": 31.67736023085411,
+   "theta:Ka": 1.8482856999097173,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.010374545900739085,
+   "omega:V": 0.0056423018068251255,
+   "omega:Ka": 0.5486332821150146,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1766991341384509,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 134,
+  "ofv": 332.98169179510364,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.811489733329286,
+   "theta:V": 29.81274779256054,
+   "theta:Ka": 1.547903668362026,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018276414255176916,
+   "omega:V": 0.007202804197651488,
+   "omega:Ka": 1.2758581921802017,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15397964464095903,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 135,
+  "ofv": 387.63466072106996,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6741576121997026,
+   "theta:V": 32.75229388546387,
+   "theta:Ka": 1.8790294245184815,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11757579915956894,
+   "omega:V": 0.017345086464337172,
+   "omega:Ka": 0.40995525187148535,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1726862629305152,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 136,
+  "ofv": 354.4738526844807,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0939839781456726,
+   "theta:V": 32.9559775692749,
+   "theta:Ka": 1.935619509732018,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02108071068444487,
+   "omega:V": 0.013571361804301922,
+   "omega:Ka": 0.41951187083549873,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17119078870136306,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 137,
+  "ofv": 342.6507448768288,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.871926089309557,
+   "theta:V": 30.254473438827308,
+   "theta:Ka": 1.0412644775890991,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.009748966416687389,
+   "omega:V": 0.001606910488399128,
+   "omega:Ka": 0.41228664390368197,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1700868822227747,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 138,
+  "ofv": 321.64789817862777,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.921040845162359,
+   "theta:V": 33.05294411924935,
+   "theta:Ka": 1.6113192662813929,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0251966774079212,
+   "omega:V": 0.008682386008822249,
+   "omega:Ka": 0.5020827330681723,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1476620026994753,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 139,
+  "ofv": 378.23422192323665,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.68811822986109,
+   "theta:V": 31.800586810073206,
+   "theta:Ka": 1.0392632973402118,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04624814287030784,
+   "omega:V": 0.0042472213816706055,
+   "omega:Ka": 0.1255886518300343,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1754089134934288,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 140,
+  "ofv": 323.53884736552936,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.2164818412302405,
+   "theta:V": 34.01722786134438,
+   "theta:Ka": 1.4259184758343633,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0025194396210972336,
+   "omega:V": 4.812701768220958e-05,
+   "omega:Ka": 0.3647067652093531,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18145443240404804,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 141,
+  "ofv": 362.57050291937423,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7473026549713446,
+   "theta:V": 33.42905349311288,
+   "theta:Ka": 1.230010102718872,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11944086850227842,
+   "omega:V": 0.01829522125520873,
+   "omega:Ka": 0.30196384188869013,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15810442797446594,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 142,
+  "ofv": 356.19562283954565,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.75900372936588,
+   "theta:V": 33.05329749149097,
+   "theta:Ka": 1.1186794305083194,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.062058034361352245,
+   "omega:V": 0.009703832194332357,
+   "omega:Ka": 0.161893366809293,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16490783177617427,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 143,
+  "ofv": 375.76079209463296,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8385230592244715,
+   "theta:V": 32.8068112751428,
+   "theta:Ka": 1.3071788626383452,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06278778594072812,
+   "omega:V": 0.01033033345904331,
+   "omega:Ka": 0.23226395252111895,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1773755350222792,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 144,
+  "ofv": 354.0366434795476,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.901979890454833,
+   "theta:V": 32.80317308686872,
+   "theta:Ka": 2.0452160348123125,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07800993745261255,
+   "omega:V": 0.020353973295502613,
+   "omega:Ka": 0.7546697272830456,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16673128206045004,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 145,
+  "ofv": 341.00631117563177,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9326181561359226,
+   "theta:V": 32.539747976662184,
+   "theta:Ka": 1.9094883444386521,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02648040264562573,
+   "omega:V": 0.01108425172958585,
+   "omega:Ka": 0.7948357667109807,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1636228652056441,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 146,
+  "ofv": 359.09018669454406,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6370648063744193,
+   "theta:V": 31.44075460385511,
+   "theta:Ka": 1.4373399831493154,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.060593973255874324,
+   "omega:V": 0.010380866369696677,
+   "omega:Ka": 0.4622452661336362,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15505174854237402,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 147,
+  "ofv": 339.67869124100775,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6175678458609455,
+   "theta:V": 31.21792636674462,
+   "theta:Ka": 1.8905840841255435,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05338748322519936,
+   "omega:V": 0.009258993554249193,
+   "omega:Ka": 0.6339751704987293,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1426617975565741,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 148,
+  "ofv": 300.4472559333343,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7987316482875753,
+   "theta:V": 34.5690948079329,
+   "theta:Ka": 1.744086642268265,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07291573199544471,
+   "omega:V": 0.011669187751925198,
+   "omega:Ka": 0.20803903169716817,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.11667616991430776,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 149,
+  "ofv": 343.5894334676834,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.800127699873875,
+   "theta:V": 30.896435789332273,
+   "theta:Ka": 1.6257067394518412,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05646961187635369,
+   "omega:V": 0.011401414495021241,
+   "omega:Ka": 0.43651403782301146,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14999770861569403,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 150,
+  "ofv": 332.17279083414354,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.952917930274411,
+   "theta:V": 32.67892344224962,
+   "theta:Ka": 1.563683661703026,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.012569203818081772,
+   "omega:V": 0.004876359993291046,
+   "omega:Ka": 0.5055242420265876,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16774427920189133,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 151,
+  "ofv": 335.6818800217035,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.802791981087593,
+   "theta:V": 31.38021442429112,
+   "theta:Ka": 1.2285167209990162,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.013380542394170324,
+   "omega:V": 0.006034975336448042,
+   "omega:Ka": 0.4362559697937716,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15859146367293211,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 152,
+  "ofv": 319.9146595849968,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1919517340794656,
+   "theta:V": 35.67559331691454,
+   "theta:Ka": 1.8267542122677372,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.017846556875802663,
+   "omega:V": 0.004169283184735667,
+   "omega:Ka": 0.18289442357393926,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1629028921162815,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 153,
+  "ofv": 354.8670377768072,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8918248399650865,
+   "theta:V": 33.02398972998268,
+   "theta:Ka": 1.7790890970564082,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.010588270089764875,
+   "omega:V": 0.008831685902128133,
+   "omega:Ka": 0.5907299117341461,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17038532706555998,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 154,
+  "ofv": 330.05407919085224,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6406330860597116,
+   "theta:V": 32.2996211109164,
+   "theta:Ka": 1.5326913837182543,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09772557563737047,
+   "omega:V": 0.015177732911606593,
+   "omega:Ka": 0.18614435670261578,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1391758795752879,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 155,
+  "ofv": 353.363468786114,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9564459270913086,
+   "theta:V": 32.841370033540166,
+   "theta:Ka": 1.127641106360158,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04731294332911322,
+   "omega:V": 0.010034447591985454,
+   "omega:Ka": 0.12442206400848022,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.18952002424765294,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 156,
+  "ofv": 336.3077507578198,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8730159838711278,
+   "theta:V": 34.06945632897406,
+   "theta:Ka": 1.4540875738047785,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07519409962201053,
+   "omega:V": 0.01255045281023254,
+   "omega:Ka": 0.25588741717213564,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14742818817337533,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 157,
+  "ofv": 357.08427628616096,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.418800383455207,
+   "theta:V": 31.264837384328757,
+   "theta:Ka": 1.1474608640740396,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.13121740108336225,
+   "omega:V": 0.012688998358853683,
+   "omega:Ka": 0.1801558827334605,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15173676864190974,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 158,
+  "ofv": 332.92335818025464,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9860677617095646,
+   "theta:V": 33.5449236548318,
+   "theta:Ka": 0.9788497451320416,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01064685749239418,
+   "omega:V": 0.0004120983519225886,
+   "omega:Ka": 0.13663955413240983,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17157592003497624,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 159,
+  "ofv": 332.33996412019303,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8773656216841306,
+   "theta:V": 32.6370041601826,
+   "theta:Ka": 1.3459809086902041,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03826789086842169,
+   "omega:V": 0.014735529611538841,
+   "omega:Ka": 0.5999904044278775,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14360283890870237,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 160,
+  "ofv": 364.8475840438434,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6897075091271456,
+   "theta:V": 30.953921276843815,
+   "theta:Ka": 1.2665616754882556,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.04224861056193881,
+   "omega:V": 0.009577448124286686,
+   "omega:Ka": 0.25189215724298203,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.178189542476872,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 161,
+  "ofv": 338.6855190612963,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0060908972180465,
+   "theta:V": 33.65938508956092,
+   "theta:Ka": 2.0758888891585663,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.03934836258096102,
+   "omega:V": 0.02216535868300843,
+   "omega:Ka": 0.8275248541496071,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14779882505083977,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 162,
+  "ofv": 349.7295696054149,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9938055936887418,
+   "theta:V": 33.4684359708526,
+   "theta:Ka": 1.3034518683061453,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.020104990742945954,
+   "omega:V": 0.0028819477676790203,
+   "omega:Ka": 0.25221775736222707,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16918328829454451,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 163,
+  "ofv": 329.37858103572205,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.105810843245888,
+   "theta:V": 34.19584507450264,
+   "theta:Ka": 1.1557402017428813,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01793927539256286,
+   "omega:V": 0.002143328310422764,
+   "omega:Ka": 0.33075572542423237,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.174729990688563,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 164,
+  "ofv": 314.63907090803934,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.075890675551004,
+   "theta:V": 34.46624312360169,
+   "theta:Ka": 1.2991652246528775,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.006077856138581659,
+   "omega:V": 0.0008214410350138658,
+   "omega:Ka": 0.16852391615649118,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17588549232881118,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 165,
+  "ofv": 342.89114058329443,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.4652342333936392,
+   "theta:V": 29.92391730439918,
+   "theta:Ka": 1.6643413421854556,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09081321122296594,
+   "omega:V": 0.00808568944225967,
+   "omega:Ka": 0.7330111129699021,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14096741066983431,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 166,
+  "ofv": 361.7833534906134,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.906869890172465,
+   "theta:V": 33.23921715439565,
+   "theta:Ka": 1.3430696008463032,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.052217556970263625,
+   "omega:V": 0.009309878704758546,
+   "omega:Ka": 0.17842268916465456,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17936483234332828,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 167,
+  "ofv": 344.1860958275846,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7249491612646746,
+   "theta:V": 31.587127511347457,
+   "theta:Ka": 1.3867811138082273,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.012169386725449724,
+   "omega:V": 0.0032034119159686167,
+   "omega:Ka": 0.40584180533404357,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15458595456104676,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 168,
+  "ofv": 367.8689434242985,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8772064886725572,
+   "theta:V": 32.81559439036708,
+   "theta:Ka": 1.7928798361858924,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06507825707339646,
+   "omega:V": 0.01676803625214049,
+   "omega:Ka": 0.3416770286758704,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17583024314584447,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 169,
+  "ofv": 345.8379672940539,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6800911526672984,
+   "theta:V": 31.746018131674724,
+   "theta:Ka": 1.4513519847490692,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10667088363447923,
+   "omega:V": 0.022734293029706726,
+   "omega:Ka": 0.4879000953133589,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14446998381515538,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 170,
+  "ofv": 319.63980700223226,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7936201939740086,
+   "theta:V": 32.235714851982316,
+   "theta:Ka": 1.2571510209052728,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05440442516487763,
+   "omega:V": 0.006464889356452712,
+   "omega:Ka": 0.21774068055244783,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.14153221976891567,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 171,
+  "ofv": 343.0540141945793,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0826116040444678,
+   "theta:V": 34.11468709917314,
+   "theta:Ka": 1.559358742490308,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.025219068765688996,
+   "omega:V": 0.0118491346981178,
+   "omega:Ka": 0.4345382685485828,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1698366759147044,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 172,
+  "ofv": 359.7671973179215,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6111527499942326,
+   "theta:V": 33.14083869380607,
+   "theta:Ka": 1.473042532746721,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.10692418625397541,
+   "omega:V": 0.013010633618993584,
+   "omega:Ka": 0.22638652595738032,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1549297829746556,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 173,
+  "ofv": 349.7938674899027,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.660990514616677,
+   "theta:V": 31.563904349458717,
+   "theta:Ka": 1.5223149426652436,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.056423275481662316,
+   "omega:V": 0.0063199811021383764,
+   "omega:Ka": 0.37632743731128965,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15764430661008494,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 174,
+  "ofv": 367.0484631441084,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.5701994989932873,
+   "theta:V": 31.06111153219404,
+   "theta:Ka": 1.4239226112098493,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09090093610070718,
+   "omega:V": 0.007312474321370085,
+   "omega:Ka": 0.14606537145877274,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16806044197026712,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 175,
+  "ofv": 298.20730010175794,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.1651280403552797,
+   "theta:V": 34.721019803584255,
+   "theta:Ka": 1.3306144477935071,
+   "theta:ALAG": 0.0,
+   "omega:CL": 3.6262435117302534e-06,
+   "omega:V": 0.00032961987431501575,
+   "omega:Ka": 0.15891480595210702,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17124879826919548,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 176,
+  "ofv": 309.7311117814646,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.212229633373206,
+   "theta:V": 36.26097813898989,
+   "theta:Ka": 1.5162182649307925,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.01346923019647389,
+   "omega:V": 0.0006765942600579403,
+   "omega:Ka": 0.24050589765464114,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16270899148968218,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 177,
+  "ofv": 362.30966414784314,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6752498272949796,
+   "theta:V": 30.79560543965215,
+   "theta:Ka": 1.685617906414295,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06368859866072672,
+   "omega:V": 0.013049991037216485,
+   "omega:Ka": 0.7863215872308268,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15452938843884612,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 178,
+  "ofv": 332.33421381730267,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9708598981892664,
+   "theta:V": 33.985096546033255,
+   "theta:Ka": 1.0561283600390023,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.018452750990976225,
+   "omega:V": 0.00148896282349631,
+   "omega:Ka": 0.15821105670412638,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17117692199650922,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 179,
+  "ofv": 351.3163032343203,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.4087311571444867,
+   "theta:V": 30.36613384362776,
+   "theta:Ka": 1.3501771063716508,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.08584025302933039,
+   "omega:V": 0.006563774865290106,
+   "omega:Ka": 0.5150434555939772,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13646679522882632,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 180,
+  "ofv": 343.98153887240295,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.639114064096064,
+   "theta:V": 30.91852790058242,
+   "theta:Ka": 1.4202574083394568,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.055495081344140454,
+   "omega:V": 0.004943385697479088,
+   "omega:Ka": 0.47465941338472994,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15322682150351521,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 181,
+  "ofv": 336.148216757377,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.681295692191607,
+   "theta:V": 31.703887347475074,
+   "theta:Ka": 1.135795013004992,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.053054847926741325,
+   "omega:V": 0.00584477047841412,
+   "omega:Ka": 0.23064575389502706,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15168564351085514,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 182,
+  "ofv": 321.2252896288138,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.99849489465504,
+   "theta:V": 35.32815119442713,
+   "theta:Ka": 1.4031323038164027,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.057326631342483475,
+   "omega:V": 0.010922498124691824,
+   "omega:Ka": 0.17700275245169766,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15628110826033967,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 183,
+  "ofv": 342.5162235592024,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.950217176868207,
+   "theta:V": 31.873731964447675,
+   "theta:Ka": 1.4716868198633046,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.024863356825685072,
+   "omega:V": 0.012898434913073863,
+   "omega:Ka": 0.5561689326742031,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1570824855911646,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 184,
+  "ofv": 329.47103482868437,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 3.0046754709778316,
+   "theta:V": 32.679830355489244,
+   "theta:Ka": 1.02298105620601,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.014928949435457094,
+   "omega:V": 0.005236937230898821,
+   "omega:Ka": 0.1909684454995012,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1596198529266323,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 185,
+  "ofv": 359.92145916730993,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9145538720344546,
+   "theta:V": 34.13748840636079,
+   "theta:Ka": 1.3372661888269692,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.0613025720106492,
+   "omega:V": 0.008954869458353207,
+   "omega:Ka": 0.1842660877186743,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1808583541000481,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 186,
+  "ofv": 346.2140098391468,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8606635131274736,
+   "theta:V": 32.03994877288741,
+   "theta:Ka": 1.1056813016934461,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.061214173349490635,
+   "omega:V": 0.011179410436654711,
+   "omega:Ka": 0.2697040637412027,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16206166768473856,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 187,
+  "ofv": 349.40516940099326,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.8489244534973226,
+   "theta:V": 32.59723287244909,
+   "theta:Ka": 1.5782325449911485,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07225565901278463,
+   "omega:V": 0.022491763091509086,
+   "omega:Ka": 0.5048980013379863,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1506440694898059,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 188,
+  "ofv": 328.0902650192295,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.936770316523962,
+   "theta:V": 32.085039063874646,
+   "theta:Ka": 1.368514531659154,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.011836757066930088,
+   "omega:V": 0.005243744939976309,
+   "omega:Ka": 0.5470932193388854,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15465899936493377,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 189,
+  "ofv": 343.67736406450683,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.843727002031058,
+   "theta:V": 31.55410749333618,
+   "theta:Ka": 1.454377590657672,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.023448124419980797,
+   "omega:V": 0.005620254154229169,
+   "omega:Ka": 0.891707340633148,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16155104322002325,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 190,
+  "ofv": 382.0411280916825,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.6550802572887515,
+   "theta:V": 31.140252103266793,
+   "theta:Ka": 1.260069451401902,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.05096355595091963,
+   "omega:V": 0.0055890691869167185,
+   "omega:Ka": 0.4396580625052498,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.17009807767544438,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 191,
+  "ofv": 349.3903856721907,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.2841974734120454,
+   "theta:V": 31.105506097815905,
+   "theta:Ka": 1.4810898505093015,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.11047865644645295,
+   "omega:V": 0.015715246253030963,
+   "omega:Ka": 0.3015636816497626,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13678559572482038,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 192,
+  "ofv": 337.87873601814306,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.844737512657477,
+   "theta:V": 33.974922703987524,
+   "theta:Ka": 1.2924921546358377,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06930253794570172,
+   "omega:V": 0.010796249338132134,
+   "omega:Ka": 0.21582619811946696,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16130157861556121,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 193,
+  "ofv": 363.91481926306153,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.70743828309607,
+   "theta:V": 31.799971251856668,
+   "theta:Ka": 1.1290799558527467,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.09307003763873278,
+   "omega:V": 0.012339140547635078,
+   "omega:Ka": 0.19410072748334367,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1725378598229685,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 194,
+  "ofv": 327.3534686542856,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.9656466036831017,
+   "theta:V": 32.983420756722104,
+   "theta:Ka": 1.4273898842316266,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.07416062815880865,
+   "omega:V": 0.02281802391754925,
+   "omega:Ka": 0.6278023984289725,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1439048972214226,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 195,
+  "ofv": 338.3295293032183,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.33568681445305,
+   "theta:V": 30.524797828902752,
+   "theta:Ka": 2.632090935747931,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.14194922809902064,
+   "omega:V": 0.023860812057829153,
+   "omega:Ka": 1.3675467404678874,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.13036031169172804,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 196,
+  "ofv": 345.14781645108195,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.723504457492968,
+   "theta:V": 32.04514577246163,
+   "theta:Ka": 1.663922552841793,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.060910078894427684,
+   "omega:V": 0.012227838362686708,
+   "omega:Ka": 0.3913357989384739,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.143846813951572,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 197,
+  "ofv": 361.34700386053885,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7581502198131678,
+   "theta:V": 32.81970611940752,
+   "theta:Ka": 2.0245489068634157,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06288452432106689,
+   "omega:V": 0.017456222311909034,
+   "omega:Ka": 0.5358283893510646,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.16253859538118487,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 198,
+  "ofv": 350.31464290814125,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.807740055754132,
+   "theta:V": 32.330088989809795,
+   "theta:Ka": 1.3969601718993037,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.02466109559781032,
+   "omega:V": 0.0068777152410447575,
+   "omega:Ka": 0.44569791194656044,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.15660236878417183,
+   "sigma:CP:additive": 0.0
+  }
+ },
+ {
+  "replicate": 199,
+  "ofv": 365.7885185655684,
+  "converged": true,
+  "status": "converged",
+  "estimates": {
+   "theta:CL": 2.7001711887559696,
+   "theta:V": 33.06960698313073,
+   "theta:Ka": 1.7826714688512935,
+   "theta:ALAG": 0.0,
+   "omega:CL": 0.06287397897147445,
+   "omega:V": 0.01221378288154958,
+   "omega:Ka": 0.323422352341897,
+   "beta:CL~WT": 1.0,
+   "beta:V~WT": 1.0,
+   "sigma:CP:proportional": 0.1607677463401295,
+   "sigma:CP:additive": 0.0
+  }
+ }
+]

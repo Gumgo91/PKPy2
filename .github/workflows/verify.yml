@@ -26,3 +26,5 @@ jobs:
         run: python examples/quickstart.py
       - name: Run the independent numerical validation
         run: python validation/numerical_validation.py
+      - name: Run the event-record checks
+        run: python validation/event_record_checks.py

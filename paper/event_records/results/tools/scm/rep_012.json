@@ -1,0 +1,41 @@
+{
+ "replicate": 12,
+ "selected": [
+  "CL~CRCL[power]",
+  "V~WT[power]"
+ ],
+ "history": [
+  {
+   "step": "base",
+   "covariates": [],
+   "ofv": 329.72503431160624
+  },
+  {
+   "step": "forward",
+   "added": "CL~CRCL[power]",
+   "delta_ofv": 35.77580412375261,
+   "ofv": 293.94923018785363
+  },
+  {
+   "step": "forward",
+   "added": "V~WT[power]",
+   "delta_ofv": 30.587054553835515,
+   "ofv": 263.3621756340181
+  },
+  {
+   "step": "forward",
+   "added": "CL~AGE[power]",
+   "delta_ofv": 4.41797461897869,
+   "ofv": 258.9442010150394
+  },
+  {
+   "step": "backward",
+   "removed": "CL~AGE[power]",
+   "delta_ofv": 4.418209254777878,
+   "ofv": 263.3624102698173
+  }
+ ],
+ "seconds": 1236.9310731887817,
+ "final_ofv": 263.3624102698173,
+ "final_status": "converged"
+}

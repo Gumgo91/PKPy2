@@ -1,0 +1,25 @@
+iv1_infusion                 20 values  max relative difference 3.15e-12
+iv2_infusion_ss              11 values  max relative difference 8.53e-13
+oral1_ss_lag_f               14 values  max relative difference 3.33e-12
+oral2_addl_lag               22 values  max relative difference 1.06e-12
+iv3_bolus_infusion           22 values  max relative difference 5.14e-12
+zero_order_d1                20 values  max relative difference 3.47e-12
+modeled_rate_r1              20 values  max relative difference 3.44e-12
+transit3                     20 values  max relative difference 2.29e-11
+reset_evid3_evid4             9 values  max relative difference 2.20e-13
+timevarying_wt               12 values  max relative difference 3.32e-12
+effect_sigmoid_emax          40 values  max relative difference 7.58e-12
+parent_metabolite            40 values  max relative difference 2.24e-11
+ss2_superposition             8 values  max relative difference 1.13e-12
+continuous_infusion_ss        4 values  max relative difference 2.62e-12
+infusion_bioavailability      8 values  max relative difference 3.59e-12
+ss_infusion_lag_tail          9 values  max relative difference 4.22e-12
+mm_iv_multiple               20 values  max relative difference 3.79e-08
+mm_oral_ss                    9 values  max relative difference 6.05e-08
+idr1                         42 values  max relative difference 1.22e-08
+idr2                         42 values  max relative difference 1.45e-08
+idr3                         42 values  max relative difference 1.17e-08
+idr4                         42 values  max relative difference 7.63e-09
+tmdd_full                    46 values  max relative difference 1.07e-06
+tmdd_qss                     46 values  max relative difference 2.13e-07
+written output\pkpy2_extended_validation\prediction_agreement.json

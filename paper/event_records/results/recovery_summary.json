@@ -1,0 +1,191 @@
+{
+ "complex_linear": {
+  "replicates": 20,
+  "converged": 20,
+  "median_seconds": 486.2434551715851,
+  "estimates": [
+   {
+    "quantity": "theta:CL",
+    "truth": 4.999999999999999,
+    "n": 20,
+    "relative_bias_pct": 0.2005717798445533,
+    "relative_rmse_pct": 6.494118361453218
+   },
+   {
+    "quantity": "theta:V1",
+    "truth": 19.999999999999996,
+    "n": 20,
+    "relative_bias_pct": 1.5011943911863759,
+    "relative_rmse_pct": 4.078348669564607
+   },
+   {
+    "quantity": "theta:Q",
+    "truth": 7.999999999999998,
+    "n": 20,
+    "relative_bias_pct": 0.8885474142726887,
+    "relative_rmse_pct": 3.805954537337006
+   },
+   {
+    "quantity": "theta:V2",
+    "truth": 40.0,
+    "n": 20,
+    "relative_bias_pct": -0.05593899050640785,
+    "relative_rmse_pct": 1.8912051744962868
+   },
+   {
+    "quantity": "omega:CL",
+    "truth": 0.09,
+    "n": 20,
+    "relative_bias_pct": -10.42249593807989,
+    "relative_rmse_pct": 19.1202618280674
+   },
+   {
+    "quantity": "omega:V1",
+    "truth": 0.05999999999999999,
+    "n": 20,
+    "relative_bias_pct": -11.962033700705172,
+    "relative_rmse_pct": 18.709476744632155
+   },
+   {
+    "quantity": "omega_covariance:V1,CL",
+    "truth": 0.04,
+    "n": 20,
+    "relative_bias_pct": -12.297563403487324,
+    "relative_rmse_pct": 24.205540921759553
+   },
+   {
+    "quantity": "iov:CL",
+    "truth": 0.03,
+    "n": 20,
+    "relative_bias_pct": 2.111246109472416,
+    "relative_rmse_pct": 30.063394554246376
+   },
+   {
+    "quantity": "coefficients:CL~WT",
+    "truth": 0.75,
+    "n": 20,
+    "relative_bias_pct": -2.3770000474468875,
+    "relative_rmse_pct": 27.146321822610375
+   },
+   {
+    "quantity": "coefficients:V1~SEX=1",
+    "truth": -0.2,
+    "n": 20,
+    "relative_bias_pct": -12.295049388578484,
+    "relative_rmse_pct": 31.408586180362196
+   },
+   {
+    "quantity": "sigma:CP:proportional",
+    "truth": 0.12000000000000001,
+    "n": 20,
+    "relative_bias_pct": -0.5483418330370337,
+    "relative_rmse_pct": 4.036446269851019
+   },
+   {
+    "quantity": "sigma:CP:additive",
+    "truth": 0.05000000000000001,
+    "n": 20,
+    "relative_bias_pct": -32.08639522817025,
+    "relative_rmse_pct": 61.997330976893316
+   }
+  ]
+ },
+ "pkpd_idr": {
+  "replicates": 20,
+  "converged": 20,
+  "median_seconds": 1201.0946717262268,
+  "estimates": [
+   {
+    "quantity": "theta:CL",
+    "truth": 2.0,
+    "n": 20,
+    "relative_bias_pct": 0.354491312868887,
+    "relative_rmse_pct": 4.05747238059563
+   },
+   {
+    "quantity": "theta:V",
+    "truth": 24.999999999999996,
+    "n": 20,
+    "relative_bias_pct": 1.3550648942167736,
+    "relative_rmse_pct": 2.918744653160207
+   },
+   {
+    "quantity": "theta:Ka",
+    "truth": 1.3,
+    "n": 20,
+    "relative_bias_pct": -0.3134140240897909,
+    "relative_rmse_pct": 5.347584504041067
+   },
+   {
+    "quantity": "theta:R0",
+    "truth": 79.99999999999997,
+    "n": 20,
+    "relative_bias_pct": 0.02469458714099382,
+    "relative_rmse_pct": 0.5173569683346376
+   },
+   {
+    "quantity": "theta:KOUT",
+    "truth": 0.15,
+    "n": 20,
+    "relative_bias_pct": 3.0640067007478478,
+    "relative_rmse_pct": 9.740313171953467
+   },
+   {
+    "quantity": "theta:EMAX",
+    "truth": 1.5,
+    "n": 20,
+    "relative_bias_pct": -0.7015078258302587,
+    "relative_rmse_pct": 4.335714525182064
+   },
+   {
+    "quantity": "theta:EC50",
+    "truth": 1.0,
+    "n": 20,
+    "relative_bias_pct": 1.1570931961683522,
+    "relative_rmse_pct": 13.961558139352965
+   },
+   {
+    "quantity": "omega:CL",
+    "truth": 0.09,
+    "n": 20,
+    "relative_bias_pct": -2.5067243001218484,
+    "relative_rmse_pct": 23.913758025969955
+   },
+   {
+    "quantity": "omega:V",
+    "truth": 0.04000000000000001,
+    "n": 20,
+    "relative_bias_pct": -4.287419677536876,
+    "relative_rmse_pct": 25.191103657778687
+   },
+   {
+    "quantity": "omega:KOUT",
+    "truth": 0.09,
+    "n": 20,
+    "relative_bias_pct": 2.2474661804723204,
+    "relative_rmse_pct": 25.01164607865281
+   },
+   {
+    "quantity": "omega:EC50",
+    "truth": 0.16000000000000003,
+    "n": 20,
+    "relative_bias_pct": 2.7844287939249805,
+    "relative_rmse_pct": 26.1708874235576
+   },
+   {
+    "quantity": "sigma:CP:proportional",
+    "truth": 0.12000000000000001,
+    "n": 20,
+    "relative_bias_pct": -1.4961648527831657,
+    "relative_rmse_pct": 6.961917364183165
+   },
+   {
+    "quantity": "sigma:R:additive",
+    "truth": 4.0,
+    "n": 20,
+    "relative_bias_pct": -0.022794171010303566,
+    "relative_rmse_pct": 5.212893507419098
+   }
+  ]
+ }
+}

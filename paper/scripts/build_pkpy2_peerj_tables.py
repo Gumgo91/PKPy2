@@ -223,15 +223,51 @@ def retitle(name, title, footnote):
 
 
 def table1():
-    """Submitted Table 1 with parameter bounds added to the fixed-component row."""
+    """Submitted Table 1 extended with the event-record interface (rows renamed, edited and added)."""
     d = docx.Document(TEMPLATE.parent / 'Table_1.docx')
-    row = next(r for r in d.tables[0].rows if r.cells[0].text == 'Fixed components')
-    for cell, text in [(row.cells[0], 'Fixed components and bounds'),
-                       (row.cells[2], 'Explicit fixed or estimated θ, Ω, σ, and covariate coefficients, with optional lower and upper bounds')]:
-        runs = cell.paragraphs[0].runs
-        runs[0].text = text
-        for r in runs[1:]:
-            r._r.getparent().remove(r._r)
+    tbl = d.tables[0]
+
+    def set_row(row, texts):
+        for cell, text in zip(row.cells, texts):
+            if text is None:
+                continue
+            runs = cell.paragraphs[0].runs
+            runs[0].text = text
+            for r in runs[1:]:
+                r._r.getparent().remove(r._r)
+
+    def row_named(name):
+        return next(r for r in tbl.rows if r.cells[0].text == name)
+
+    set_row(row_named('Basic structures'), [
+        'Structural models', None,
+        'The same four closed-form structures with oral lag; through event records, one- to three-compartment, zero-order, '
+        'transit, parent-metabolite, Michaelis-Menten, target-mediated, effect-compartment and indirect-response models and '
+        'user-defined ODEs'])
+    set_row(row_named('Interindividual variability'), [
+        'Random effects and residual error', None,
+        'Diagonal or block Ω and interoccasion variability estimated jointly with additive, proportional, combined, or '
+        'log-normal residual error for each output'])
+    set_row(row_named('Fixed components'), [
+        'Fixed components and bounds', None,
+        'Explicit fixed or estimated θ, Ω, σ, and covariate coefficients, with optional lower and upper bounds'])
+    set_row(row_named('Uncertainty evaluated here'), [
+        None, None, 'Full local population information; sandwich, profile-likelihood, bootstrap, and SIR intervals'])
+    set_row(row_named('Repeated dosing'), [
+        'Dosing and observations', None,
+        'Explicit dose histories and analytical superposition; NONMEM event records with infusions, steady state, additional '
+        'doses, resets, several outputs, and censored observations'])
+    anchor = row_named('Random effects and residual error')._tr
+    for texts in (['Covariate models', 'Regression of individual estimates on covariates with forward selection',
+                   'Power, exponential, linear, and categorical effects, including time-varying covariates, within the population '
+                   'model; stepwise selection by likelihood-ratio tests'],
+                  ['Diagnostics', 'Goodness-of-fit plots of the individual fits',
+                   'PRED, IPRED, CWRES, NPDE, shrinkage, and visual predictive checks']):
+        new_tr = copy.deepcopy(anchor)
+        anchor.addnext(new_tr)
+        anchor = new_tr
+        row = next(r for r in tbl.rows if r._tr is new_tr)
+        set_row(row, texts)
     d.save(OUT / 'Table_1.docx')
 
 

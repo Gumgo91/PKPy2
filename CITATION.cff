@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use PKPy2, please cite the software and the associated manuscript."
 title: "PKPy2"
 type: software
-version: 0.1.0a3
+version: 0.2.0
 authors:
   - family-names: "Kong"
     given-names: "Hyunseung"

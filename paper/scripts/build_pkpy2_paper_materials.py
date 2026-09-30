@@ -21,7 +21,16 @@ SCRIPTS = ['export_pkpy2_comparison_data.py', 'pkpy2_software_comparison.R', 'an
            'pkpy2_tobramycin_focei_check.R', 'pkpy2_manuscript_numbers.py', 'build_pkpy2_peerj_figures.py',
            'build_pkpy2_peerj_tables.py', 'build_pkpy2_peerj_raw_data.py', 'build_pkpy2_peerj_codebook.py',
            'build_pkpy2_peerj_supplement.py', 'revise_pkpy2_peerj_manuscript.py', 'build_pkpy2_jpkpd_submission.py',
-           'build_pkpy2_paper_materials.py']
+           'build_pkpy2_paper_materials.py', 'build_pkpy2_submission.sh']
+EVENT = ROOT / 'output/pkpy2_extended_validation'
+EVENT_SCRIPTS = ['validate_pkpy2_extended_predictions.py', 'validate_pkpy2_extended_predictions.R',
+                 'validate_pkpy2_extended_likelihood.py', 'validate_pkpy2_general_vs_classic.py',
+                 'validate_pkpy2_classic_unchanged.py', 'validate_pkpy2_diagnostics.py', 'validate_pkpy2_diagnostics.R',
+                 'validate_pkpy2_npde.R', 'validate_pkpy2_extended_vs_nlmixr2.py', 'validate_pkpy2_extended_vs_nlmixr2.R',
+                 'validate_pkpy2_warfarin_pkpd.py', 'validate_pkpy2_warfarin_pkpd.R', 'validate_pkpy2_extended_recovery.py',
+                 'validate_pkpy2_calibration.py', 'validate_pkpy2_tools.py', 'run_pkpy2_extended_validation.sh',
+                 'pkpy2_extended_numbers.py', 'build_pkpy2_extended_figures.py', 'pkpy2_extended_manuscript.py',
+                 'pkpy2_extended_supplement.py', 'pkpy2_extended_raw_data.py', 'pkpy2_references.py']
 CLINICAL = ('theophylline__', 'warfarin__', 'tobramycin__', 'tobramycin_expert__')
 TOB_RECORDS = ['protocol.json', 'start_1.json', 'start_2.json', 'bounded_protocol.json', 'bounded_start_1.json', 'bounded_start_2.json',
                'judgment_protocol.json', 'judgment_start_1.json', 'judgment_start_2.json', 'expert_judgment_protocol.json',
@@ -51,6 +60,7 @@ and the scripts that assemble the figures, tables and supplementary material.
 | `install_packages.R` | Package installation used for the comparison |
 | `scripts/` | All scripts listed below |
 | `raw_data/` | Raw-data workbook, its CSV files and the codebook (Online Resources 2-4 of the article) |
+| `event_records/` | Validation of the event-record interface: scripts, datasets, fit records, summaries and logs (see below) |
 
 The tobramycin data are the public dataset of the PKGPT repository (https://github.com/Gumgo91/PKGPT, `dataset/`).
 
@@ -86,10 +96,41 @@ python scripts/build_pkpy2_peerj_codebook.py <output dir>
 python scripts/build_pkpy2_peerj_supplement.py <output.pdf> --tobramycin
 ```
 
+After the event-record validation (below), `scripts/build_pkpy2_submission.sh` rebuilds all figures, tables,
+raw data, the manuscript, the supplement and this folder in the required order.
+
 The R script skips records that already exist, so an interrupted run can be resumed. Models, starting
 values, fixed terms and bounds are identical to the PKPy2 protocols. nlmixr2 SAEM does not apply
 parameter bounds; saemix was not applied to warfarin, whose model fixes nonzero variance components,
 or to the bounded tobramycin model.
+
+## Event-record interface
+
+`event_records/scripts/run_pkpy2_extended_validation.sh` runs every check in order; the R scripts write the rxode2,
+nlmixr2 and npde reference results first:
+
+```
+Rscript scripts/validate_pkpy2_extended_predictions.R      # rxode2 predictions (after ... .py write)
+Rscript scripts/validate_pkpy2_diagnostics.R               # nlmixr2 diagnostics at identical parameters
+Rscript scripts/validate_pkpy2_npde.R                      # npde package on PKPy2 replicates
+Rscript scripts/validate_pkpy2_extended_vs_nlmixr2.R       # nlmixr2 FOCEi fits of the simulated datasets
+Rscript scripts/validate_pkpy2_warfarin_pkpd.R focei       # nlmixr2 warfarin PK/PD fits (focei, saem)
+bash scripts/run_pkpy2_extended_validation.sh
+python scripts/pkpy2_extended_numbers.py
+```
+
+| Path | Description |
+| --- | --- |
+| `event_records/results/prediction_agreement.json`, `prediction_values.csv`, `predictions/` | PKPy2 and rxode2 predictions in 24 scenarios |
+| `event_records/results/likelihood_agreement.json`, `likelihood/` | Marginal OFV against independent adaptive Gauss-Hermite quadrature |
+| `event_records/results/general_vs_classic.json`, `classic_unchanged.json` | Refits through the event-record interface; the compact interface reproduces its stored results |
+| `event_records/results/diagnostics_agreement.json`, `diagnostics/` | Diagnostics against nlmixr2 and the npde package |
+| `event_records/results/vs_nlmixr2.json`, `vs_nlmixr2/` | Simulated datasets, nlmixr2 FOCEi and PKPy2 fits, exact OFVs |
+| `event_records/results/warfarin_pkpd/` | Warfarin PK/PD data (nlmixr2data), nlmixr2 FOCEi/SAEM and PKPy2 fits, exact OFVs, diagnostics and VPC |
+| `event_records/results/recovery/`, `recovery_summary.json` | Recovery simulations (designs and per-replicate records) |
+| `event_records/results/calibration/`, `calibration_summary.json` | NPDE and VPC calibration at the true parameters |
+| `event_records/results/tools/`, `tools_summary.json` | Interval methods (theophylline) and stepwise covariate selection |
+| `event_records/results/logs/` | Run logs |
 
 ## Raw data
 
@@ -114,11 +155,20 @@ def main():
     files += [(CMP / n, n) for n in ['comparison_summary.json', 'comparison_replicates.csv', 'clinical_likelihood_check.json',
                                      'install_packages.R']]
     files += [(ROOT / 'scripts' / n, f'scripts/{n}') for n in SCRIPTS]
+    files += [(ROOT / 'scripts' / n, f'event_records/scripts/{n}') for n in EVENT_SCRIPTS]
+    files += [(p, f'event_records/results/{p.relative_to(EVENT).as_posix()}') for p in sorted(EVENT.rglob('*'))
+              if p.is_file() and not p.name.endswith('_cov0start.json')]
     missing = [str(p) for p, _ in files if not p.exists()]
     assert not missing, missing
     for p, rel in files:
         (OUT / rel).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(p, OUT / rel)
+        if p.suffix == '.log':
+            # paths in run logs are reported relative to the study folder
+            text = (OUT / rel).read_bytes()
+            for prefix in {str(ROOT) + '\\', ROOT.as_posix() + '/'}:
+                text = text.replace(prefix.encode(), b'')
+            (OUT / rel).write_bytes(text)
     print(len(files), 'files ->', OUT)
 
 

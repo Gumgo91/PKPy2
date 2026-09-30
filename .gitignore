@@ -17,5 +17,6 @@ output/
 *.pkl
 *.log
 !paper/logs/*.log
+!paper/event_records/results/logs/*.log
 *.tmp
 *.staged

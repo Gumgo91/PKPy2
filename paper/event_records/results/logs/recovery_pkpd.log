@@ -1,0 +1,4 @@
+pkpd_idr 1 converged 1093.5
+pkpd_idr 2 converged 936.4
+pkpd_idr 3 converged 1623.9
+pkpd_idr 4 error: SystemError: CPUDispatcher(<function ode_batch at 0x000001F7F1125BC0>) returned a result with an exception set 151.6

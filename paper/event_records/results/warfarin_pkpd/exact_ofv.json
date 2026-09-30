@@ -1,0 +1,21 @@
+[
+ {
+  "source": "PKPy2",
+  "ofv": 2223.1442320370734,
+  "status": "converged"
+ },
+ {
+  "source": "nlmixr2 focei",
+  "ofv": 2557.483068091407,
+  "bank_range": 0.029800520217577287,
+  "nlmixr2_objective": 1800.55330375641,
+  "seconds": 1052.14
+ },
+ {
+  "source": "nlmixr2 saem",
+  "ofv": 2241.0821291177585,
+  "bank_range": 0.03302544197958923,
+  "nlmixr2_objective": 1457.96034846948,
+  "seconds": 607.66
+ }
+]

@@ -1,0 +1,273 @@
+[
+ {
+  "scenario": "infusion_block_covariates",
+  "pkpy2_status": "converged",
+  "pkpy2_ofv": 2067.952355757025,
+  "pkpy2_seconds": 348.2000551223755,
+  "pkpy2": {
+   "theta": {
+    "CL": 5.171449519468799,
+    "V1": 20.809530371141005,
+    "Q": 8.24542713796549,
+    "V2": 39.535786019996046
+   },
+   "omega": {
+    "CL": 0.11404845726326862,
+    "V1": 0.0458561513171126
+   },
+   "omega_covariance": {
+    "V1,CL": 0.051774278813357076
+   },
+   "iov": {},
+   "coefficients": {
+    "CL~WT": 0.5111848594393811,
+    "V1~SEX=1": -0.1682171901033081
+   },
+   "sigma": {
+    "CP:proportional": 0.12684421818822803,
+    "CP:additive": 0.05146802144884319
+   }
+  },
+  "truth": {
+   "theta": {
+    "CL": 4.999999999999999,
+    "V1": 19.999999999999996,
+    "Q": 7.999999999999998,
+    "V2": 40.0
+   },
+   "omega": {
+    "CL": 0.09,
+    "V1": 0.05999999999999999
+   },
+   "omega_covariance": {
+    "V1,CL": 0.04
+   },
+   "iov": {},
+   "coefficients": {
+    "CL~WT": 0.75,
+    "V1~SEX=1": -0.2
+   },
+   "sigma": {
+    "CP:proportional": 0.12000000000000001,
+    "CP:additive": 0.05000000000000001
+   }
+  },
+  "nlmixr2_objective": 855.827760235624,
+  "nlmixr2_seconds": 61.17,
+  "nlmixr2": {
+   "theta": {
+    "CL": 5.188187175190065,
+    "V1": 20.795056824115438,
+    "Q": 8.285751324833578,
+    "V2": 39.56232775455012
+   },
+   "omega": {
+    "CL": 0.114190246968379,
+    "V1": 0.045658334174524
+   },
+   "omega_covariance": {
+    "V1,CL": 0.051764322690646396
+   },
+   "iov": {},
+   "coefficients": {
+    "CL~WT": 0.510061338254865,
+    "V1~SEX=1": -0.158591870481266
+   },
+   "sigma": {
+    "CP:proportional": 0.12695731384641398,
+    "CP:additive": 0.052301521938011304
+   }
+  },
+  "exact_ofv_at_nlmixr2": 2068.0327733495415,
+  "exact_ofv_difference": 0.08041759251636904
+ },
+ {
+  "scenario": "oral_blq_m3",
+  "pkpy2_status": "converged",
+  "pkpy2_ofv": 238.23063466697977,
+  "pkpy2_seconds": 187.28144431114197,
+  "pkpy2": {
+   "theta": {
+    "CL": 3.183560410225587,
+    "V": 36.34354979575664,
+    "Ka": 1.1787271067654936
+   },
+   "omega": {
+    "CL": 0.10315087911917209,
+    "V": 0.040015676181250216,
+    "Ka": 0.31168852501848004
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.15838733190585094,
+    "CP:additive": 0.0
+   }
+  },
+  "truth": {
+   "theta": {
+    "CL": 3.0000000000000004,
+    "V": 34.99999999999999,
+    "Ka": 1.2
+   },
+   "omega": {
+    "CL": 0.09,
+    "V": 0.04000000000000001,
+    "Ka": 0.19999999999999998
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.15,
+    "CP:additive": 0.0
+   }
+  },
+  "nlmixr2_objective": -106.120057177963,
+  "nlmixr2_seconds": 47.26,
+  "nlmixr2": {
+   "theta": {
+    "CL": 3.188889970229445,
+    "V": 37.451925802511,
+    "Ka": 1.1837163304654776
+   },
+   "omega": {
+    "CL": 0.09364958829071851,
+    "V": 0.045260416724448,
+    "Ka": 0.25426602811505006
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.166905994271488,
+    "CP:additive": 0.0
+   }
+  },
+  "exact_ofv_at_nlmixr2": 240.82377405134838,
+  "exact_ofv_difference": 2.5931393843686124
+ },
+ {
+  "scenario": "lognormal_residual",
+  "pkpy2_status": "converged",
+  "pkpy2_ofv": 34.15996641902125,
+  "pkpy2_seconds": 32.666080713272095,
+  "pkpy2": {
+   "theta": {
+    "CL": 3.763765756689649,
+    "V": 38.611585620379124
+   },
+   "omega": {
+    "CL": 0.09980964954488777,
+    "V": 0.03138112012995543
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:lognormal": 0.19475709751822398
+   }
+  },
+  "truth": {
+   "theta": {
+    "CL": 4.0,
+    "V": 40.0
+   },
+   "omega": {
+    "CL": 0.09,
+    "V": 0.04000000000000001
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:lognormal": 0.2
+   }
+  },
+  "nlmixr2_objective": 11.3763549301845,
+  "nlmixr2_seconds": 10.61,
+  "nlmixr2": {
+   "theta": {
+    "CL": 3.7797863258279487,
+    "V": 38.61927655083328
+   },
+   "omega": {
+    "CL": 0.09859654088671198,
+    "V": 0.0314926567339709
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:lognormal": 0.194654237351517
+   }
+  },
+  "exact_ofv_at_nlmixr2": 34.17026844156248,
+  "exact_ofv_difference": 0.010302022541225142
+ },
+ {
+  "scenario": "michaelis_menten",
+  "pkpy2_status": "converged",
+  "pkpy2_ofv": 1682.2637209058473,
+  "pkpy2_seconds": 159.6932339668274,
+  "pkpy2": {
+   "theta": {
+    "V": 19.450633637452132,
+    "VMAX": 41.011676669589974,
+    "KM": 3.936122850071655
+   },
+   "omega": {
+    "V": 0.05485471399575354,
+    "VMAX": 0.084237934226827
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.10222543984740316,
+    "CP:additive": 0.10229940136865606
+   }
+  },
+  "truth": {
+   "theta": {
+    "V": 19.999999999999996,
+    "VMAX": 40.0,
+    "KM": 4.0
+   },
+   "omega": {
+    "V": 0.05000000000000001,
+    "VMAX": 0.09
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.10000000000000002,
+    "CP:additive": 0.10000000000000002
+   }
+  },
+  "nlmixr2_objective": 947.384356843222,
+  "nlmixr2_seconds": 16.58,
+  "nlmixr2": {
+   "theta": {
+    "V": 19.473351704591277,
+    "VMAX": 41.1880297855988,
+    "KM": 3.9629083082805656
+   },
+   "omega": {
+    "V": 0.0548767707521653,
+    "VMAX": 0.0835856859487989
+   },
+   "omega_covariance": {},
+   "iov": {},
+   "coefficients": {},
+   "sigma": {
+    "CP:proportional": 0.102289762855878,
+    "CP:additive": 0.101746240595558
+   }
+  },
+  "exact_ofv_at_nlmixr2": 1682.2812792056816,
+  "exact_ofv_difference": 0.01755829983426338
+ }
+]

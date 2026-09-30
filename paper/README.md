@@ -22,6 +22,7 @@ and the scripts that assemble the figures, tables and supplementary material.
 | `install_packages.R` | Package installation used for the comparison |
 | `scripts/` | All scripts listed below |
 | `raw_data/` | Raw-data workbook, its CSV files and the codebook (Online Resources 2-4 of the article) |
+| `event_records/` | Validation of the event-record interface: scripts, datasets, fit records, summaries and logs (see below) |
 
 The tobramycin data are the public dataset of the PKGPT repository (https://github.com/Gumgo91/PKGPT, `dataset/`).
 
@@ -57,10 +58,41 @@ python scripts/build_pkpy2_peerj_codebook.py <output dir>
 python scripts/build_pkpy2_peerj_supplement.py <output.pdf> --tobramycin
 ```
 
+After the event-record validation (below), `scripts/build_pkpy2_submission.sh` rebuilds all figures, tables,
+raw data, the manuscript, the supplement and this folder in the required order.
+
 The R script skips records that already exist, so an interrupted run can be resumed. Models, starting
 values, fixed terms and bounds are identical to the PKPy2 protocols. nlmixr2 SAEM does not apply
 parameter bounds; saemix was not applied to warfarin, whose model fixes nonzero variance components,
 or to the bounded tobramycin model.
+
+## Event-record interface
+
+`event_records/scripts/run_pkpy2_extended_validation.sh` runs every check in order; the R scripts write the rxode2,
+nlmixr2 and npde reference results first:
+
+```
+Rscript scripts/validate_pkpy2_extended_predictions.R      # rxode2 predictions (after ... .py write)
+Rscript scripts/validate_pkpy2_diagnostics.R               # nlmixr2 diagnostics at identical parameters
+Rscript scripts/validate_pkpy2_npde.R                      # npde package on PKPy2 replicates
+Rscript scripts/validate_pkpy2_extended_vs_nlmixr2.R       # nlmixr2 FOCEi fits of the simulated datasets
+Rscript scripts/validate_pkpy2_warfarin_pkpd.R focei       # nlmixr2 warfarin PK/PD fits (focei, saem)
+bash scripts/run_pkpy2_extended_validation.sh
+python scripts/pkpy2_extended_numbers.py
+```
+
+| Path | Description |
+| --- | --- |
+| `event_records/results/prediction_agreement.json`, `prediction_values.csv`, `predictions/` | PKPy2 and rxode2 predictions in 24 scenarios |
+| `event_records/results/likelihood_agreement.json`, `likelihood/` | Marginal OFV against independent adaptive Gauss-Hermite quadrature |
+| `event_records/results/general_vs_classic.json`, `classic_unchanged.json` | Refits through the event-record interface; the compact interface reproduces its stored results |
+| `event_records/results/diagnostics_agreement.json`, `diagnostics/` | Diagnostics against nlmixr2 and the npde package |
+| `event_records/results/vs_nlmixr2.json`, `vs_nlmixr2/` | Simulated datasets, nlmixr2 FOCEi and PKPy2 fits, exact OFVs |
+| `event_records/results/warfarin_pkpd/` | Warfarin PK/PD data (nlmixr2data), nlmixr2 FOCEi/SAEM and PKPy2 fits, exact OFVs, diagnostics and VPC |
+| `event_records/results/recovery/`, `recovery_summary.json` | Recovery simulations (designs and per-replicate records) |
+| `event_records/results/calibration/`, `calibration_summary.json` | NPDE and VPC calibration at the true parameters |
+| `event_records/results/tools/`, `tools_summary.json` | Interval methods (theophylline) and stepwise covariate selection |
+| `event_records/results/logs/` | Run logs |
 
 ## Raw data
 

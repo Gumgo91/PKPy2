@@ -1,0 +1,29 @@
+{
+ "replicate": 3,
+ "selected": [
+  "CL~CRCL[power]",
+  "V~WT[power]"
+ ],
+ "history": [
+  {
+   "step": "base",
+   "covariates": [],
+   "ofv": 300.7942072192503
+  },
+  {
+   "step": "forward",
+   "added": "CL~CRCL[power]",
+   "delta_ofv": 46.95916934122931,
+   "ofv": 253.835037878021
+  },
+  {
+   "step": "forward",
+   "added": "V~WT[power]",
+   "delta_ofv": 25.328481555441726,
+   "ofv": 228.50655632257929
+  }
+ ],
+ "seconds": 907.9069561958313,
+ "final_ofv": 228.50655632257929,
+ "final_status": "converged"
+}

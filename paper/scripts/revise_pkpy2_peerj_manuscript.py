@@ -412,12 +412,16 @@ def manuscript():
                        'Pharmacology. 2019;8(12):923-930. doi:10.1002/psp4.12471.')
     insert_after(r21, '[22] R Core Team. R: A language and environment for statistical computing, version 4.5.3. Vienna, Austria: R Foundation for '
                       'Statistical Computing; 2026. https://www.R-project.org/.')
+    # Event-record interface (sections, abstract, discussion, references 23-40)
+    from pkpy2_extended_manuscript import extend
+    extend(d, N, find, set_text, insert_after, blank_after, replace_in)
     d.save(DST / 'PKPy2_PeerJ_manuscript_revised.docx')
 
 
 LEGENDS = {
     1: 'Figure 1. Population inference in PKPy and PKPy2. (A) PKPy fits each subject separately and summarizes the individual log parameters. '
-       '(B) PKPy2 fits the declared population model jointly by marginal likelihood and reports independent numerical checks and local intervals.',
+       '(B) PKPy2 reads event records, fits the declared population model jointly by marginal likelihood with an independent numerical audit, '
+       'and provides diagnostics and interval estimates.',
     2: 'Figure 2. Parameter recovery in the primary simulation by PKPy, the Gaussian two-stage control, and PKPy2. Left, relative bias with '
        '±1.96 Monte Carlo standard errors; right, relative RMSE. Each point summarizes 100 datasets (98 for the rich-sampling Gaussian control).',
     3: 'Figure 3. Coverage (A) and width (B) of PKPy2 95% confidence intervals in the primary simulation. Error bars in (A) are Wilson 95% '
@@ -426,7 +430,14 @@ LEGENDS = {
        'Tobramycin estimates were obtained with the expert-judgment constraints.',
     5: 'Figure 5. Relative errors of PKPy2, nlmixr2 FOCEi, nlmixr2 SAEM, and saemix estimates in the 200 primary simulation datasets. Boxes show '
        'medians and interquartile ranges, whiskers extend to 1.5 times the interquartile range, and diamonds mark means.',
-    6: 'Figure 6. Prediction-call speedup of dose-state recurrence over direct summation.',
+    6: 'Figure 6. Verification of the event-record interface. (A) Maximum relative differences of PKPy2 predictions from rxode2 in '
+       'linear and nonlinear (ODE) scenarios. (B) Absolute OFV differences from an independent quadrature implementation and from the '
+       'compact interface; the dashed line marks the convergence tolerance of 0.05. (C) CWRES and IWRES of the theophylline model from '
+       'PKPy2 and nlmixr2 at identical parameters. (D) Exact OFV at the nlmixr2 FOCEi and SAEM estimates minus that at the PKPy2 estimates.',
+    7: 'Figure 7. Warfarin PK/PD application and interval methods. (A, B) Visual predictive checks of plasma concentration and prothrombin '
+       'complex activity (PCA): observed 5th, 50th, and 95th percentiles (lines), 95% intervals of the simulated percentiles (bands), and '
+       'observations (points). (C) 95% intervals for the theophylline model from the Wald, sandwich, profile-likelihood, bootstrap, and SIR '
+       'methods, relative to the estimate.',
 }
 
 
@@ -435,9 +446,10 @@ def legends():
     paras = [p for p in d.paragraphs if p.text.strip()]
     assert [p.runs[0].text for p in paras] == [f'Figure {i}. ' for i in range(1, 6)]
     assert paras[4].text.startswith('Figure 5. Prediction-call speedup')
-    sixth = copy.deepcopy(paras[4]._p)
-    paras[4]._p.addnext(sixth)
-    paras.append(docx.text.paragraph.Paragraph(sixth, paras[4]._parent))
+    for _ in range(2):          # legends 6 and 7
+        extra = copy.deepcopy(paras[-1]._p)
+        paras[-1]._p.addnext(extra)
+        paras.append(docx.text.paragraph.Paragraph(extra, paras[-1]._parent))
     for i, p in enumerate(paras, start=1):
         label, body = LEGENDS[i].split('. ', 1)
         p.runs[0].text = label + '. '

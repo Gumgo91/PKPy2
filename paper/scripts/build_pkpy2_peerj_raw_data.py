@@ -13,6 +13,8 @@ import sys
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 ROOT = Path(__file__).resolve().parents[1]
 DEV = ROOT / 'output/pkpy2_development'
 REF = ROOT / 'output/pkpy2_nonmem_reference'
@@ -223,7 +225,7 @@ README = [
     ('S6_clinical_estimates', 'Clinical parameter estimates from the published expert NONMEM analyses, PKPy2, nlmixr2 FOCEi, nlmixr2 SAEM and saemix (Tables 3-5, Figure 4). Tobramycin estimates are those obtained with the expert-judgment constraints (Supplementary S10).'),
     ('S7_prediction_checks', 'Maximum scaled discrepancies of PKPy2 predictions, sensitivities and scores against independent calculations for 48 conditions.'),
     ('S8_quadrature_checks', 'Independent Gaussian-quadrature comparisons of likelihoods, optima and standard errors (Table 2).'),
-    ('S9_timing', 'Per-batch prediction-call timings for direct summation and recurrence (Figure 6, Table S10).'),
+    ('S9_timing', 'Per-batch prediction-call timings for direct summation and recurrence (Table S10).'),
 ]
 
 
@@ -243,6 +245,9 @@ def main():
         'S8_quadrature_checks': quad,
         'S9_timing': sheet_timing(),
     }
+    from pkpy2_extended_raw_data import sheets as extended_sheets, README as EXTENDED_README
+    sheets.update(extended_sheets())
+    README.extend(EXTENDED_README)
     csv_dir = OUT / 'PKPy2_raw_data_csv'
     if csv_dir.exists():
         shutil.rmtree(csv_dir)
