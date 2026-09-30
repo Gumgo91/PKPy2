@@ -166,7 +166,7 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
         'Both interfaces share the diagnostic and inference tools. PKPy2 reports conditional modes (empirical Bayes estimates) and '
         'conditional means of the random effects, population and individual predictions, weighted, conditional weighted [32], and '
         'individual weighted residuals, normalized prediction distribution errors (NPDE) [33,34], η- and ε-shrinkage [35], simulations '
-        'from the fitted model, and visual predictive checks (VPC) with optional prediction correction and censoring [36]. In addition '
+        'from the fitted model, and visual predictive checks (VPC) with optional prediction correction [36] and censoring. In addition '
         'to local Wald intervals, parameter uncertainty can be assessed with a sandwich covariance, profile likelihood, a nonparametric '
         'case bootstrap [20], and sampling importance resampling (SIR) with iterative proposal updates [37,38]. Nested models are '
         'compared by likelihood-ratio tests, and covariate effects can be selected by stepwise forward inclusion and backward '
@@ -221,6 +221,11 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
     p = insert_after(p, results_estimation(), like=rlast)
     insert_after(p, results_recovery(), like=rlast)
     replace_in(find(d, 'Prediction-call times after compilation were similar'), '(Figure 6)', '(Supplementary Table S10)')
+
+    # ------------------------------------------------------------ Citation placed on the NONMEM covariance settings it supports
+    replace_in(find(d, 'PKPy2 parameter estimates were compared with expert NONMEM results'),
+               'and covariance settings are provided in the Supplementary Material [13].',
+               'and the NONMEM covariance settings [13] are provided in the Supplementary Material.')
 
     # ------------------------------------------------------------ Earlier text that now covers both interfaces
     replace_in(find(d, 'Analytical predictions were evaluated in 12 parameter conditions'), 'the four supported structural models',
