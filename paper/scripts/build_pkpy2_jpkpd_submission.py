@@ -32,6 +32,9 @@ from pkpy2_extended_manuscript import TITLE                                     
 KEYWORDS = ['Population pharmacokinetics', 'Pharmacokinetic-pharmacodynamic modeling', 'Nonlinear mixed-effects models',
             'Marginal likelihood', 'Software validation', 'Python']
 ORCID = [('Hyunseung Kong', '0000-0001-7681-7429'), ('Inyoung Kim', '0000-0003-3062-6576')]
+# Office telephone of the corresponding author, kept in a local file that is not part of the published materials
+CONTACT = ROOT / 'docs/pkpy2_paper/corresponding_author_phone.txt'
+PHONE = CONTACT.read_text(encoding='utf-8').strip() if CONTACT.exists() else None
 
 REFERENCES = [
     'Kong H, Kim I, Zhang B-T (2025) PKPy: a Python-based framework for automated population pharmacokinetic analysis. PeerJ 13:e20258. '
@@ -303,8 +306,11 @@ def manuscript():
         if 'Republic of South Korea' in p.text:
             sub_in_paragraph(p, 'Republic of South Korea', 'Republic of Korea')
     email = find(d, 'Email address: inyoungkim@korea.kr')
+    if PHONE:
+        email = insert_paragraph_after(email)
+        add_runs(email, [(f'Telephone: {PHONE}', False)], size=12)          # as the email line
     orcid = insert_paragraph_after(email)
-    add_runs(orcid, [('ORCID: ' + '; '.join(f'{n}, https://orcid.org/{o}' for n, o in ORCID), False)])
+    add_runs(orcid, [('ORCID: ' + '; '.join(f'{n}, https://orcid.org/{o}' for n, o in ORCID), False)], size=12)
 
     # Keywords after the abstract
     abstract = find(d, 'Population pharmacokinetic (PopPK) analysis usually relies')
@@ -459,7 +465,7 @@ def cover_letter():
         'Thank you for considering our manuscript.',
         'Sincerely,',
         'Inyoung Kim (corresponding author)\nDepartment of Defense Science, Korea National Defense University, Nonsan, Republic of Korea\n'
-        'inyoungkim@korea.kr',
+        'inyoungkim@korea.kr' + (f'\nTelephone: {PHONE}' if PHONE else ''),
     ]
     for text in paras:
         d.add_paragraph(text)
