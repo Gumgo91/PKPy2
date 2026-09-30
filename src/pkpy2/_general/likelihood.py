@@ -99,6 +99,8 @@ class ObservationModel:
         dvds[..., 1] = np.where(self.lognormal, 0., 2. * self.sa ** 2)
         dvds[..., 2] = np.where(self.lognormal, 2. * self.sl ** 2, 0.)
         dv = np.where(np.isfinite(dv), dv, 0.)
+        # a failed prediction (nan) has zero weight; keep it from turning the weighted score into nan
+        dvds = np.where(np.isfinite(dvds), dvds, 0.)
         return total, dv, dvds
 
     def _censored_dv(self, z, zl, v):

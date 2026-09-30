@@ -7,7 +7,7 @@ import numpy as np
 from .problem import GeneralProblem
 from . import laplace as L
 from .refine import refine
-from .uncertainty import estimate_uncertainty
+from .uncertainty import estimate_uncertainty, laplace_uncertainty
 
 
 @dataclass
@@ -28,6 +28,12 @@ class GeneralFitResult:
     @property
     def model(self):
         return self.problem.structure.name
+
+    @property
+    def modes(self):
+        """Conditional modes of a Laplace fit (warm starts that reproduce its OFV), else None."""
+        saved = (self.estimation or {}).get('conditional_modes')
+        return [L.ModeStart(b) for b in saved] if saved is not None else None
 
     def _describe(self):
         return self.problem.describe(self.x)
@@ -75,7 +81,10 @@ class GeneralFitResult:
     def uncertainty(self, **options):
         if not self.converged:
             raise ValueError('uncertainty requires a converged fit')
-        self.uncertainty_report = estimate_uncertainty(self.problem, self.x, self.ofv, **options)
+        if (self.estimation or {}).get('method') == 'laplace':
+            self.uncertainty_report = laplace_uncertainty(self.problem, self.x, self.ofv, modes=self.modes, **options)
+        else:
+            self.uncertainty_report = estimate_uncertainty(self.problem, self.x, self.ofv, **options)
         return self.uncertainty_report
 
     def to_dict(self):
@@ -100,18 +109,83 @@ class GeneralFitResult:
         Path(path).write_text(json.dumps(self.to_dict(), indent=1, default=convert, allow_nan=True), encoding='utf-8')
 
 
+def laplace_audit(problem, x, modes=None, *, ofv_tolerance=.05, step=1e-3):
+    """Stationarity of the Laplace objective at x as a Newton decrement: sum_j g_j^2 / (2 H_jj), the OFV decrease
+    still available from the exact projected gradient g (modes re-solved) with the diagonal curvature H_jj (one
+    forward difference of the fast gradient per coordinate, step * max(coordinate scale, |x_j|)). Passed when it
+    is at most ofv_tolerance. modes: conditional modes to warm-start from (those of the minimization); also
+    returned, for reproducing the OFV later."""
+    from .refine import coordinate_scale, projected_score
+    objective = L.LaplaceObjective(problem)
+    if modes is not None:
+        objective.modes = list(modes)
+    value, exact = objective.value_grad(x, problem.bounds, exact=True)
+    if not np.isfinite(value):
+        return dict(method='laplace', ofv=float(value), passed=False, message='objective not finite'), None
+    base = list(objective.modes)
+    _, grad = objective.value_grad(x, problem.bounds)
+    scale = coordinate_scale(problem)
+    pg = projected_score(x, exact, problem.bounds)
+    rows = {}
+    for j in range(len(x)):
+        if abs(pg[j]) * scale[j] < .01:
+            continue
+        h = -np.sign(pg[j]) * step * max(scale[j], abs(x[j]))           # a step downhill stays inside the bounds
+        lo, hi = problem.bounds[j]
+        point = x.copy()
+        point[j] = min(max(x[j] + h, lo if lo is not None else -np.inf), hi if hi is not None else np.inf)
+        if point[j] == x[j]:
+            continue
+        objective.modes = list(base)
+        v2, g2 = objective.value_grad(point, problem.bounds)
+        curvature = (g2[j] - grad[j]) / (point[j] - x[j]) if np.isfinite(v2) else np.nan
+        rows[problem.labels[j]] = float(pg[j] ** 2 / (2. * curvature)) if curvature > 0 else np.inf
+    decrement = float(sum(rows.values()))
+    worst = max(rows, key=rows.get) if rows else None
+    return (dict(method='laplace', ofv=float(value), newton_decrement=decrement, ofv_tolerance=ofv_tolerance,
+                 worst_coordinate=worst, passed=bool(decrement <= ofv_tolerance)), base)
+
+
 def fit_general(data, model, *, seed=0, workers=None, laplace_options=None, refinement_options=None, callback=None,
-                start=None):
-    """Laplace exploration followed by importance refinement and an independent audit."""
+                start=None, integration=None, method='importance', laplace_tolerance=.05, polish_iterations=20):
+    """Laplace exploration followed by importance refinement and an independent audit.
+
+    integration: dict(proposal='gaussian'|'mixture', mode_search=bool) for every bank of the fit and of
+    later computations on the result (GeneralProblem.integration); the defaults keep one adapted Gaussian.
+    method='laplace' stops after the Laplace exploration and a short polish with the exact gradient (at most
+    polish_iterations): the OFV is the Laplace (FOCE-I-type) objective, the fit counts as converged when the
+    Newton decrement is at most laplace_tolerance OFV units (laplace_audit), the conditional modes are saved in
+    estimation['conditional_modes'], and uncertainty() uses the curvature of the Laplace objective."""
     import numba
+    if method not in ('importance', 'laplace'):
+        raise ValueError("method must be 'importance' or 'laplace'")
     if workers is not None:
         numba.set_num_threads(max(1, min(int(workers), numba.config.NUMBA_NUM_THREADS)))
     t0 = time.perf_counter()
-    problem = GeneralProblem(data, model)
+    problem = GeneralProblem(data, model, integration)
     x0 = problem.x0 if start is None else np.asarray(start, dtype=float)
     opts = dict(starts=4, max_iterations=150, cpu_budget_seconds=1200.)
     opts.update(laplace_options or {})
     emit = (lambda phase: (lambda row: callback(dict(phase=phase, **row)))) if callback else (lambda phase: None)
+    if method == 'laplace':
+        x_lap, exploration, modes = L.explore(problem, x0, seed=seed + 30000049, callback=emit('laplace_exploration'),
+                                              return_modes=True, **opts)
+        x_lap, modes, exploration['polish'] = L.polish(problem, x_lap, modes, scaled=bool(opts.get('scaled')),
+                                                       max_iterations=polish_iterations)
+        if callback is not None:
+            callback(dict(phase='laplace_polish', **exploration['polish']))
+        audit, modes = laplace_audit(problem, x_lap, modes, ofv_tolerance=laplace_tolerance)
+        status = 'converged' if audit['passed'] else 'partial'
+        estimation = dict(method='laplace', laplace_exploration=exploration, seed=seed,
+                          message='stationary Laplace objective' if audit['passed'] else
+                          audit.get('message') or f"Newton decrement {audit['newton_decrement']:.3g} "
+                          f"(mostly {audit['worst_coordinate']}) above {laplace_tolerance}")
+        if modes is not None:
+            estimation['conditional_modes'] = [np.asarray(m.b, dtype=float).tolist() for m in modes]
+        if integration:
+            estimation['integration'] = dict(problem.integration)
+        return GeneralFitResult(problem, np.asarray(x_lap, dtype=float), float(audit['ofv']), status, audit, estimation,
+                                time.perf_counter() - t0)
     x_lap, exploration = L.explore(problem, x0, seed=seed + 30000049, callback=emit('laplace_exploration'), **opts)
     ropts = dict(power=10, audit_power=14)
     ropts.update(refinement_options or {})
@@ -119,11 +193,13 @@ def fit_general(data, model, *, seed=0, workers=None, laplace_options=None, refi
     estimation = dict(laplace_exploration=exploration, refinement=dict(
         status=result['status'], message=result['message'], stages=result['stages'], seconds=result['seconds']),
         seed=seed)
+    if integration:
+        estimation['integration'] = dict(problem.integration)
     return GeneralFitResult(problem, result['x'], float(result['ofv']), result['status'], result['audit'], estimation,
                             time.perf_counter() - t0)
 
 
-def evaluate_general(data, model, *, seed=0, power=14, ofv_tolerance=.05, minimum_ess=100):
+def evaluate_general(data, model, *, seed=0, power=14, ofv_tolerance=.05, minimum_ess=100, integration=None):
     """Marginal OFV and a result object at the declared values, without estimation.
 
     The analogue of a NONMEM run with MAXEVAL=0: the OFV is the mean of two
@@ -133,7 +209,7 @@ def evaluate_general(data, model, *, seed=0, power=14, ofv_tolerance=.05, minimu
     """
     from .importance import Bank
     t0 = time.perf_counter()
-    problem = GeneralProblem(data, model)
+    problem = GeneralProblem(data, model, integration)
     x = problem.x0.copy()
     _, states = L.LaplaceObjective(problem).states(x)
     replicas = []

@@ -72,12 +72,25 @@ class Population:
     form: np.ndarray             # (n_out,) 0 combined, 1 lognormal, -1 not observed
 
 
+INTEGRATION_DEFAULTS = dict(proposal='gaussian', mode_search=False)
+
+
 class GeneralProblem:
-    def __init__(self, dataset, model):
+    def __init__(self, dataset, model, integration=None):
         if not isinstance(model, Model):
             raise ValueError('a pkpy2.Model is required')
         self.model = model
         self.dataset = dataset
+        # Importance proposals and conditional-mode starts used by every bank built on this problem
+        # (estimation, audit, uncertainty, diagnostics): see importance.Bank and laplace.LaplaceObjective.
+        self.integration = dict(INTEGRATION_DEFAULTS)
+        if integration:
+            unknown = set(integration) - set(INTEGRATION_DEFAULTS)
+            if unknown:
+                raise ValueError(f'unknown integration options {sorted(unknown)}')
+            if integration.get('proposal', 'gaussian') not in ('gaussian', 'mixture'):
+                raise ValueError("integration proposal must be 'gaussian' or 'mixture'")
+            self.integration.update(integration)
         s = model.structure
         self.structure = s
         self.names = list(s.parameters)

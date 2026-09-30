@@ -154,6 +154,36 @@ Runnable scripts are in [`examples/`](examples/):
   may carry an unresolved status and is not relabeled as success; intervals
   are conditional on the declared model.
 
+## Fast development fits and difficult integrals (0.2.1)
+
+Three opt-in settings of the event-record interface help with rich-data models whose individual posteriors are
+bimodal or long-tailed (for example the slow peripheral volume of a three-compartment model) and with iterative model
+development. The defaults are unchanged, and results obtained with the defaults are bit-identical to 0.2.0.
+
+```python
+result = pkpy2.fit(
+    data, model, seed=1,
+    method="laplace",                                    # Laplace (FOCE-I-type) objective, no importance refinement
+    laplace_options=dict(scaled=True, gradient="exact", starts=2, wall_seconds=1200),
+    integration=dict(proposal="mixture", mode_search=True),
+)
+result.uncertainty()                                     # covariance from the curvature of the Laplace objective
+```
+
+- `method="laplace"` stops after the Laplace minimization and a short polish with the exact gradient. The fit is
+  converged when the Newton decrement (the OFV decrease still available from the gradient and the diagonal
+  curvature) is at most `laplace_tolerance` (default 0.05). The conditional modes are saved with the result and reused
+  by `diagnostics`, `individual_estimates` and `uncertainty`, so the OFV is reproducible from the saved fit.
+- `laplace_options`: `scaled=True` measures covariate coefficients per standard deviation of their covariate term,
+  keeps linear covariate effects inside their valid domain and perturbs only typical values at extra starts;
+  `gradient="exact"` re-solves the conditional modes at every finite-difference point (the default gradient holds
+  them fixed, which is fast but can be biased when random effects are weakly identified); `wall_seconds` bounds the
+  minimization.
+- `integration=dict(proposal="mixture", mode_search=True)`: importance proposals are mixtures of the population
+  distribution and multivariate t components (3 degrees of freedom) at every conditional mode found from the
+  heaviest pilot particles, adapted by mixture population Monte Carlo; conditional modes get a second Newton solve
+  from the best of 256 prior draws. Applies to every bank of the fit and of later computations on the result.
+
 ## Evaluation summary
 
 The accompanying manuscript evaluated this implementation as follows.

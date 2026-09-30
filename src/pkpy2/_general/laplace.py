@@ -181,13 +181,59 @@ class SubjectContext:
         return 2. * J + logdet - self.d * LOG2PI if sign > 0 else np.inf
 
 
+def search_mode(ctx, state, power=8):
+    """Conditional mode after a second Newton solve from the best of 2^power prior draws (scrambled Sobol,
+    seeded by the subject index); the lower joint density J wins. Guards against a first solve that ends
+    in a secondary basin, e.g. with the peripheral compartments of a three-compartment model swapped."""
+    d = ctx.d
+    if d == 0:
+        return state
+    prior_cov = np.zeros((d, d))
+    if ctx.q:
+        prior_cov[:ctx.q, :ctx.q] = ctx.pop.omega
+    if d > ctx.q:
+        prior_cov[ctx.q:, ctx.q:] = np.diag(ctx.iov_var)
+    from scipy.special import ndtri
+    from scipy.stats import qmc
+    u = qmc.Sobol(d, scramble=True, seed=np.random.default_rng([int(ctx.i), 7919])).random_base2(power)
+    b = ctx.m0 + ndtri(np.clip(u, np.finfo(float).eps, 1. - np.finfo(float).eps)) @ np.linalg.cholesky(prior_cov).T
+    J, _ = ctx.joint(b)
+    k = int(np.argmin(J))
+    if not np.isfinite(J[k]) or (np.isfinite(state.J) and J[k] >= state.J):
+        return state
+    alt = ctx.solve(start=b[k])
+    return alt if np.isfinite(alt.ofv) and (not np.isfinite(state.ofv) or alt.J < state.J) else state
+
+
+class ModeStart:
+    """A warm start for LaplaceObjective.states that carries only the random-effect vector b (e.g. saved modes)."""
+    __slots__ = ('b',)
+
+    def __init__(self, b):
+        self.b = np.asarray(b, dtype=float)
+
+
+def best_modes(problem, x, warm):
+    """Per subject, the conditional mode with the lower joint density J among a re-solve from the warm start and a
+    cold start (with search_mode when problem.integration['mode_search'] is set); None outside the domain."""
+    objective = LaplaceObjective(problem)
+    _, cold = objective.states(x, starts=[None] * problem.N)
+    _, again = objective.states(x, starts=warm)
+    if cold is None or again is None:
+        return again if cold is None else cold
+    return [a if a.J <= c.J else c for a, c in zip(again, cold)]
+
+
 class LaplaceObjective:
-    """Sum of subject Laplace contributions; modes are warm-started between calls."""
+    """Sum of subject Laplace contributions; modes are warm-started between calls.
+
+    With problem.integration['mode_search'], a subject without a warm start also gets search_mode."""
 
     def __init__(self, problem):
         self.problem = problem
         self.modes = [None] * problem.N
         self.evaluations = 0
+        self.mode_search = bool(getattr(problem, 'integration', {}).get('mode_search'))
 
     def states(self, x, starts=None):
         """Laplace OFV and subject modes at x; (inf, None) outside the numerically valid domain."""
@@ -208,6 +254,8 @@ class LaplaceObjective:
             ctx = SubjectContext(self.problem, i, pop)
             start = starts[i].b if starts[i] is not None and len(starts[i].b) == ctx.d else None
             st = ctx.solve(start)
+            if start is None and self.mode_search:
+                st = search_mode(ctx, st)
             out.append(st)
             total += st.ofv
         self.evaluations += 1
@@ -219,7 +267,12 @@ class LaplaceObjective:
             self.modes = states
         return total
 
-    def value_grad(self, x, bounds=None):
+    def value_grad(self, x, bounds=None, exact=False):
+        """Objective and central-difference gradient. For density coordinates the modes and prediction derivatives
+        are held fixed (fast; neglects the movement of the modes through the curvature term) unless exact=True,
+        which re-solves the modes at every difference point for all coordinates (the total derivative). The exact
+        gradient uses steps of 1e-4 instead of 1e-5 (relative): the re-solved modes carry a small solver noise
+        (about 1e-5 in the OFV for weakly identified random effects), which a smaller step would amplify."""
         x = np.asarray(x, dtype=float)
         total, states = self.states(x)
         if states is None or not np.isfinite(total):
@@ -228,7 +281,7 @@ class LaplaceObjective:
         grad = np.zeros_like(x)
         problem = self.problem
         for j in range(len(x)):
-            h = 1e-5 * max(1., abs(x[j]))
+            h = (1e-4 if exact else 1e-5) * max(1., abs(x[j]))
             plus, minus = x.copy(), x.copy()
             plus[j] += h
             minus[j] -= h
@@ -241,7 +294,7 @@ class LaplaceObjective:
             span = plus[j] - minus[j]
             if span <= 0:
                 continue
-            if problem.density[j]:
+            if problem.density[j] and not exact:
                 fp = self._fixed(plus, states)
                 fm = self._fixed(minus, states)
             else:
@@ -264,20 +317,118 @@ class LaplaceObjective:
         return sum(SubjectContext(self.problem, i, pop).fixed_mode_ofv(states[i]) for i in range(self.problem.N))
 
 
+def linear_domain_bounds(problem, margin=.98):
+    """problem.bounds tightened so that every linear covariate effect 1 + beta (z - center) stays positive for all
+    subjects and records (beta within margin of the domain edge); a line search then cannot leave the domain."""
+    bounds = list(problem.bounds)
+    for k in problem.linear_effects:
+        c = int(problem.beta_coord[k])
+        if c < 0:
+            continue
+        z = (np.concatenate([zt[:, k] for zt in problem.z_tv]) if problem.effects[k]['time_varying']
+             else problem.z_tic[:, k])
+        zmax, zmin = float(np.max(z)), float(np.min(z))
+        lo = -margin / zmax if zmax > 0 else None
+        hi = -margin / zmin if zmin < 0 else None
+        old_lo, old_hi = bounds[c]
+        lo = old_lo if lo is None else (lo if old_lo is None else max(lo, old_lo))
+        hi = old_hi if hi is None else (hi if old_hi is None else min(hi, old_hi))
+        bounds[c] = (lo, hi)
+    return bounds
+
+
+class AnchoredObjective:
+    """value_grad whose warm starts are the modes of the lowest objective value seen so far, so that a far
+    line-search trial (whose modes may sit in another basin of a multimodal subject) does not carry its modes
+    into the next evaluation. Tracks the best point (x, value, modes)."""
+
+    def __init__(self, objective, exact):
+        self.objective = objective
+        self.exact = exact
+        self.x, self.value, self.modes = None, np.inf, None
+
+    def __call__(self, x):
+        if self.modes is not None:
+            self.objective.modes = list(self.modes)
+        value, grad = self.objective.value_grad(x, self.objective.problem.bounds, exact=self.exact)
+        if np.isfinite(value) and value < self.value:
+            self.x, self.value, self.modes = np.array(x, dtype=float), float(value), list(self.objective.modes)
+        return value, grad
+
+
+def polish(problem, x, modes=None, *, scaled=False, max_iterations=20):
+    """Continue the minimization from x with the exact gradient (modes re-solved at every difference point, warm
+    started from `modes`, anchored at the best point). Returns (x, modes, record) of the best point seen."""
+    from scipy.optimize import minimize
+    start = time.process_time()
+    x = np.asarray(x, dtype=float)
+    if scaled:
+        from .refine import coordinate_scale
+        scale = coordinate_scale(problem)
+    else:
+        scale = np.ones(len(x))
+    objective = LaplaceObjective(problem)
+    if modes is not None:
+        objective.modes = list(modes)
+    anchor = AnchoredObjective(objective, exact=True)
+
+    def f(u):
+        value, grad = anchor(u * scale)
+        return value, grad * scale
+    value0, _ = f(x / scale)
+    fit = minimize(f, x / scale, jac=True, method='L-BFGS-B',
+                   bounds=[(None if lo is None else lo / s, None if hi is None else hi / s)
+                           for (lo, hi), s in zip(linear_domain_bounds(problem), scale)],
+                   options=dict(maxiter=max_iterations, ftol=1e-12, gtol=1e-5, maxls=30))
+    record = dict(start_ofv=float(value0), ofv=float(anchor.value), iterations=int(fit.nit), status=str(fit.message),
+                  cpu_seconds=time.process_time() - start)
+    if anchor.x is None:
+        return x, modes, record
+    return anchor.x, anchor.modes, record
+
+
 def explore(problem, x0, *, starts=4, spreads=(math.log(3.), math.log(10.)), max_iterations=150,
-            cpu_budget_seconds=600., seed=0, agreement_starts=3, agreement_tolerance=.1, callback=None):
-    """Multi-start minimization of the Laplace objective over the typical values and covariate coefficients."""
+            cpu_budget_seconds=600., seed=0, agreement_starts=3, agreement_tolerance=.1, scaled=False,
+            callback=None, return_modes=False, gradient='fast', wall_seconds=None):
+    """Multi-start minimization of the Laplace objective over the typical values and covariate coefficients.
+
+    scaled=True measures each covariate coefficient in units of one standard deviation of its covariate term
+    during the minimization (the refinement's coordinate scale), keeps linear covariate coefficients inside
+    their valid domain (linear_domain_bounds) and perturbs only the typical values at the extra starts. It
+    conditions models whose linear or exponential covariate effects use natural units (age in years, for
+    example), where unscaled quasi-Newton steps stall and perturbed coefficients leave the valid domain.
+    gradient='exact' re-solves the conditional modes at every difference point (LaplaceObjective.value_grad):
+    slower, but the fast gradient, which holds the modes fixed, can be biased when random effects are weakly
+    identified (rich-data multi-compartment models). wall_seconds stops the minimization (at the current iterate)
+    and the remaining starts after that many seconds. The defaults keep the unscaled, fast minimization.
+    """
+    if gradient not in ('fast', 'exact'):
+        raise ValueError("gradient must be 'fast' or 'exact'")
+    exact = gradient == 'exact'
+    deadline = None if wall_seconds is None else time.perf_counter() + float(wall_seconds)
+
+    def stop(intermediate_result):
+        if time.perf_counter() > deadline:
+            raise StopIteration
+    timed = dict(callback=stop) if deadline is not None else {}
     from scipy.optimize import minimize
     from scipy.stats import qmc
     start_time = time.process_time()
     structural = [j for j, lab in enumerate(problem.labels) if lab.startswith(('theta:', 'beta:'))]
+    if scaled:
+        from .refine import coordinate_scale
+        scale = coordinate_scale(problem)
+        perturbed = [j for j in structural if problem.labels[j].startswith('theta:')]
+    else:
+        scale = np.ones(len(x0))
+        perturbed = structural
     points = [np.array(x0, dtype=float)]
-    if starts > 1 and structural:
+    if starts > 1 and perturbed:
         m = int(math.ceil(math.log2(max(starts - 1, 1))))
-        draws = qmc.Sobol(len(structural), scramble=True, seed=seed).random_base2(m)[:starts - 1]
+        draws = qmc.Sobol(len(perturbed), scramble=True, seed=seed).random_base2(m)[:starts - 1]
         for k, u in enumerate(draws):
             p = points[0].copy()
-            p[structural] += (2. * u - 1.) * spreads[k % len(spreads)]
+            p[perturbed] += (2. * u - 1.) * spreads[k % len(spreads)]
             for j, (lo, hi) in enumerate(problem.bounds):
                 if lo is not None:
                     p[j] = max(p[j], lo + 1e-6)
@@ -286,21 +437,62 @@ def explore(problem, x0, *, starts=4, spreads=(math.log(3.), math.log(10.)), max
             points.append(p)
     results = []
     for index, p in enumerate(points):
-        if time.process_time() - start_time > cpu_budget_seconds and results:
+        if results and (time.process_time() - start_time > cpu_budget_seconds
+                        or (deadline is not None and time.perf_counter() > deadline)):
             break
         objective = LaplaceObjective(problem)
         value0 = objective.value(p)
         if not np.isfinite(value0):
             results.append(dict(start=index, ofv=np.inf, x=p, status='nonfinite start', evaluations=1))
             continue
-        fit = minimize(lambda z: objective.value_grad(z, problem.bounds), p, jac=True, method='L-BFGS-B',
-                       bounds=[(lo, hi) for lo, hi in problem.bounds],
-                       options=dict(maxiter=max_iterations, ftol=1e-10, gtol=1e-4, maxls=30))
-        value = objective.value(fit.x)
-        results.append(dict(start=index, ofv=float(value), start_ofv=float(value0), x=fit.x.copy(),
-                            status=str(fit.message), iterations=int(fit.nit), evaluations=objective.evaluations))
+        def run(point):
+            if scaled or exact or timed:
+                # opt-in path: warm starts anchored at the best point (AnchoredObjective); scaled coordinates
+                # and linear-covariate domain bounds when scaled
+                anchor = AnchoredObjective(objective, exact)
+                if objective.modes and objective.modes[0] is not None:
+                    anchor.modes = list(objective.modes)
+                s = scale if scaled else np.ones(len(point))
+                limits = linear_domain_bounds(problem) if scaled else problem.bounds
+
+                def f(u):
+                    value, grad = anchor(u * s)
+                    return value, grad * s
+                fit = minimize(f, point / s, jac=True, method='L-BFGS-B',
+                               bounds=[(None if lo is None else lo / w, None if hi is None else hi / w)
+                                       for (lo, hi), w in zip(limits, s)],
+                               options=dict(maxiter=max_iterations, ftol=1e-10, gtol=1e-4, maxls=30), **timed)
+                if anchor.x is None:
+                    return fit, fit.x * s
+                objective.modes = list(anchor.modes)
+                return fit, anchor.x
+            fit = minimize(lambda z: objective.value_grad(z, problem.bounds), point, jac=True, method='L-BFGS-B',
+                           bounds=[(lo, hi) for lo, hi in problem.bounds],
+                           options=dict(maxiter=max_iterations, ftol=1e-10, gtol=1e-4, maxls=30))
+            return fit, fit.x
+        fit, x_end = run(p)
+        value = objective.value(x_end)
+        iterations, continued = int(fit.nit), 0
+        if objective.mode_search:
+            # warm-started modes follow the optimization path; when a cold search finds a subject mode with a
+            # lower joint density at the end point, adopt it and continue the minimization (at most twice)
+            for _ in range(2):
+                if deadline is not None and time.perf_counter() > deadline:
+                    break
+                modes = best_modes(problem, x_end, objective.modes)
+                if modes is None or not sum(m.ofv for m in modes) < value - 1e-6:
+                    break
+                objective.modes = modes
+                fit, x_end = run(x_end)
+                value = objective.value(x_end)
+                iterations += int(fit.nit)
+                continued += 1
+        results.append(dict(start=index, ofv=float(value), start_ofv=float(value0), x=x_end.copy(),
+                            status=str(fit.message), iterations=iterations, evaluations=objective.evaluations,
+                            **(dict(mode_restarts=continued, modes=list(objective.modes)) if objective.mode_search
+                               else {})))
         if callback is not None:
-            callback(dict(start=index, ofv=float(value), iterations=int(fit.nit)))
+            callback(dict(start=index, ofv=float(value), iterations=iterations))
         done = [r for r in results if np.isfinite(r['ofv'])]
         if len(done) >= agreement_starts and index + 1 >= agreement_starts:
             best = min(r['ofv'] for r in done[:agreement_starts])
@@ -316,5 +508,8 @@ def explore(problem, x0, *, starts=4, spreads=(math.log(3.), math.log(10.)), max
             optima.append(dict(ofv=r['ofv'], start=r['start']))
     record = dict(status='completed', starts=len(results), best_ofv=best['ofv'], distinct_optima=optima,
                   cpu_seconds=time.process_time() - start_time,
-                  runs=[{k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in r.items()} for r in results])
+                  runs=[{k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in r.items() if k != 'modes'}
+                        for r in results])
+    if return_modes:
+        return best['x'], record, best.get('modes')
     return best['x'], record

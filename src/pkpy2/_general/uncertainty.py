@@ -106,6 +106,76 @@ def delta_intervals(problem, x, cov, confidence):
     return rows
 
 
+def _laplace_hessian(problem, x, step, scale, modes=None, exact=True):
+    """Central differences of the Laplace gradient (exact: modes re-solved at every difference point) with the
+    conditional modes warm-started at x; step j is step * max(scale_j, |x_j|) with scale_j the refinement's
+    coordinate scale."""
+    from .laplace import LaplaceObjective
+    objective = LaplaceObjective(problem)
+    _, base = objective.states(x, starts=modes)
+    if base is None:
+        raise ValueError('the Laplace objective is not finite at the estimate')
+    n = len(x)
+    matrix = np.zeros((n, n))
+    for j in range(n):
+        h = step * max(scale[j], abs(x[j]))
+        lo, hi = problem.bounds[j]
+        if (lo is not None and x[j] - h <= lo) or (hi is not None and x[j] + h >= hi):
+            raise ValueError(f'curvature neighborhood touches a bound: {problem.labels[j]}')
+        grads = []
+        for sign in (1., -1.):
+            point = x.copy()
+            point[j] += sign * h
+            objective.modes = list(base)
+            value, g = objective.value_grad(point, problem.bounds, exact=exact)
+            if not np.isfinite(value):
+                raise ValueError(f'the Laplace objective is not finite near the estimate ({problem.labels[j]})')
+            grads.append(g)
+        matrix[:, j] = (grads[0] - grads[1]) / (2 * h)
+    asymmetry = float(np.linalg.norm(matrix - matrix.T) / max(np.linalg.norm(matrix), 1e-30))
+    return .5 * (matrix + matrix.T), asymmetry
+
+
+def laplace_uncertainty(problem, x, fit_ofv, *, modes=None, confidence=.95, step=.002, exact=True, callback=None):
+    """Covariance 2 H^-1 from the curvature H of the Laplace objective (the analogue of a NONMEM $COV step after
+    FOCE-I), from differences of the exact gradient (exact=False: modes held fixed, faster but possibly biased),
+    checked at two step sizes; reporting-scale intervals by the delta method."""
+    from .refine import coordinate_scale
+    start = time.perf_counter()
+    x = np.asarray(x, dtype=float)
+    scale = coordinate_scale(problem)
+    try:
+        coarse, a1 = _laplace_hessian(problem, x, step, scale, modes, exact)
+        if callback:
+            callback(dict(stage='laplace_curvature', step=step, seconds=time.perf_counter() - start))
+        fine, a2 = _laplace_hessian(problem, x, step / 2, scale, modes, exact)
+    except ValueError as error:
+        status = 'boundary_estimate' if 'bound' in str(error) else 'unresolved_curvature'
+        return dict(status=status, method='laplace_observed_information', message=str(error), intervals=[],
+                    seconds=time.perf_counter() - start)
+    h = fine
+    norm_h = max(np.linalg.norm(h), 1e-30)
+    step_change = float(np.linalg.norm(coarse - fine) / norm_h)
+    values = np.linalg.eigvalsh(h)
+    report = dict(method='laplace_observed_information', confidence=confidence, coordinates=problem.labels,
+                  point=x.tolist(), hessian=h.tolist(), eigenvalues=values.tolist(), relative_step_change=step_change,
+                  asymmetry=[a1, a2], ofv=float(fit_ofv))
+    if values[0] <= 0:
+        report.update(status='unresolved_curvature', intervals=[], seconds=time.perf_counter() - start)
+        return report
+    cov = 2. * np.linalg.inv(h)
+    sd = np.sqrt(np.diag(cov))
+    se_change = float(np.max(np.abs(np.sqrt(np.diag(2. * np.linalg.inv(coarse))) / sd - 1))) \
+        if np.linalg.eigvalsh(coarse)[0] > 0 else np.inf
+    stable = bool(step_change <= .1 and se_change <= .2 and max(a1, a2) <= .1)
+    report.update(status='computed' if stable else 'unresolved_curvature', numerically_stable=stable,
+                  maximum_relative_se_change=se_change, covariance=cov.tolist(),
+                  correlation=(cov / np.outer(sd, sd)).tolist(),
+                  intervals=delta_intervals(problem, x, cov, confidence) if stable else [],
+                  seconds=time.perf_counter() - start)
+    return report
+
+
 def estimate_uncertainty(problem, x, fit_ofv, *, confidence=.95, power=14, step=.002, seed=41000001, callback=None):
     start = time.perf_counter()
     x = np.asarray(x, dtype=float)

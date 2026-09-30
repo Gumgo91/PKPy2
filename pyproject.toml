@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pkpy2"
-version = "0.2.0"
+version = "0.2.1"
 description = "Explicit-model nonlinear mixed-effects pharmacokinetic and pharmacodynamic estimation"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"

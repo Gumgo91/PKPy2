@@ -15,7 +15,7 @@ from .data import Individual, Dataset, read_nonmem
 from .model import Model, Residual
 from . import structures
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 
 def fit(data, specification, **options):

@@ -59,7 +59,7 @@ def individual_estimates(result, *, power=12, seed=7):
     """
     problem, x = general_view(result)
     pop = problem.population(x)
-    _, states = LaplaceObjective(problem).states(x)
+    _, states = LaplaceObjective(problem).states(x, starts=getattr(result, 'modes', None))
     bank = Bank(problem, x, power=power, seed=seed, states=states)
     rows = bank.subject_terms(x)
     out = []
@@ -144,7 +144,7 @@ def diagnostics(result, *, npde_samples=1000, seed=20260930, cwres='cholesky', n
     problem, x = general_view(result)
     pop = problem.population(x)
     lap = LaplaceObjective(problem)
-    _, states = lap.states(x)
+    _, states = lap.states(x, starts=getattr(result, 'modes', None))        # a Laplace fit's own modes
     rng = np.random.default_rng(seed)
     cols = {k: [] for k in ('ID', 'TIME', 'OUTPUT', 'DV', 'CENS', 'PRED', 'IPRED', 'RES', 'IRES', 'WRES', 'CWRES',
                             'IWRES', 'NPDE', 'PD', 'EPRED')}
@@ -217,7 +217,7 @@ def diagnostics(result, *, npde_samples=1000, seed=20260930, cwres='cholesky', n
             except np.linalg.LinAlgError:
                 pass
         pdc = np.clip(pd_, 1. / (2 * nsim), 1. - 1. / (2 * nsim))
-        back = lambda v: np.where(obs.lognormal, np.exp(v), v)
+        back = lambda v: np.where(obs.lognormal, np.exp(np.where(obs.lognormal, v, 0.)), v)
         cols['ID'] += [s.id] * m
         cols['TIME'] += s.obs_time[idx].tolist()
         cols['OUTPUT'] += [problem.structure.output_names[o] for o in obs.out]

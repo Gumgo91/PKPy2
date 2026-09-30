@@ -6,6 +6,9 @@
 3. The importance-sampled marginal OFV of a model with M3 censoring against adaptive
    Gauss-Hermite quadrature over its single random effect.
 4. A small population fit converges and passes the two-bank audit.
+5. Options of 0.2.1: t-mixture importance proposals against the same quadrature; a Laplace fit that
+   converges, agrees with the marginal-likelihood fit, gives standard errors and is reproducible from
+   its saved conditional modes.
 Exits with an error if any check fails.
 """
 import math
@@ -136,6 +139,8 @@ def check_likelihood():
         integral = s * np.sum(weights * np.exp(values - top + .5 * nodes ** 2))
         total += -2. * (top + math.log(integral))
     check('marginal OFV with M3 censoring vs Gauss-Hermite quadrature', abs(result.ofv - total), .02)
+    mixture = pkpy2.evaluate(data, model, power=14, integration=dict(proposal='mixture', mode_search=True))
+    check('marginal OFV with t-mixture proposals vs Gauss-Hermite quadrature', abs(mixture.ofv - total), .02)
 
 
 # ------------------------------------------------------------------ 4. a small fit
@@ -156,6 +161,26 @@ def check_fit():
     result = pkpy2.fit(data, start, seed=1)
     print(f'      fit status {result.status}, OFV {result.ofv:.3f}, {result.seconds:.0f} s')
     check('small infusion fit converged (0 = yes)', 0. if result.converged else 1., 0.)
+    # the Laplace method with the 0.2.1 options: converged, close to the marginal-likelihood fit, reproducible
+    laplace = pkpy2.fit(data, start, seed=1, method='laplace', integration=dict(proposal='mixture', mode_search=True),
+                        laplace_options=dict(scaled=True, gradient='exact', starts=2))
+    print(f"      Laplace fit status {laplace.status}, OFV {laplace.ofv:.3f}, Newton decrement "
+          f"{laplace.audit['newton_decrement']:.2e}, {laplace.seconds:.0f} s")
+    check('small infusion Laplace fit converged (0 = yes)', 0. if laplace.converged else 1., 0.)
+    check('Laplace vs marginal estimates of CL and V (max relative difference)',
+          max(abs(laplace.theta[k] / result.theta[k] - 1) for k in ('CL', 'V')), .05)
+    report = laplace.uncertainty()
+    check('Laplace standard errors computed (0 = yes)', 0. if report['status'] == 'computed' else 1., 0.)
+    with tempfile.TemporaryDirectory() as tmp:
+        laplace.save(Path(tmp) / 'fit.json')
+        import json
+        from pkpy2._general.fit import GeneralFitResult
+        saved = json.loads((Path(tmp) / 'fit.json').read_text(encoding='utf-8'))
+        again = GeneralFitResult(laplace.problem, np.asarray(saved['x']), saved['ofv'], saved['status'], saved['audit'],
+                                 saved['estimation'], saved['seconds'])
+        from pkpy2._general.laplace import LaplaceObjective
+        value, _ = LaplaceObjective(again.problem).states(again.x, starts=again.modes)
+    check('Laplace OFV reproduced from the saved conditional modes', abs(value - laplace.ofv), 1e-6)
 
 
 if __name__ == '__main__':
