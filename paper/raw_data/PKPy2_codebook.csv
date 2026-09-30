@@ -177,3 +177,12 @@ S18_event_datasets,WT,Body weight,numeric,kg,
 S18_event_datasets,SEX,Sex,categorical (numeric code),,"warfarin_pkpd: 1 = male, 0 = female; infusion_block_covariates: simulated binary covariate with reference category 0"
 S18_event_datasets,DVID,Observed output,categorical (numeric code),,1 = warfarin concentration (mg/L); 2 = prothrombin complex activity (%)
 S18_event_datasets,AGE,Age,numeric,years,
+S19_example_diagnostics,ID,Subject,integer,,
+S19_example_diagnostics,TIME,Time after dose,numeric,h,
+S19_example_diagnostics,DV,Observed theophylline concentration,numeric,mg/L,
+S19_example_diagnostics,CENS,Censoring flag,categorical (numeric code),,1 = below the quantification limit; 0 = quantified observation
+S19_example_diagnostics,PRED,Population prediction (random effects zero),numeric,mg/L,
+S19_example_diagnostics,IPRED,Individual prediction at the conditional modes,numeric,mg/L,
+S19_example_diagnostics,IWRES,Individual weighted residual,numeric,unitless,
+S19_example_diagnostics,CWRES,Conditional weighted residual,numeric,unitless,
+S19_example_diagnostics,NPDE,Normalized prediction distribution error,numeric,unitless,

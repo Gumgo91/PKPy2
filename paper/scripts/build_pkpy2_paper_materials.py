@@ -28,7 +28,8 @@ EVENT_SCRIPTS = ['validate_pkpy2_extended_predictions.py', 'validate_pkpy2_exten
                  'validate_pkpy2_classic_unchanged.py', 'validate_pkpy2_diagnostics.py', 'validate_pkpy2_diagnostics.R',
                  'validate_pkpy2_npde.R', 'validate_pkpy2_extended_vs_nlmixr2.py', 'validate_pkpy2_extended_vs_nlmixr2.R',
                  'validate_pkpy2_warfarin_pkpd.py', 'validate_pkpy2_warfarin_pkpd.R', 'validate_pkpy2_extended_recovery.py',
-                 'validate_pkpy2_calibration.py', 'validate_pkpy2_tools.py', 'run_pkpy2_extended_validation.sh',
+                 'validate_pkpy2_calibration.py', 'validate_pkpy2_tools.py', 'validate_pkpy2_theophylline_example.py',
+                 'run_pkpy2_extended_validation.sh',
                  'pkpy2_extended_numbers.py', 'build_pkpy2_extended_figures.py', 'pkpy2_extended_manuscript.py',
                  'pkpy2_extended_supplement.py', 'pkpy2_extended_raw_data.py', 'pkpy2_references.py']
 CLINICAL = ('theophylline__', 'warfarin__', 'tobramycin__', 'tobramycin_expert__')
@@ -130,6 +131,7 @@ python scripts/pkpy2_extended_numbers.py
 | `event_records/results/recovery/`, `recovery_summary.json` | Recovery simulations (designs and per-replicate records) |
 | `event_records/results/calibration/`, `calibration_summary.json` | NPDE and VPC calibration at the true parameters |
 | `event_records/results/tools/`, `tools_summary.json` | Interval methods (theophylline) and stepwise covariate selection |
+| `event_records/results/example_theophylline/` | Theophylline example of the event-record interface (`examples/theophylline_diagnostics.py`): plots drawn by `pkpy2.plots`, diagnostics and fit summary (Online Resource 1, Listing 2 and Fig. S1) |
 | `event_records/results/logs/` | Run logs |
 
 ## Raw data

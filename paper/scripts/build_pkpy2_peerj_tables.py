@@ -262,7 +262,7 @@ def table1():
                    'Power, exponential, linear, and categorical effects, including time-varying covariates, within the population '
                    'model; stepwise selection by likelihood-ratio tests'],
                   ['Diagnostics', 'Goodness-of-fit plots of the individual fits',
-                   'PRED, IPRED, CWRES, NPDE, shrinkage, and visual predictive checks']):
+                   'PRED, IPRED, CWRES, NPDE, shrinkage, visual predictive checks, and diagnostic plots']):
         new_tr = copy.deepcopy(anchor)
         anchor.addnext(new_tr)
         anchor = new_tr

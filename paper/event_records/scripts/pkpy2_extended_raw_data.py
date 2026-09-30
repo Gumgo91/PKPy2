@@ -136,6 +136,7 @@ def sheets():
     df.insert(0, 'dataset', 'warfarin_pkpd')
     frames.append(df)
     s['S18_event_datasets'] = pd.concat(frames, ignore_index=True)
+    s['S19_example_diagnostics'] = pd.read_csv(V / 'example_theophylline/diagnostics.csv')
     return s
 
 
@@ -149,6 +150,7 @@ README = [
     ('S16_interval_and_scm', 'Theophylline 95% intervals by method and stepwise covariate selections (Figure 7c, Tables S24-S25).'),
     ('S17_warfarin_pkpd_vpc', 'Visual predictive check of the warfarin PK/PD fit (Figure 7a, b).'),
     ('S18_event_datasets', 'Simulated comparison datasets and the warfarin PK/PD dataset in NONMEM event format.'),
+    ('S19_example_diagnostics', 'Diagnostics of the theophylline example analysis plotted in Online Resource 1, Fig. S1 (Listing 2).'),
 ]
 
 CODEBOOK = {
@@ -226,4 +228,13 @@ CODEBOOK = {
          'warfarin_pkpd: 1 = male, 0 = female; infusion_block_covariates: simulated binary covariate with reference category 0'),
         ('DVID', 'Observed output', 'categorical (numeric code)', '', '1 = warfarin concentration (mg/L); 2 = prothrombin complex activity (%)'),
         ('AGE', 'Age', 'numeric', 'years', '')],
+    'S19_example_diagnostics': [
+        ('ID', 'Subject', 'integer', '', ''), ('TIME', 'Time after dose', 'numeric', 'h', ''),
+        ('DV', 'Observed theophylline concentration', 'numeric', 'mg/L', ''),
+        ('CENS', 'Censoring flag', 'categorical (numeric code)', '', '1 = below the quantification limit; 0 = quantified observation'),
+        ('PRED', 'Population prediction (random effects zero)', 'numeric', 'mg/L', ''),
+        ('IPRED', 'Individual prediction at the conditional modes', 'numeric', 'mg/L', ''),
+        ('IWRES', 'Individual weighted residual', 'numeric', 'unitless', ''),
+        ('CWRES', 'Conditional weighted residual', 'numeric', 'unitless', ''),
+        ('NPDE', 'Normalized prediction distribution error', 'numeric', 'unitless', '')],
 }

@@ -130,6 +130,10 @@ Runnable scripts are in [`examples/`](examples/):
 - `examples/theophylline.py` — population fit of `data/theo.csv` as in the manuscript.
 - `examples/event_records.py` — steady-state infusions, block Ω, IOV, covariates and BLQ data; diagnostics, VPC, intervals.
 - `examples/pkpd_turnover.py` — indirect-response PK/PD model with two outputs and VPCs.
+- `examples/theophylline_diagnostics.py` — NONMEM-format theophylline data through the event-record interface, with
+  goodness-of-fit, individual-fit and VPC plots (Listing 2 and Fig. S1 of the manuscript supplement).
+- `examples/pkpy2_explicit_model.py` — fixed and estimated terms, audit and uncertainty states, and saved-result
+  restoration (Listing 1 of the manuscript supplement).
 
 ## Statistical contract
 
@@ -187,7 +191,8 @@ paper/                manuscript materials: comparisons, analyses, raw data and 
 If you use PKPy2, please cite the software and the associated manuscript:
 
 > Kong H, Kim I. *PKPy2: A Python framework for joint population
-> pharmacokinetic estimation and uncertainty assessment.* Manuscript
+> pharmacokinetic and pharmacodynamic estimation, diagnostics, and uncertainty
+> assessment.* Manuscript
 > submitted for publication, 2026.
 
 The scientific predecessor:

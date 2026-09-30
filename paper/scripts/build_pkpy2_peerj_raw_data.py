@@ -14,6 +14,7 @@ import sys
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pkpy2_extended_manuscript import TITLE                     # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEV = ROOT / 'output/pkpy2_development'
@@ -212,7 +213,7 @@ def sheet_timing():
 
 README = [
     ('Title', 'PKPy2 raw data: simulated and clinical datasets, per-replicate estimates, numerical checks and timings'),
-    ('Article', 'PKPy2: A Python framework for joint population pharmacokinetic estimation and uncertainty assessment'),
+    ('Article', TITLE),
     ('Journal', 'Journal of Pharmacokinetics and Pharmacodynamics'),
     ('Authors', 'Hyunseung Kong, Inyoung Kim'),
     ('Corresponding author', 'Inyoung Kim, Department of Defense Science, Korea National Defense University, Nonsan, Republic of Korea; inyoungkim@korea.kr'),

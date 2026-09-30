@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sequential run of the extended-interface validation (general engine).
 # Usage: bash scripts/run_pkpy2_extended_validation.sh [step ...]
-# Steps: classic general_vs_classic likelihood vs_nlmixr2 warfarin_pkpd calibration tools scm recovery
+# Steps: classic general_vs_classic likelihood vs_nlmixr2 warfarin_pkpd calibration tools example scm recovery
 #        (also calibration_complex calibration_pkpd recovery_complex recovery_pkpd summaries)
 # Parallel lanes: NUMBA_NUM_THREADS=4 bash scripts/run_pkpy2_extended_validation.sh <steps> &
 set -u
@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 LOG=output/pkpy2_extended_validation/logs
 mkdir -p "$LOG"
 steps=("$@")
-[ ${#steps[@]} -eq 0 ] && steps=(classic general_vs_classic likelihood vs_nlmixr2 warfarin_pkpd calibration tools scm recovery)
+[ ${#steps[@]} -eq 0 ] && steps=(classic general_vs_classic likelihood vs_nlmixr2 warfarin_pkpd calibration tools example scm recovery)
 run() {
   name=$1; shift
   echo "$(date '+%F %T') start $name" | tee -a "$LOG/queue.log"
@@ -36,6 +36,7 @@ for s in "${steps[@]}"; do
                run recovery_summary scripts/validate_pkpy2_extended_recovery.py summarize
                run tools_summary scripts/validate_pkpy2_tools.py summarize ;;
     tools) run tools_theophylline scripts/validate_pkpy2_tools.py theophylline 200 ;;
+    example) run example_theophylline scripts/validate_pkpy2_theophylline_example.py ;;
     scm) run tools_scm scripts/validate_pkpy2_tools.py scm 20
          run tools_summary scripts/validate_pkpy2_tools.py summarize ;;
     recovery) run recovery_complex scripts/validate_pkpy2_extended_recovery.py complex_linear 20

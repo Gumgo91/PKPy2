@@ -21,6 +21,8 @@ from build_pkpy2_peerj_figures import (WIDTH, BLUE, ORANGE, GREEN, PURPLE, GRAY,
                                        check_and_save)
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'packages/pkpy2/src'))
+from pkpy2 import plots                                                                      # noqa: E402
 V = ROOT / 'output/pkpy2_extended_validation'
 ODE = {'mm_iv_multiple', 'mm_oral_ss', 'idr1', 'idr2', 'idr3', 'idr4', 'tmdd_full', 'tmdd_qss'}
 
@@ -182,14 +184,8 @@ def figure_application(report):
     axes = top.subplots(1, 2)
     for ax, (name, title, ylabel) in zip(axes, [('CP', 'a   Warfarin concentration', 'Concentration (mg/L)'),
                                                 ('R', 'b   Prothrombin complex activity', 'PCA (%)')]):
-        e = diag['vpc'][name]
-        obs = diag['observations'][name]
-        t = np.array(e['bin_time'])
-        lower, median, upper, observed = (np.array(e[k]) for k in ('lower', 'median', 'upper', 'observed'))
-        ax.scatter(obs['time'], obs['dv'], s=7, color=GRAY, alpha=.45, edgecolor='none')
-        for j, color in zip(range(3), [BLUE, ORANGE, BLUE]):
-            ax.fill_between(t, lower[:, j], upper[:, j], color=color, alpha=.2, lw=0)
-            ax.plot(t, observed[:, j], color=color, lw=1.5, ls='-' if j == 1 else '--')
+        # drawn by the plotting module of PKPy2 from the saved vpc() result
+        plots.vpc({name: dict(diag['vpc'][name], observations=diag['observations'][name])}, name, ax=ax, legend=False)
         ax.set(xlabel='Time (h)', ylabel=ylabel)
         ax.grid(color=GRID, lw=.6)
         panel(ax, title)
@@ -230,15 +226,45 @@ def figure_application(report):
     check_and_save(fig, 'Figure_7', report)
 
 
+# ------------------------------------------------------------------ Supplementary Figure S1
+def figure_s1(report):
+    """Diagnostic plots of the theophylline example (Online Resource 1, Listing 2), drawn by pkpy2.plots from
+    the saved diagnostics (validate_pkpy2_theophylline_example.py) and stacked as panels a and b."""
+    from io import BytesIO
+    from PIL import Image, ImageDraw, ImageFont
+    with open(V / 'example_theophylline/diagnostics.csv', newline='') as f:
+        rows = list(csv.DictReader(f))
+    table = {k: np.array([float(r[k]) for r in rows]) for k in rows[0]}
+    images = []
+    for fig in (plots.gof(table, figsize=(WIDTH, 4.3)), plots.individual_fits(table, figsize=(WIDTH, 5.0))):
+        buf = BytesIO()
+        fig.savefig(buf, dpi=300, format='png')
+        plt.close(fig)
+        images.append(Image.open(buf).convert('RGB'))
+    head = 70                                          # room for the panel letter above each panel
+    canvas = Image.new('RGB', (max(im.width for im in images), sum(im.height + head for im in images)), 'white')
+    draw = ImageDraw.Draw(canvas)
+    font = ImageFont.truetype('arialbd.ttf', 50)       # 12 pt at 300 dpi
+    y = 0
+    for letter, im in zip('ab', images):
+        draw.text((20, y + 5), letter, font=font, fill=INK)
+        canvas.paste(im, (0, y + head))
+        y += im.height + head
+    canvas.save(OUT / 'Figure_S1.png', dpi=(300, 300))
+    report.append(f"Figure_S1: {canvas.size[0]} x {canvas.size[1]} px at 300 dpi")
+
+
 def main():
     report = []
-    which = sys.argv[1:] or ['1', '6', '7']
+    which = sys.argv[1:] or ['1', '6', '7', 'S1']
     if '1' in which:
         figure_workflow(report)
     if '6' in which:
         figure_verification(report)
     if '7' in which:
         figure_application(report)
+    if 'S1' in which:
+        figure_s1(report)
     for r in report:
         print(r)
 

@@ -88,7 +88,20 @@ def main():
                                             v=fitw['theta']['V'], v_saem=math.exp(saem['theta']['tv']))
         n['warfarin_pkpd'] = dict(pkpy2_ofv=pk['ofv'], status=pk['status'],
                                   focei_minus_pkpy2=next((r['ofv'] - pk['ofv'] for r in wpd if r['source'] == 'nlmixr2 focei'), None),
-                                  saem_minus_pkpy2=next((r['ofv'] - pk['ofv'] for r in wpd if r['source'] == 'nlmixr2 saem'), None))
+                                  saem_minus_pkpy2=next((r['ofv'] - pk['ofv'] for r in wpd if r['source'] == 'nlmixr2 saem'), None),
+                                  pkpy2_seconds=fitw['seconds'], focei_seconds=focei['seconds'], saem_seconds=saem['seconds'],
+                                  local_intervals=(load('warfarin_pkpd/pkpy2_diagnostics.json').get('uncertainty') or {}).get('status'))
+        diag = load('warfarin_pkpd/pkpy2_diagnostics.json')
+        vpc_counts = {}
+        for out, e in diag['vpc'].items():
+            obs, lo, hi = (np.array(e[k], dtype=float) for k in ('observed', 'lower', 'upper'))
+            ok = np.isfinite(obs)
+            vpc_counts[out] = dict(inside=int(np.sum(ok & (obs >= lo) & (obs <= hi))), total=int(np.sum(ok)))
+        n['warfarin_pkpd']['vpc'] = vpc_counts
+    example = load('example_theophylline/summary.json')
+    if example:
+        n['example_theophylline'] = dict(status=example['status'], ofv=example['ofv'], ofv_difference=example['ofv_difference'],
+                                         max_relative_difference_pct=example['max_relative_difference_pct'])
     cal = load('calibration_summary.json')
     if cal:
         n['calibration'] = {k: dict(replicates=v['replicates'], npde_mean=v['npde_mean'], npde_variance=v['npde_variance'],

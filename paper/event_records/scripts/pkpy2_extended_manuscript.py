@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 E = json.loads(Path(os.environ.get('PKPY2_EXTENDED_NUMBERS', ROOT / 'docs/pkpy2_paper/extended_numbers.json'))
                .read_text(encoding='utf-8'))
 SUP = str.maketrans('-0123456789', '⁻⁰¹²³⁴⁵⁶⁷⁸⁹')
+TITLE = ('PKPy2: A Python framework for joint population pharmacokinetic and pharmacodynamic estimation, diagnostics, '
+         'and uncertainty assessment')
 
 NEW_REFERENCES = {
     23: 'Moler C, Van Loan C. Nineteen dubious ways to compute the exponential of a matrix, twenty-five years later. SIAM Review. '
@@ -52,6 +54,8 @@ NEW_REFERENCES = {
         'doi:10.1023/A:1011970125687.',
     40: "O'Reilly RA, Aggeler PM. Studies on coumarin anticoagulant drugs: initiation of warfarin therapy without a loading dose. "
         'Circulation. 1968;38(1):169-177. doi:10.1161/01.CIR.38.1.169.',
+    41: 'Hunter JD. Matplotlib: a 2D graphics environment. Computing in Science & Engineering. 2007;9(3):90-95. '
+        'doi:10.1109/MCSE.2007.55.',
 }
 
 
@@ -95,14 +99,19 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
              abstract().format(sv=N['sparse_rmse_pkpy2_omega_V'], pv=N['sparse_rmse_pkpy_omega_V'], tm=N['theo_max_diff'],
                                wm=N['warf_max_diff'], tob=N['tob_ej_max'], cmin=N['coverage_min'], cmax=N['coverage_max']))
 
+    set_text(find(d, 'PKPy2: A Python framework for joint population pharmacokinetic estimation'), TITLE)
+
     # ------------------------------------------------------------ Introduction
     intro = find(d, 'We developed PKPy2 to extend PKPy from separate individual fits')
+    replace_in(intro, 'under explicitly specified compartmental models.', 'under explicitly specified models.')
+    replace_in(intro, 'and covariate effects through a common interface.', 'and covariate effects in Python code.')
     replace_in(intro, 'Figure 1 summarizes the transition from individual fits to joint population inference.',
-               'An event-record interface reads NONMEM-format analysis data and extends the model set to multi-compartment, '
-               'nonlinear, and pharmacokinetic-pharmacodynamic (PK/PD) models with correlated and interoccasion random effects, '
-               'time-varying covariates, and censored observations, together with model diagnostics and tools for uncertainty '
-               'assessment and covariate selection. Figure 1 summarizes the transition from individual fits to joint population '
-               'inference.')
+               'Two interfaces share this estimator. A compact interface declares the closed-form one- and two-compartment models of '
+               'the primary evaluation, and an event-record interface reads NONMEM-format analysis data, as used in routine population '
+               'analyses, and extends the model set to multi-compartment, nonlinear, and pharmacokinetic-pharmacodynamic (PK/PD) '
+               'models with correlated and interoccasion random effects, time-varying covariates, and censored observations. Both '
+               'provide model diagnostics with plots and tools for uncertainty assessment and covariate selection. Figure 1 '
+               'summarizes the transition from individual fits to joint population inference.')
     replace_in(find(d, 'We evaluated the numerical calculations against independent implementations and examined'),
                'All evaluations used prespecified pharmacokinetic models.',
                'The event-record interface was verified against rxode2, an independent quadrature implementation, nlmixr2, and the '
@@ -136,12 +145,15 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
         'steady states were obtained in closed form. Nonlinear systems were integrated with an adaptive Dormand-Prince method [24] or, '
         'for stiff systems, a Rosenbrock method [25], and their steady states were obtained by repeating the dosing interval to '
         'convergence.', like=body)
+    p = insert_after(p, 'For parameter k of subject i at record j, the individual value was', like=body)
+    p = insert_after(p, 'ψᵢₖⱼ = gₖ⁻¹(gₖ(θₖ) + Σₘ fₖₘ(zᵢₘⱼ) + ηᵢₖ + κᵢₖₒ),', like=find(d, 'log pᵢₖ = log θₖ'))
     p = insert_after(p,
-        'Individual parameters were defined on the log, logit, or identity scale as the typical value plus covariate and random '
-        'effects. Covariate effects could be power, exponential, linear, or categorical and could change within a subject; random '
-        'effects could be correlated within declared blocks of Ω and combined with interoccasion variability [30]. Each observed output '
-        'had an additive, proportional, combined, or log-normal residual model, the last corresponding to a log-transform-both-sides '
-        'analysis, and observations below the quantification limit contributed the probability of censoring (M3 method) [31]. '
+        'where gₖ is the log, logit, or identity function, fₖₘ is a power, exponential, linear, or categorical effect of covariate m, '
+        'whose value zᵢₘⱼ can change within a subject, ηᵢ follows N(0, Ω) with correlated blocks allowed, and κᵢₖₒ is the '
+        'interoccasion effect of the occasion o that contains record j [30]. Each observed output had an additive, proportional, '
+        'combined, or log-normal residual model, the last corresponding to a log-transform-both-sides analysis. An observation below '
+        'the quantification limit (LLOQ) contributed the censoring probability Φ((LLOQ − fᵢⱼ)/sᵢⱼ), with residual standard deviation '
+        'sᵢⱼ and both terms on the log scale for log-normal outputs (M3 method) [31]. '
         'Estimation followed the procedure described above. A Laplace approximation at the conditional modes was minimized from '
         'several starts, and the importance-sampled marginal likelihood was then refined in stages by quasi-Newton steps validated on '
         'independent integration banks. Each subject\'s importance proposal was adapted to the weighted mean and covariance of a pilot '
@@ -158,7 +170,9 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
         'to local Wald intervals, parameter uncertainty can be assessed with a sandwich covariance, profile likelihood, a nonparametric '
         'case bootstrap [20], and sampling importance resampling (SIR) with iterative proposal updates [37,38]. Nested models are '
         'compared by likelihood-ratio tests, and covariate effects can be selected by stepwise forward inclusion and backward '
-        'elimination [39].', like=body)
+        'elimination [39]. A plotting module draws goodness-of-fit, individual-fit, and VPC plots from these results with matplotlib '
+        '[41]; it produced the visual predictive checks (Figure 7) and the diagnostic plots and code example in Supplementary '
+        'Section S7.', like=body)
 
     comp_head = find(d, 'Comparison with established open-source NLME software')
     comp_last = find(d, 'Simulation estimates were summarized with the metrics used in the primary evaluation.')
@@ -207,6 +221,23 @@ def extend(d, N, find, set_text, insert_after, blank_after, replace_in):
     p = insert_after(p, results_estimation(), like=rlast)
     insert_after(p, results_recovery(), like=rlast)
     replace_in(find(d, 'Prediction-call times after compilation were similar'), '(Figure 6)', '(Supplementary Table S10)')
+
+    # ------------------------------------------------------------ Earlier text that now covers both interfaces
+    replace_in(find(d, 'Analytical predictions were evaluated in 12 parameter conditions'), 'the four supported structural models',
+               'the four closed-form structural models')
+    replace_in(find(d, 'Analytical predictions were evaluated under 48 conditions'), 'the four supported model structures',
+               'the four closed-form model structures')
+    replace_in(find(d, 'Prediction-call times were measured after just-in-time compilation'),
+               'Each fit or uncertainty calculation used no more than two workers.',
+               'Fits and uncertainty calculations with the compact interface used no more than two workers, and event-record fits '
+               'used three or four threads.')
+    replace_in(find(d, 'Table 1 summarizes the main changes from PKPy to PKPy2.'),
+               'adds explicit fixed-parameter and bound handling, repeated-dose calculations, and population-level uncertainty estimates.',
+               'adds explicit fixed-parameter and bound handling, repeated-dose calculations, NONMEM-format event records, nonlinear and '
+               'PK/PD models, model diagnostics, and population-level uncertainty estimates.')
+    replace_in(find(d, 'With identical datasets, models, and starting values, PKPy2, nlmixr2, and saemix'),
+               'nlmixr2 and saemix support broader model classes,',
+               'nlmixr2 and saemix additionally support non-Gaussian observation models such as categorical and time-to-event data,')
 
     # ------------------------------------------------------------ Discussion
     rec = find(d, 'The analytical recurrence for repeated dosing provided a substantial computational advantage')
@@ -270,8 +301,16 @@ def results_estimation():
     we = E.get('warfarin_pkpd_estimates')
     if we:
         text += (f"For warfarin PK/PD, PKPy2 estimated IMAX at {we['imax']:.4f} (nlmixr2 SAEM, {we['imax_saem']:.3f}; FOCEi, "
-                 f"{we['imax_focei']:.3f}), CL at {we['cl']:.3f} L/h, and V at {we['v']:.2f} L (visual predictive checks of both "
-                 'outputs in Figure 7).')
+                 f"{we['imax_focei']:.3f}), CL at {we['cl']:.3f} L/h, and V at {we['v']:.2f} L")
+        text += ('; because IMAX approached 1, the information matrix was not positive definite and local intervals were not '
+                 'reported. ' if w.get('local_intervals') != 'computed' else '. ')
+        cp, r = w['vpc']['CP'], w['vpc']['R']
+        text += (f"In the visual predictive checks, {cp['inside']} of {cp['total']} observed concentration percentiles and "
+                 f"{r['inside']} of {r['total']} PCA percentiles lay within their simulated 95% intervals; the simulated 5th-95th "
+                 'percentile range was wider than the observed range at several times, and observed PCA was capped at 100% at '
+                 'baseline (Figure 7). ')
+        text += (f"The fit took {w['pkpy2_seconds']:,.0f} s with PKPy2 (four threads), {w['focei_seconds']:,.0f} s with nlmixr2 "
+                 f"FOCEi, and {w['saem_seconds']:,.0f} s with nlmixr2 SAEM (one thread each).")
     return text
 
 
@@ -297,7 +336,8 @@ def results_recovery():
     var_lo = min(rc['variance']['bias_min'], rp['variance']['bias_min'])
     var_hi = max(rc['variance']['bias_max'], rp['variance']['bias_max'])
     add = rc['sigma']
-    return (f"In the recovery simulations, {conv}. Relative bias was within ±{theta:.1f}% for typical values, "
+    return (f"In the recovery simulations, {conv}, with median fit times of {rc['median_seconds']:,.0f} s for the infusion design "
+            f"and {rp['median_seconds']:,.0f} s for the PK/PD design. Relative bias was within ±{theta:.1f}% for typical values, "
             f"{coef['bias_min']:.1f}% to {coef['bias_max']:.1f}% for the covariate coefficients, and {var_lo:.1f}% to "
             f"{var_hi:+.1f}% for variance components; the additive residual SD of the infusion model, which the concentrations "
             f"informed little, had a relative bias of {add['bias_min']:.0f}% (Supplementary Table S22). At the true parameters of "

@@ -5,6 +5,7 @@ import sys
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pkpy2_extended_manuscript import TITLE                     # noqa: E402
 from pkpy2_extended_raw_data import CODEBOOK as EXTENDED_CODEBOOK   # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -132,7 +133,7 @@ def main():
     with pd.ExcelWriter(OUT / 'PKPy2_codebook.xlsx', engine='openpyxl') as xw:
         pd.DataFrame([
             ('Purpose', 'Codebook for the raw-data workbook (Online Resource 2) and its CSV files (Online Resource 3).'),
-            ('Article', 'PKPy2: A Python framework for joint population pharmacokinetic estimation and uncertainty assessment'),
+            ('Article', TITLE),
             ('Journal', 'Journal of Pharmacokinetics and Pharmacodynamics'),
             ('Authors', 'Hyunseung Kong, Inyoung Kim'),
             ('Corresponding author', 'Inyoung Kim, Department of Defense Science, Korea National Defense University, Nonsan, Republic of Korea; inyoungkim@korea.kr'),

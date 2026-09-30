@@ -18,13 +18,14 @@ import pymupdf
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROOT = Path(__file__).resolve().parents[1]
+from pkpy2_extended_manuscript import TITLE                     # noqa: E402
 PAPER = ROOT / 'docs/pkpy2_paper'
 DEV = ROOT / 'output/pkpy2_development'
 CMP = ROOT / 'output/pkpy2_software_comparison'
 TOB = ROOT / 'output/pkpy2_tobramycin_v3'
 OUT = Path(sys.argv[1])
 INCLUDE_TOBRAMYCIN = '--tobramycin' in sys.argv
-ARTICLE = dict(title='PKPy2: A Python framework for joint population pharmacokinetic estimation and uncertainty assessment',
+ARTICLE = dict(title=TITLE,
                journal='Journal of Pharmacokinetics and Pharmacodynamics', authors='Hyunseung Kong, Inyoung Kim',
                corresponding='Inyoung Kim, Department of Defense Science, Korea National Defense University, Nonsan, Republic of Korea; inyoungkim@korea.kr')
 
@@ -304,6 +305,7 @@ def markdown():
     tob_section = tobramycin_section(check) if INCLUDE_TOBRAMYCIN else ''
     from pkpy2_extended_supplement import markdown as extended_markdown
     extended = extended_markdown()
+    example = read(ROOT / 'output/pkpy2_extended_validation/example_theophylline/summary.json')
 
     return f'''# Online Resource 1
 
@@ -413,9 +415,9 @@ The calculation host was Windows 11, AMD Ryzen 5 5600 (6 cores, 12 threads), Pyt
 
 Counts refer to the 200 primary and 30 additional datasets. The Laplace exploration reached more than one distinct optimum in {n_flagged} of these 230 fits.
 
-## S7. Executable use of the declared-model interface
+## S7. Executable use of the two interfaces
 
-The accompanying examples/pkpy2_explicit_model.py creates synthetic observations for 30 subjects. After installing PKPy2 with Python 3.13, run the example with an unused output directory. It declares fixed volume and a fixed weight exponent for illustration, estimates clearance, clearance variability, and proportional residual SD, inspects the fit and uncertainty states, and restores the saved result with the same data. The model and result-handling core is shown in Listing 1; data generation and assertions are included in the complete executable file.
+**Compact interface.** The accompanying examples/pkpy2_explicit_model.py creates synthetic observations for 30 subjects. After installing PKPy2 with Python 3.13, run the example with an unused output directory. It declares fixed volume and a fixed weight exponent for illustration, estimates clearance, clearance variability, and proportional residual SD, inspects the fit and uncertainty states, and restores the saved result with the same data. The model and result-handling core is shown in Listing 1; data generation and assertions are included in the complete executable file.
 
 **Listing 1. Model declaration and numerical result handling (excerpt).**
 
@@ -445,6 +447,34 @@ restored = load_fit(destination, subjects)
 ```
 
 Here, subjects holds the generated Subject records and destination is a new JSON path. The complete example checks that fixed terms are preserved and that estimates, diagnostics, and intervals are restored.
+
+**Event-record interface.** The accompanying examples/theophylline_diagnostics.py reads the NONMEM-format theophylline data of the main article (paper/data/theophylline.csv in the PKPy2 repository), fits the theophylline model through the event-record interface, and draws diagnostic plots with the plotting module (Listing 2 and Fig. S1). Its estimates differed from those of the compact-interface analysis by at most {example['max_relative_difference_pct']:.2f}% and its OFV by {abs(example['ofv_difference']):.4f}.
+
+**Listing 2. Event-record analysis with diagnostics and plots (excerpt).**
+
+```python
+import pkpy2
+from pkpy2 import Model, Residual, Covariate, Parameter as P, structures as S, plots
+
+data = pkpy2.read_nonmem("paper/data/theophylline.csv", covariates=["WT"])
+model = Model(
+    S.pk(1, "first_order"),       # depot (CMT 1), central (CMT 2)
+    theta={{"CL": P(3.), "V": P(30.), "Ka": P(1.)}},  # at 70 kg
+    omega={{"CL": P(.1), "V": P(.03), "Ka": P(.3)}},
+    covariates=(Covariate("CL", "WT", 70., P(1., fixed=True)),
+                Covariate("V", "WT", 70., P(1., fixed=True))),
+    residual=Residual(proportional=P(.15)),
+)
+result = pkpy2.fit(data, model, seed=20260930)
+table, summary = pkpy2.diagnostics(result)  # PRED, IPRED, CWRES, NPDE
+plots.gof(table).savefig("gof.png")
+plots.individual_fits(table).savefig("individual_fits.png")
+plots.vpc(pkpy2.vpc(result)).savefig("vpc.png")
+```
+
+![Fig. S1](Figure_S1.png)
+
+**Fig. S1. Diagnostic plots of the theophylline analysis drawn by the plotting module (Listing 2).** (a) Observations against population (PRED) and individual (IPRED) predictions, and CWRES against time and PRED. (b) Observations, PRED, and IPRED of the 12 subjects.
 
 ## S8. Comparison with nlmixr2 and saemix
 
@@ -480,7 +510,7 @@ Lower OFV indicates higher marginal likelihood.
 
 ## S9. Raw data files and codebook
 
-The raw-data workbook (Online Resource 2) contains a README sheet and 18 data sheets, also provided as CSV files (Online Resource 3). S1 and S3 hold the simulated concentration-time records of the 200 primary and 30 additional-structure datasets with the true individual random effects. S2 and S4 hold per-dataset estimates, 95% intervals, coverage indicators, and fit times for every program. S5 and S6 hold the clinical analysis datasets and the clinical estimates of all programs. S7 to S9 hold the prediction checks, quadrature comparisons, and per-batch prediction timings. S10 to S18 hold the evaluation of the event-record interface (S12), including the simulated comparison datasets and the warfarin PK/PD dataset in NONMEM event format. The codebook (Online Resource 4) defines every variable, unit, and categorical code, including the numerically coded EVID, MDV, CMT, and 0/1 indicators.
+The raw-data workbook (Online Resource 2) contains a README sheet and 19 data sheets, also provided as CSV files (Online Resource 3). S1 and S3 hold the simulated concentration-time records of the 200 primary and 30 additional-structure datasets with the true individual random effects. S2 and S4 hold per-dataset estimates, 95% intervals, coverage indicators, and fit times for every program. S5 and S6 hold the clinical analysis datasets and the clinical estimates of all programs. S7 to S9 hold the prediction checks, quadrature comparisons, and per-batch prediction timings. S10 to S18 hold the evaluation of the event-record interface (S12), including the simulated comparison datasets and the warfarin PK/PD dataset in NONMEM event format, and S19 holds the diagnostics plotted in Fig. S1. The codebook (Online Resource 4) defines every variable, unit, and categorical code, including the numerically coded EVID, MDV, CMT, and 0/1 indicators.
 {tob_section}{extended}'''
 
 
@@ -526,6 +556,9 @@ def md_to_html(md, breaks=()):
             out.append(f'<h1>{inline(line[2:])}</h1>')
         elif line.startswith('## '):
             out.append(f'<h2>{inline(line[3:])}</h2>')
+        elif line.startswith('!['):
+            # image from docs/pkpy2_paper/figures_peerj_revision, scaled to the text width
+            out.append(f'<p><img src="{re.match(r"!\[[^\]]*\]\(([^)]+)\)", line).group(1)}" width="100%"/></p>')
         elif line.startswith('|'):
             rows = []
             while i < len(lines) and lines[i].strip().startswith('|'):
@@ -538,7 +571,7 @@ def md_to_html(md, breaks=()):
             out.append(f'<table><tr>{head}</tr>{body}</table>')
             continue
         else:
-            cls = ' class="cap"' if line.startswith(('**Table', '**Listing')) else ''
+            cls = ' class="cap"' if line.startswith(('**Table', '**Listing', '**Fig.')) else ''
             key, parent = caption_key(line.strip().removeprefix('**'), parent)
             if key in breaks:
                 cls += ' style="page-break-before: always"'
@@ -565,7 +598,7 @@ def render(md, path):
     breaks = set()
     while True:
         css, body = md_to_html(md, breaks)
-        story = pymupdf.Story(html=body, user_css=css)
+        story = pymupdf.Story(html=body, user_css=css, archive=pymupdf.Archive(str(PAPER / 'figures_peerj_revision')))
         buffer = io.BytesIO()
         writer = pymupdf.DocumentWriter(buffer)
         more = True

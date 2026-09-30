@@ -27,7 +27,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD = Path(sys.argv[1])
 OUT = Path(sys.argv[2])
 FIGS = ROOT / 'docs/pkpy2_paper/figures_peerj_revision'
-TITLE = 'PKPy2: A Python framework for joint population pharmacokinetic estimation and uncertainty assessment'
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pkpy2_extended_manuscript import TITLE                                          # noqa: E402
 KEYWORDS = ['Population pharmacokinetics', 'Pharmacokinetic-pharmacodynamic modeling', 'Nonlinear mixed-effects models',
             'Marginal likelihood', 'Software validation', 'Python']
 ORCID = [('Hyunseung Kong', '0000-0001-7681-7429'), ('Inyoung Kim', '0000-0003-3062-6576')]
@@ -110,6 +111,7 @@ REFERENCES = [
     'https://doi.org/10.1023/A:1011970125687',
     "O'Reilly RA, Aggeler PM (1968) Studies on coumarin anticoagulant drugs: initiation of warfarin therapy without a loading dose. "
     'Circulation 38:169–177. https://doi.org/10.1161/01.CIR.38.1.169',
+    'Hunter JD (2007) Matplotlib: a 2D graphics environment. Comput Sci Eng 9:90–95. https://doi.org/10.1109/MCSE.2007.55',
 ]
 
 DECLARATIONS = [
@@ -157,7 +159,7 @@ CAPTIONS = {
 
 ESM = [('ESM_1.pdf', 'PKPy2_supplement.pdf', 'Supplementary methods, complete simulation summaries, clinical reference details, the '
         'comparison with nlmixr2 and saemix, the tobramycin analyses, and the methods and evaluation of the event-record interface '
-        '(Sections S1-S12, Tables S1-S25)'),
+        '(Sections S1-S12, Tables S1-S25, Fig. S1)'),
        ('ESM_2.xlsx', 'Supplemental_Files/PKPy2_raw_data.xlsx', 'Raw data underlying all tables and figures: simulated and clinical analysis '
         'datasets, per-dataset estimates of all programs, numerical checks, and timings'),
        ('ESM_3.zip', 'Supplemental_Files/PKPy2_raw_data_csv.zip', 'The sheets of Online Resource 2 as CSV files'),
@@ -317,6 +319,7 @@ def manuscript():
         # In-text citations end with ')'; a sentence-initial "Figure 1" is kept in full.
         n_fig += sub_in_paragraph(p, r'Figure (\d)([A-Z]?)(?=\))', lambda m: f'Fig. {m.group(1)}{m.group(2).lower()}')
         sub_in_paragraph(p, r'Supplementary Tables (S\d+) and (S\d+)', r'Online Resource 1, Tables \1 and \2')
+        sub_in_paragraph(p, r'Supplementary Figure (S\d+)', r'Online Resource 1, Fig. \1')
         sub_in_paragraph(p, r'Supplementary (Section|Table) (S\d+)', r'Online Resource 1, \1 \2')
         sub_in_paragraph(p, r'the Supplementary Material', 'Online Resource 1')
     assert n_fig >= 7, n_fig
